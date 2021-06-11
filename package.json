@@ -1,0 +1,33 @@
+{
+  "name": "tsedacall",
+  "version": "1.0.0",
+  "description": "tsedacall project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon 01_server/index.js",
+    "prod": "node 01_server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremylzn/TSEDACALL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeremylzn/TSEDACALL/issues"
+  },
+  "homepage": "https://github.com/jeremylzn/TSEDACALL#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.13",
+    "nodemon": "^2.0.7",
+    "validator": "^13.6.0"
+  }
+}
