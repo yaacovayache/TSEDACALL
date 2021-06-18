@@ -1,0 +1,10 @@
+{
+    "navbar": {
+        "Home":"Home",
+        "HowItWork": "How it work ?",
+        "Search": "Search for an association",
+        "Campaigns": "Campaigns",
+        "LogIn": "Log In",
+        "SignUp": "Sign Up"
+    }
+}
