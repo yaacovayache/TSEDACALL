@@ -1,0 +1,10 @@
+{
+    "navbar": {
+        "Home":"Accueil",
+        "HowItWork": "Comment ça marche ?",
+        "Search": "Rechercher une association",
+        "Campaigns": "Campagnes",
+        "LogIn": "Connexion",
+        "SignUp": "Inscription"
+    }
+}

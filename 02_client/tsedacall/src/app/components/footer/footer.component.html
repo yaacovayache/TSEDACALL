@@ -1,0 +1,51 @@
+<!-- <footer id="dk-footer" class="dk-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span style="margin-left: 10px;">Copyright © 2019, All Right Reserved Seobin</span>
+                    </div>
+                    <div class="col-md-6" style="height: 20px;">
+                        <div class="copyright-menu">
+                            <ul>
+                                <li>
+                                    <a href="#">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#">Terms</a>
+                                </li>
+                                <li>
+                                    <a href="#">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+</footer>
+ -->
+ <footer class="footer">
+    <div class="row">
+        <div class="col-md-6 left-side">
+            <!-- <span style="margin-left: 10px;">Copyright © 2019, All Right Reserved Seobin</span> -->
+        </div>
+        <div class="col-md-6 right-side" style="height: 20px;">
+            <div class="copyright-menu">
+                <ul>
+                    <li>
+                        <a href="#">Terms</a>
+                    </li>
+                    <li>
+                        <a href="#">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                    <li *ngFor= 'let flag of flags' (click)="useLanguage(flag.countryCode)" class="cursor-pointer">
+                        <a><span class={{flag.class}}></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </footer>

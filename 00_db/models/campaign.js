@@ -1,5 +1,32 @@
 const mongoose = require("mongoose");
 
+// Item Sub-Schema that will populate orderSchema 'users' field.
+const userSubSchema = new mongoose.Schema({
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
+    required: true,
+  },
+  fname: {
+    type: String,
+  },
+  lname: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+  img: { 
+    type: String, 
+  },
+  telephone: {
+    type: String,
+  },
+  address: {
+    type: String,
+  }
+}, { _id: false });
+
 const campaignSchema = new mongoose.Schema({
     name: {
       type: String,
@@ -13,8 +40,9 @@ const campaignSchema = new mongoose.Schema({
       type: String
     },
     founder: {
-        type: mongoose.Schema.Types.ObjectId, ref: "users"
-    },
+      type: userSubSchema,
+      required: true
+    },  
     createdAt: {
       type: String,
       default: new Date()

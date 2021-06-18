@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 // Import mongoose models
 const User = require('../00_db/models/user')
 const Campaign = require('../00_db/models/campaign')
+const Team = require('../00_db/models/team')
 
 
 
@@ -16,6 +17,7 @@ const Campaign = require('../00_db/models/campaign')
 // Import routes
 const userRouter = require('./routes/user')
 const campaignRouter = require('./routes/campaign')
+const teamRouter = require('./routes/team')
 
 
 
@@ -32,6 +34,7 @@ const port = process.env.PORT || 3000
 // Use routes
 app.use(userRouter)
 app.use(campaignRouter)
+app.use(teamRouter)
 
 
 // Listening for incoming connections
