@@ -33,13 +33,13 @@
             <div class="copyright-menu">
                 <ul>
                     <li>
-                        <a href="#">Terms</a>
+                        <a href="#" [translate]="'footer.Terms'"></a>
                     </li>
                     <li>
-                        <a href="#">Privacy Policy</a>
+                        <a href="#"  [translate]="'footer.PrivacyPolicy'"></a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="#" [translate]="'footer.Contact'">Contact</a>
                     </li>
                     <li *ngFor= 'let flag of flags' (click)="useLanguage(flag.countryCode)" class="cursor-pointer">
                         <a><span class={{flag.class}}></span></a>

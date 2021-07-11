@@ -42,7 +42,15 @@ const campaignSchema = new mongoose.Schema({
     founder: {
       type: userSubSchema,
       required: true
-    },  
+    },
+    goal: {
+      type: Number,
+      required: true
+    },
+    endAt: {
+      type: String,
+      required: true
+    },
     createdAt: {
       type: String,
       default: new Date()

@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const User = require('../00_db/models/user')
 const Campaign = require('../00_db/models/campaign')
 const Team = require('../00_db/models/team')
+const Payment = require('../00_db/models/donation')
 
 
 
@@ -18,6 +19,7 @@ const Team = require('../00_db/models/team')
 const userRouter = require('./routes/user')
 const campaignRouter = require('./routes/campaign')
 const teamRouter = require('./routes/team')
+const paymentRouter = require('./routes/donation')
 
 
 
@@ -35,6 +37,7 @@ const port = process.env.PORT || 3000
 app.use(userRouter)
 app.use(campaignRouter)
 app.use(teamRouter)
+app.use(paymentRouter)
 
 
 // Listening for incoming connections

@@ -1,0 +1,55 @@
+<form class="form-wraper" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="form-container card">
+      <div class="form-header">
+        <h1 class="form-title" [translate]="'form.TitleSignUp'"></h1>
+      </div>      
+      <div class="form-body">
+        
+        <div class="row">
+            <div class="col">
+            <input formControlName="fname" type="text" placeholder="First name*">
+            <label *ngIf="!signUpForm.get('fname').valid && signUpForm.get('fname').touched" class="text-danger" [translate]="'form.FieldRequired'"></label>
+          </div>
+          <div class="col">
+            <input type="text" formControlName="lname" placeholder="Last Name*">
+            <label *ngIf="!signUpForm.get('lname').valid && signUpForm.get('lname').touched" class="text-danger" [translate]="'form.FieldRequired'"></label>
+          </div>
+        </div>
+        <input type="email"  formControlName="email" placeholder="{{'form.EmailPlaceholder' | translate}}*">
+        <label *ngIf="!signUpForm.get('email').valid && signUpForm.get('email').touched" class="text-danger" [translate]="'form.ErrorEmail'"></label>
+        <input type="password" formControlName="password" placeholder="{{'form.Password' | translate}}*">
+        <label *ngIf="!signUpForm.get('password').valid && signUpForm.get('password').touched" class="text-danger" [translate]="'form.FieldRequired'"></label>
+        <select class="form-select" formControlName="role" aria-label="Default select example">
+          <option disabled selected hidden [translate]="'form.Role'"></option>
+          <option value="1" [translate]="'form.RoleDonor'"></option>
+          <option value="2" [translate]="'form.RoleAssociation'"></option>
+        </select>
+        <label *ngIf="!signUpForm.get('role').valid && signUpForm.get('role').touched" class="text-danger" [translate]="'form.FieldRequired'"></label>
+
+        <input *ngIf="signUpForm.get('role').value == '2'" type="text" formControlName="associationName" placeholder="{{'form.NameAssociation' | translate}}*">
+
+        <input type="number" formControlName="telephone" placeholder="{{'form.Phone' | translate}}">
+        <div class="row">
+          <div class="col-md-8">
+            <input type="text" formControlName="street" placeholder="{{'form.Street' | translate}}">
+          </div>
+          <div class="col-md-4">
+            <input type="text" formControlName="number" placeholder="{{'form.Number' | translate}}">
+          </div>
+        </div>
+        <input type="text" formControlName="city" placeholder="{{'form.City' | translate}}">
+      </div>
+      
+      <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center"></app-loading-spinner>
+
+      
+      <div class="form-footer">
+          <button class="btn custom-btn" type="submit" [disabled]="!signUpForm.valid || (signUpForm.get('role').value == '2' && signUpForm.get('associationName').value == '')"> 
+            <i class="fa fa-plus"></i> Signup
+          </button>
+      </div>
+      <div class="additional-link">
+        <a routerLink="/auth/login" [innerHTML]="'form.AlreadyAnAccount' | translate"></a>
+      </div>
+    </div>
+</form>

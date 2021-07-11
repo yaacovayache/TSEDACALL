@@ -1,0 +1,35 @@
+<div class="parent clearfix">
+    <div class="bg-illustration">
+      <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo">
+
+      <div class="burger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+
+    <div class="login">
+      <div class="container">
+        <h1 [translate]="'form.TitleLogin'"></h1>
+        
+        <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center"></app-loading-spinner>
+
+        <div class="login-form">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <input formControlName="email" type="email" placeholder="{{'form.EmailPlaceholder' | translate}}">
+            <label *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched" class="text-danger" [translate]="'form.ErrorEmail'"></label>
+            <input type="password" formControlName="password" placeholder="{{'form.Password' | translate}}">
+
+            <div class="forget-pass">
+              <a href="#" [translate]="'form.ForgotPassword'"></a>
+            </div>
+
+            <button [disabled]="!loginForm.valid" class="btn custom-btn" type="submit" [translate]="'form.SubmitButtonLogin'"></button>
+          </form>
+        </div>
+    
+      </div>
+      </div>
+  </div>

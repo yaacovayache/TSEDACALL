@@ -5,6 +5,33 @@
         "Search": "Rechercher une association",
         "Campaigns": "Campagnes",
         "LogIn": "Connexion",
-        "SignUp": "Inscription"
+        "SignUp": "Inscription",
+        "Logout": "Se déconnecter"
+    },
+    "footer":{
+        "Terms":"Termes",
+        "PrivacyPolicy":"Politique De Confidentialité",
+        "Contact":"Contact"
+    },
+    "form":{
+        "TitleLogin":"Connectez-vous à votre compte",
+        "TitleSignup":"Inscrivez vous maintenant",
+        "EmailPlaceholder":"Adresse e-mail",
+        "Password":"Mot de passe",
+        "Role":"Donateur ou Association ?*",
+        "RoleDonor":"Donateur",
+        "RoleAssociation":"Association",
+        "Phone":"Téléphone",
+        "Street":"rue",
+        "Number":"numéro",
+        "City":"Ville",
+        "NameAssociation":"Nom de l'association",
+        "ForgotPassword": "Mot de passe oublié ?",
+        "AlreadyAnAccount": "Vous avez déjà un compte ? <strong>Connexion</strong>",
+        "SubmitButtonLogin":"CONNEXION",
+        "SubmitButtonSignup":"INSCRIPTION",
+        "ErrorEmail":"La valeur n'est pas une adresse e-mail valide",
+        "FieldRequired": "Ce champ est requis !"
+
     }
 }

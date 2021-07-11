@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import { AuthService } from './shared/services/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -10,7 +12,11 @@ import {TranslateService} from '@ngx-translate/core';
 export class AppComponent {
   title = 'tsedacall';
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, private authService: AuthService) {
     translate.setDefaultLang('en');
+  }
+
+  ngOnInit() {
+    this.authService.autoLogin();
   }
 }

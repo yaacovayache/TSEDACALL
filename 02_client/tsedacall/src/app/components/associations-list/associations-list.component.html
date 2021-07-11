@@ -1,0 +1,27 @@
+<!-- 
+<div class="container">
+    <div *ngFor="let association of associations | async">
+        <h2>{{association.associationName}}</h2>
+        <p>{{association.fname}}</p>
+        <p>{{association.lname}}</p>
+    </div>
+</div> -->
+
+<section id="testimonials-section" class="testimonials-section home-section" [ngClass]="{'light-gray': backgroundGray}">
+    <div class="container">
+      <div class="row">
+        <div *ngFor="let association of associations | async" class="col">
+            <mat-card class="p-0">
+                <mat-card-content class="">
+                  <!-- <img class="company-logo" [src]="assets/images/mock-logo-3.png"> -->
+                  <p class="text">{{association.associationName}}</p>
+                  <div class="user-detail">
+                    <span class="user-subtitle text-muted">{{association.email}}</span>
+                  </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+      </div>
+    </div>
+  </section>
+

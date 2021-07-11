@@ -12,3 +12,21 @@ html, body {
 .cursor-pointer{
   cursor: pointer;
 }
+
+.home-section {
+  padding: 80px 0;
+  .ngucarousel {
+    overflow: visible !important;
+    .ngu-touch-container {
+      padding: 1.25rem 0;
+      overflow: hidden;
+    }
+  }
+}
+
+.home-section mat-card:hover {
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.2);
+}
+.home-section-action {
+  padding: 2.5rem 0 0;
+}
