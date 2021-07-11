@@ -5,6 +5,32 @@
         "Search": "לחפש ארגון",
         "Campaigns": "קמפיין",
         "LogIn": "התברות",
-        "SignUp": "הירשם"
+        "SignUp": "הירשם",
+        "Logout": "להתנתק"
+    },
+    "footer":{
+        "Terms":"תנאים",
+        "PrivacyPolicy":"מדיניות פרטיות",
+        "Contact":"צור קשר"
+    },
+    "form":{
+        "TitleLogin":"התחבר לחשבונך",
+        "TitleSignup":"הירשם עכשיו",
+        "EmailPlaceholder":"כתובת מייל",
+        "Password":"סיסמא",
+        "Role":"תורם או עמותה ?*",
+        "RoleDonor":"תורם",
+        "RoleAssociation":"עמותה",
+        "Phone":"טלפון",
+        "Street":"רחוב",
+        "Number":"מספר",
+        "City":"עיר",
+        "NameAssociation":"שם של העמותה",
+        "ForgotPassword": "שכחת את הסיסמא ?",
+        "AlreadyAnAccount": "כבר יש לך חשבון ? <strong>התחברות</strong>",
+        "SubmitButtonLogin":"התחברות",
+        "SubmitButtonSignup":"הירשם",
+        "ErrorEmail":"הערך אינו כתובת מייל חוקית",
+        "FieldRequired": "זהו שדה חובה !"
     }
 }

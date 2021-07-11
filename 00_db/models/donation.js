@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
 const moment = require("moment");
-const momentTz = require('moment-timezone');
 
 const userSubSchema = new mongoose.Schema({
     _id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "users",
-        required: true,
+        ref: "users"
     },
     fname: {
         type: String,
@@ -20,10 +18,15 @@ const userSubSchema = new mongoose.Schema({
         type: String
     },
     email: {
-        type: String
+        type: String,
+        required:true
     },
     address: {
         type: String
+    },
+    isRegistered: {
+        type: Boolean,
+        required:true
     }
 }, { _id: false });
 
@@ -84,7 +87,12 @@ const donationSchema = new mongoose.Schema({
         type: String,
     },
     sum:{
+        type: Number,
+        required: true,
+    },
+    currency:{
         type: String,
+        required: true,
     },
     transactionId:{
         type: String,
@@ -101,7 +109,7 @@ const donationSchema = new mongoose.Schema({
         required: true,
     },
     createdAt: {
-        type: String,
+        type: Date,
         default: new Date()
     }
 });

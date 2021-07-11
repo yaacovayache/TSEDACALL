@@ -5,6 +5,33 @@
         "Search": "Search for an association",
         "Campaigns": "Campaigns",
         "LogIn": "Log In",
-        "SignUp": "Sign Up"
+        "SignUp": "Sign Up",
+        "Logout": "Logout"
+    },
+    "footer":{
+        "Terms":"Terms",
+        "PrivacyPolicy":"Privacy Policy",
+        "Contact":"Contact"
+    },
+    "form":{
+        "TitleLogin":"Login to your account",
+        "TitleSignUp":"Join now",
+        "EmailPlaceholder":"E-mail Address",
+        "Password":"Password",
+        "Role":"Donor or Association ?*",
+        "RoleDonor":"Donor",
+        "RoleAssociation":"Association",
+        "Phone":"Phone",
+        "Street":"Street",
+        "Number":"Number",
+        "City":"City",
+        "NameAssociation":"Association name",
+        "ForgotPassword": "Forgot Password ?",
+        "AlreadyAnAccount": "Already have an Account ? <strong>Login</strong>",
+        "SubmitButtonLogin":"LOGIN",
+        "SubmitButtonSignup":"SIGNUP",
+        "ErrorEmail":"The value is not a valid email address",
+        "FieldRequired": "This field is required !"
+        
     }
 }

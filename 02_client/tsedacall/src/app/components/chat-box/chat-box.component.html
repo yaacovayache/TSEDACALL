@@ -1,0 +1,20 @@
+
+    <button class="chat-btn" (click)="toggleChat()">
+        <mat-icon> comment</mat-icon>
+    </button>
+
+    <div class="chat-popup" [ngClass]="status ? 'show' : ''">
+        <div class="badge">1</div>
+        <div [innerHtml]="data" class="chat-area">
+        </div>
+        <div class="input-area" *ngIf="isAuthenticated">
+            <input *ngIf="isAuthenticated" type="text" name="input-sender" [(ngModel)]="inputEl">
+            <!-- <button id="emoji-btn">&#128540;</button> -->
+            <button class="submit" (click)="onSend()"><mat-icon>send</mat-icon></button>
+        </div>
+        <div class="input-area" *ngIf="!isAuthenticated">
+            <input *ngIf="!isAuthenticated" type="text" name="input-sender" disabled>
+            <!-- <button id="emoji-btn">&#128540;</button> -->
+            <button disabled><mat-icon>send</mat-icon></button>
+        </div>
+    </div>

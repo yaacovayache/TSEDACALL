@@ -8,17 +8,18 @@
     text-decoration:none;
   }
   .d-flex span .login:hover, .d-flex span .signup:hover{
-    color:#fff;
+    color:black;
   }
 
   .d-flex span .action-button {
+    font-weight: 600!important;
     background:#208f8f;
     border-radius:20px;
     font-size:inherit;
     color:#fff;
-    box-shadow:none;
+    // box-shadow:none;
     border:none;
-    text-shadow:none;
+    // text-shadow:none;
     padding:.5rem .8rem;
     transition:background-color 0.25s;
   }
@@ -30,4 +31,27 @@
   .d-flex span .form-inline label {
     color:rgb(110, 107, 107);
   }
-  
+
+  #home-header {
+    position: sticky;
+    width: 100%;
+    background: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 22px 0;
+    transition: padding 0.3s linear;
+    -webkit-transition: padding 0.3s linear;
+    z-index: 999;
+  }
+
+  #home-header > .container-fluid {
+    height: auto;
+  }
+
+  .navbar-toggler  {  border: none;  }
+
+  .navbar-toggler-icon {
+    font-size:15px;
+    color: black;
+  }

@@ -4,6 +4,20 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const validator = require("validator");
 
+// Item Sub-Schema for chats
+const chatSubSchema = new mongoose.Schema({
+  support: {
+    type: String,
+  },
+  client: {
+    type: String,
+  },
+  createdAt: {
+    type: String,
+    default: new Date()
+  }
+});
+
 const userSchema = new mongoose.Schema({
   fname: {
     type: String,
@@ -38,7 +52,17 @@ const userSchema = new mongoose.Schema({
   telephone: {
     type: String,
   },
-  address: {
+  street: {
+    type: String,
+  },
+  number: {
+    type: Number,
+    default:''
+  },
+  city: {
+    type: String,
+  },
+  associationName: {
     type: String,
   },
   accessToken: {
@@ -47,6 +71,10 @@ const userSchema = new mongoose.Schema({
   role: {
     type: Number,
     default: 1,
+  },
+  chat : {
+    type:[chatSubSchema],
+    default: []
   },
   createdAt: {
     type: String,
