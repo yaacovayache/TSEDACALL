@@ -18,9 +18,9 @@
             <mat-card-content style="padding-bottom: 1rem;">
                 {{campaign.description}}
 
-                <div style="position: relative">
+                <div style="position: relative;">
                     <mat-progress-bar mode="determinate" [value]="(fund/campaign.goal)*100 | number"></mat-progress-bar>
-                    <span style="position: absolute; top: 0.5em;" [ngStyle]="{'left': progress + '%'}">{{(fund/campaign.goal)*100 | number}}%</span>
+                    <span style="position: absolute; top: 0.4em; left:1em" [ngStyle]="{'left': progress + '%'}">{{(fund/campaign.goal)*100 | number}}%</span>
                   </div>
 
             </mat-card-content>
