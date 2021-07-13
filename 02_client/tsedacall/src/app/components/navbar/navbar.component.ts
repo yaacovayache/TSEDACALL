@@ -5,7 +5,6 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { WINDOW_PROVIDERS, WINDOW } from 'src/app/shared/helpers/window.helper';
 import { DOCUMENT } from '@angular/common';
 
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -18,7 +17,7 @@ export class NavbarComponent implements OnInit {
   navbarOpen:boolean = false;
   isFixed:boolean;
 
-  constructor(private authService: AuthService, private router: Router, @Inject(DOCUMENT) private document: Document) { }
+  constructor(private authService: AuthService, private router: Router, @Inject(DOCUMENT) private document: Document, @Inject(WINDOW) private window: Window) { }
 
   ngOnInit(): void {
     this.userSubscription = this.authService.user.subscribe((user) => {

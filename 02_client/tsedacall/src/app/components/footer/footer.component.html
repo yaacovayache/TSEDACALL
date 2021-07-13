@@ -2,13 +2,13 @@
 
 <!-- <footer> -->
 <!--footer starts from here-->
-<footer class="footer">
+<footer class="footer mt-5">
 <div class="container bottom_border">
 <div class="row">
 <div class=" col-sm-4 col-md col-sm-4  col-12 col">
-<h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>
+<h5 class="headin5_amrc col_white_amrc pt2" [translate]="'footer.Find-us'"></h5>
 <!--headin5_amrc-->
-<p class="mb10">Tsedacall makes it easy and safe for you to give to local projects anywhere in the world, while providing nonprofits with the tools, training, and support they need to thrive.</p>
+<p class="mb10" [translate]="'footer.Summary'"></p>
 <p><i class="fa fa-location-arrow"></i> Paris-France </p>
 <p><i class="fa fa-phone"></i>  +33-634678965  </p>
 <p><i class="fa fa fa-envelope"></i> contact@tsedacall.com  </p>
@@ -22,7 +22,7 @@
 
 
 <div class=" col-sm-4 col-md  col-6 col">
-<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+<h5 class="headin5_amrc col_white_amrc pt2" [translate]="'footer.Quick-links'"></h5>
 <!--headin5_amrc-->
 <ul class="footer_ul_amrc">
 <li><a href="http://webenlance.com">Core Values</a></li>
@@ -37,7 +37,7 @@
 
 
 <div class=" col-sm-4 col-md  col-6 col">
-<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+<h5 class="headin5_amrc col_white_amrc pt2" [translate]="'footer.Quick-links'"></h5>
 <!--headin5_amrc-->
 <ul class="footer_ul_amrc">
 <li><a href="http://webenlance.com">Customized Donation Website</a></li>
@@ -51,7 +51,7 @@
 
 
 <div class=" col-sm-4 col-md  col-12 col">
-<h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
+<h5 class="headin5_amrc col_white_amrc pt2" [translate]="'footer.Follow-us'"></h5>
 <!--headin5_amrc ends here-->
 
 <ul class="footer_ul2_amrc">
@@ -66,14 +66,14 @@
 
 
 <div class="container">
-<ul class="foote_bottom_ul_amrc">
+<!-- <ul class="foote_bottom_ul_amrc">
 <li><a href="http://tsedacall.com">Home</a></li>
 <li><a href="http://tsedacall.com">About</a></li>
 <li><a href="http://tsedacall.com">Campaigns</a></li>
 <li><a href="http://tsedacall.com">Associations</a></li>
 <li><a href="http://tsedacall.com">Testimonials</a></li>
 <li><a href="http://tsedacall.com">Contact</a></li>
-</ul>
+</ul> -->
 <!--foote_bottom_ul_amrc ends here-->
 
 <ul class="social_footer_ul">
@@ -83,10 +83,14 @@
 <li><a href="http://instagram.com"><i class="fab fa-instagram"></i></a></li>
 </ul>
 
+
+<ul class="social_footer_ul">
+    <li *ngFor= 'let flag of flags' (click)="useLanguage(flag.countryCode)" class="cursor-pointer">
+    <a><span class={{flag.class}}></span></a>
+    </li>
+</ul>
+
 </div>
 
 </footer>
 
-<!-- <li *ngFor= 'let flag of flags' (click)="useLanguage(flag.countryCode)" class="cursor-pointer">
-    <a><span class={{flag.class}}></span></a>
-</li> -->

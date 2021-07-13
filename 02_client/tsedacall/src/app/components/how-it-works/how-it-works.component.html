@@ -1,7 +1,7 @@
 <section id="service-section" class="service-section home-section" [ngClass]="{'light-gray': backgroundGray}">
     <div class="container">
       <div class="section-header">
-        <h2>How it works</h2>
+        <h2 [translate]="'home.how-it-work.title'"></h2>
         <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat unde inventore molestias ab adipisci eius nisi placeat
           at.
         </p> -->
@@ -15,14 +15,13 @@
                   <mat-icon mat-card-icon>{{s.icon}}</mat-icon>
                 </div>
                 <span fxFlex="20px"></span>
-                <h3 class="m-0 font-light">{{s.title}}</h3>
+                <h3 class="m-0 font-light" [translate]="s.title"></h3>
                 <span fxFlex="20px"></span>
-                <p class="m-0 description">
-                  {{s.text}}
+                <p class="m-0 description" [translate]="s.text">
                 </p>
                 <span fxFlex="40px"></span>
                 <div>
-                  <button mat-button style="margin-bottom: 2%;"><strong class="text-muted">{{s.button}}</strong></button>
+                  <button mat-button style="margin-bottom: 2%;"><strong class="text-muted" [translate]="s.button"></strong></button>
                 </div>
               </div>
             </mat-card>

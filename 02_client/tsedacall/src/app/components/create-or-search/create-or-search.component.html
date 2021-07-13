@@ -1,15 +1,15 @@
-<section class="home-section home-cta">
+<section id="search-section" class="home-section home-cta">
     <div class="container">
       <div class="row" style="margin-top: 5%;">
         <div class="col-6">
-          <h1>I choose my campaign, I create my team</h1>
+          <h1 [translate]="'home.banner-home.title'"></h1>
           <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure nam, illum et quis officiis beatae.</p> -->
         </div>
         <div class="col-6">
 
           <div class="btn-toolbar">
-            <button  class="btn btn-primary btn-lg" style="margin-right: 5%;margin-bottom: 5%">Create a team</button>
-            <button (click)="onNavigation()" class="btn btn-primary btn-lg" style="margin-right: 5%;margin-bottom: 5%">Looking for an association</button>
+            <button  [translate]="'home.banner-home.teamCreation'" class="btn btn-primary btn-lg" style="margin-right: 5%;margin-bottom: 5%"></button>
+            <button [translate]="'home.banner-home.associationCreation'" (click)="onNavigation()" class="btn btn-primary btn-lg" style="margin-right: 5%;margin-bottom: 5%"></button>
           </div>
         </div>
       </div>

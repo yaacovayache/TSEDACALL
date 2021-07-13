@@ -54,6 +54,40 @@ router.get('/stats/donations/month/:id', async(req, res) => {
     }
 })
 
+// Current sum by campaign
+router.get('/donations/campaign/:id', async(req, res) => {
+  try {
+      let campaignId = ObjectId(req.params.id)
+      let payment = await Payment.aggregate(
+          [
+            {
+                $match:{
+                    "campaignId": campaignId
+                }
+            },
+            {
+              $group: {
+                  _id: false,
+                  sum: {$sum: "$sum"}
+              }
+            }
+          ],
+      
+          function(err, result) {
+              console.log(result)
+            if (err) {
+              res.send(err);
+            } else {
+              res.json(result);
+            }
+          }
+        );
+  } catch (err) {
+      console.log(err)
+      res.status(500).send()
+  }
+})
+
 
 // Get all donators by campaign
 router.get('/donators/campaign/:id', async(req, res) => {

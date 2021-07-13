@@ -14,7 +14,9 @@ export class User {
       public city?: string,
       public associationName?: string,
       public chat?:Chat[],
-      public isRegistered?:boolean
+      public isRegistered?:boolean,
+      public isRegisteredStr?:string,
+      public message?:string
     ) {}
 }
 
