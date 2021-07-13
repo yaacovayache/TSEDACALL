@@ -7,17 +7,17 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 20%;" [ngClass]="{ 'show': navbarOpen }">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item" routerLinkActive="menu-item-active">
+          <li class="nav-item  cursor-pointer" routerLinkActive="menu-item-active">
           <strong><a class="nav-link active" aria-current="page" data-bs-toggle="collapse" [routerLink]="'/home'" [translate]="'navbar.Home'"></a></strong>
           </li>
-          <li class="nav-item" routerLinkActive="menu-item-active">
-            <strong><a class="nav-link" href="#" [translate]="'navbar.HowItWork'"></a></strong>
+          <li class="nav-item  cursor-pointer" routerLinkActive="menu-item-active">
+            <strong><a class="nav-link" scrollTo="service-section" [translate]="'navbar.HowItWork'"></a></strong>
           </li>
-          <li class="nav-item" routerLinkActive="menu-item-active">
-            <strong><a class="nav-link" href="#" [translate]="'navbar.Search'"></a></strong>
+          <li class="nav-item  cursor-pointer" routerLinkActive="menu-item-active">
+            <strong><a class="nav-link" scrollTo="search-section" [translate]="'navbar.Search'"></a></strong>
           </li>
-          <li class="nav-item" routerLinkActive="menu-item-active">
-          <strong><a class="nav-link" href="#" [translate]="'navbar.Campaigns'"></a></strong>
+          <li class="nav-item  cursor-pointer" routerLinkActive="menu-item-active">
+          <strong><a class="nav-link" scrollTo="campaign-section" [translate]="'navbar.Campaigns'"></a></strong>
           </li>
         </ul>
         <form class="d-flex">

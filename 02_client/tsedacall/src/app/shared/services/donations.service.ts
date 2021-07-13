@@ -18,4 +18,9 @@ export class DonationsService {
   public getDonatorsByCampaignId(id){
     return this.http.get(this.rootUrl + `donators/campaign/${id}`)
   }
+
+  public currentSumByCampaignId(id){
+    return this.http.get(this.rootUrl + `donations/campaign/${id}`)
+  }
+  
 }

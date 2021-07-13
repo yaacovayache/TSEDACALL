@@ -27,6 +27,10 @@ const userSubSchema = new mongoose.Schema({
     isRegistered: {
         type: Boolean,
         required:true
+    },
+    message: {
+        type: String,
+        default:''
     }
 }, { _id: false });
 
