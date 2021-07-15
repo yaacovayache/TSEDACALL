@@ -1,0 +1,72 @@
+{
+    "navbar": {
+        "Home":"Accueil",
+        "HowItWork": "Comment ça marche ?",
+        "Search": "Rechercher une association",
+        "Campaigns": "Campagnes",
+        "LogIn": "Connexion",
+        "SignUp": "Inscription",
+        "Logout": "Se déconnecter"
+    },
+    "footer":{
+        "Terms":"Termes",
+        "PrivacyPolicy":"Politique De Confidentialité",
+        "Contact":"Contact",
+        "Find-us": "Trouve nous",
+        "Summary":"Tsedacall vous permet de donner facilement et en toute sécurité à des projets locaux partout dans le monde, tout en fournissant aux organisations à but non lucratif les outils, la formation et le soutien dont elles ont besoin pour prospérer.",
+        "Quick-links" : "Liens rapides",
+        "Follow-us" : "Suivez nous"
+    },
+    "home":{
+        "home-intro":{
+            "title": "Collecte de fonds en ligne extrêmement simple"
+        },
+        "how-it-work":{
+            "title": "Comment ça marche",
+            "first": {
+                "title": "Vous êtes une Association",
+                "text": "Créez la page de collecte de fonds de votre association et offrez à votre communauté la possibilité de faire des dons ponctuels ou mensuels. Vous pouvez également gérer gratuitement tous vos reçus fiscaux."
+            },
+            "second": {
+                "title": "Vous êtes un donateur",
+                "text": "Doublez votre don, possibilité de payer le don en plusieurs fois, possibilité de créer une équipe afin de réaliser votre objectif de campagne."
+            },
+            "third": {
+                "title": "Pourquoi utiliser TsedaCall",
+                "text": "Fixez votre objectif, lancez le compte à rebours, si votre campagne atteint son objectif à temps un Matcher doublera le montant déjà récolté ! Trouvez de nouveaux donateurs, gérez vos reçus fiscaux gratuitement, obtenez vos dons instantanément."
+            },
+            "fourth": {
+                "title": "Pourquoi faire un don avec TsedaCall",
+                "text": "Nous nous soucions profondément de la façon dont votre organisation est perçue par vos donateurs et votre communauté. Nous assumons la responsabilité de bâtir une base de confiance en améliorant et en protégeant votre mission, votre marque et vos règles de gouvernance."
+            }
+        },
+        "banner-home": {
+            "title": "Je choisis ma campagne, je crée mon équipe",
+            "teamCreation":"Créer une équipe",
+            "associationCreation":"A la recherche d'une association"
+        }
+    },
+    "form":{
+        "TitleLogin":"Connectez-vous à votre compte",
+        "TitleSignup":"Inscrivez vous maintenant",
+        "EmailPlaceholder":"Adresse e-mail",
+        "Password":"Mot de passe",
+        "Role":"Donateur ou Association ?*",
+        "RoleDonor":"Donateur",
+        "RoleAssociation":"Association",
+        "Phone":"Téléphone",
+        "Street":"rue",
+        "Number":"numéro",
+        "City":"Ville",
+        "NameAssociation":"Nom de l'association",
+        "ForgotPassword": "Mot de passe oublié ?",
+        "AlreadyAnAccount": "Vous avez déjà un compte ? <strong>Connexion</strong>",
+        "SubmitButtonLogin":"CONNEXION",
+        "SubmitButtonSignup":"INSCRIPTION",
+        "ErrorEmail":"La valeur n'est pas une adresse e-mail valide",
+        "FieldRequired": "Ce champ est requis !",
+        "GetStarted": "Commencez MAINTENANT",
+        "Start": "Commencez MAINTENANT",
+        "LearnMore": "Lire plus"
+    }
+}
