@@ -41,7 +41,13 @@ app.use(teamRouter)
 app.use(paymentRouter)
 
 app.get('/', (req,res) => {
-    res.sendFile(process.cwd()+"/02_client/tsedacall/dist/tsedacall/index.html")
+    res.sendFile(process.cwd()+"/02_client/tsedacall/dist/tsedacall/")
+});
+
+// rewrite virtual urls to angular app to enable refreshing of internal pages
+app.get('*', function (req, res, next) {
+    console.log('HERE')
+    res.sendFile(process.cwd() + "/02_client/tsedacall/dist/tsedacall/index.html");
 });
 
 // Listening for incoming connections

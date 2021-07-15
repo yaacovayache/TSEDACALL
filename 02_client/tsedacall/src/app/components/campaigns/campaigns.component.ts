@@ -26,7 +26,7 @@ export class CampaignsComponent implements OnInit {
   }
 
   onClick(id){
-    this.router.navigate([`/campaign/${id}`]);
+    this.router.navigate([`/campaign/home/${id}`]);
   }
 
 }

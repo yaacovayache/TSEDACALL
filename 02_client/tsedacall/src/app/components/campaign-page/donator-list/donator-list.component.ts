@@ -3,7 +3,6 @@ import {MatTableDataSource} from '@angular/material/table';
 import { User } from 'src/app/shared/models/user.model';
 import { DonationsService } from 'src/app/shared/services/donations.service';
 
-const ELEMENT_DATA: User[] = [];
 
 @Component({
   selector: 'app-donator-list',
@@ -13,19 +12,21 @@ const ELEMENT_DATA: User[] = [];
 export class DonatorListComponent implements OnInit {
   @Input() id:string;
   public display:boolean=false;
+  public ELEMENT_DATA: User[] = [];
+
   constructor(private donationsService:DonationsService) { }
 
   ngOnInit(): void {
     this.donationsService.getDonatorsByCampaignId(this.id).subscribe((donators:any[])=>{
       for (let data of donators){
-        ELEMENT_DATA.push({fname: data.fname, lname: data.lname, email: data.email, isRegisteredStr: (data.isRegistered) ? 'check' : 'close', message: data.message})
+        this.ELEMENT_DATA.push({fname: data.fname, lname: data.lname, email: data.email, isRegisteredStr: (data.isRegistered) ? 'check' : 'close', message: data.message})
       }
       this.display=true
     })
   }
   
   displayedColumns: string[] = ['fname', 'lname', 'email', 'isRegistered', 'message'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

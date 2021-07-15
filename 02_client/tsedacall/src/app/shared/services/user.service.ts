@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { User, AuthResponseData, Chat } from '../models/user.model';
 import { ReqMessage } from '../models/res-message.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Injectable({
@@ -22,7 +23,7 @@ export class UserService {
   messagesChanged = new BehaviorSubject<Chat[]>([]);
   readonly messages = this.messagesChanged.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
   public getAssociations(){
     return this.http.get<User[]>(this.rootUrl + 'associations').subscribe(
@@ -43,5 +44,13 @@ export class UserService {
   public getMessages(id){
     return this.http.get<Chat[]>(this.rootUrl + `message/${id}`)
   }
+
+  // public getProfilePicture(id:string): Observable<SafeResourceUrl> {
+  //   return this.http.get(this.rootUrl + `profile/${id}`, { responseType: 'blob' })
+  //     .pipe(map(x => { const urlToBlob = window.URL.createObjectURL(x) // get a URL for the blob
+  //         return this.sanitizer.bypassSecurityTrustResourceUrl(urlToBlob); // tell Anuglar to trust this value
+  //       }),
+  //     );
+  // }
 
 }

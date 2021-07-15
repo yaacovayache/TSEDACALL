@@ -29,4 +29,8 @@ readonly rootUrl = window.location.protocol + '//' + window.location.hostname + 
   public getCampaignById(id){
     return this.http.get<Campaign>(this.rootUrl + `campaign/${id}`)
   }
+
+  public getCampaignsByFounder(id){
+    return this.http.get<Campaign[]>(this.rootUrl + `campaigns/founder/${id}`)
+  }
 }

@@ -9,9 +9,46 @@
 
           <div class="btn-toolbar">
             <button  [translate]="'home.banner-home.teamCreation'" class="btn btn-primary btn-lg" style="margin-right: 5%;margin-bottom: 5%"></button>
-            <button [translate]="'home.banner-home.associationCreation'" (click)="onNavigation()" class="btn btn-primary btn-lg" style="margin-right: 5%;margin-bottom: 5%"></button>
+            <button [translate]="'home.banner-home.associationCreation'" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary btn-lg" style="margin-right: 5%;margin-bottom: 5%"></button>
+            <!-- (click)="onNavigation()" -->
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" #modal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- <div class="modal-body"> -->
+        <article class="leaderboard">
+          <header>     
+            <h1 class="leaderboard__title"><span class="leaderboard__title--top">  <i *ngIf="campaignFlag" (click)="previousAssociation()" class="fas fa-arrow-left cursor-pointer"></i> Associations</span><span class="leaderboard__title--bottom">List</span></h1>
+          </header>
+          <mat-toolbar style="background-color: white;">
+            <mat-form-field style="width: 100%" floatLabel='never'>
+                <input matInput [(ngModel)]="searchText" autocomplete="off">
+            </mat-form-field>
+        </mat-toolbar>
+          <main class="leaderboard__profiles" *ngIf="!campaignFlag">
+            <article class="leaderboard__profile" (click)="onClickAssociation(association._id)" *ngFor="let association of associations | async | searchFilter: searchText">
+              <img [src]="pattern_url + association._id" alt="Mark Zuckerberg" class="leaderboard__picture">
+              <span class="leaderboard__name text-center">{{association.associationName}}</span>
+              <!-- <span class="leaderboard__value">35.7<span>B</span></span> -->
+            </article>
+          </main>
+
+          <main class="leaderboard__profiles" *ngIf="campaignFlag">
+
+            <article class="leaderboard__profile" (click)="onNavigation(campaign._id)" *ngFor="let campaign of currentCampaign | searchFilter: searchText">
+              <!-- <img [src]="pattern_url + association._id" alt="Mark Zuckerberg" class="leaderboard__picture"> -->
+              <span class="leaderboard__name text-center" (click)="onClickAssociation(association._id)">{{campaign.name}}</span>
+              <span class="leaderboard__value">From {{campaign.createdAt | date}} to {{campaign.endAt | date}}</span>
+            </article>
+          </main>
+        </article>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

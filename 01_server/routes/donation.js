@@ -40,7 +40,6 @@ router.get('/stats/donations/month/:id', async(req, res) => {
             ],
         
             function(err, result) {
-                console.log(result)
               if (err) {
                 res.send(err);
               } else {
@@ -74,7 +73,6 @@ router.get('/donations/campaign/:id', async(req, res) => {
           ],
       
           function(err, result) {
-              console.log(result)
             if (err) {
               res.send(err);
             } else {
