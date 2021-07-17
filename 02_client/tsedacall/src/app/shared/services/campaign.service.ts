@@ -19,8 +19,8 @@ export class CampaignService {
   constructor(private http: HttpClient) { }
 
   public ROOT_URL(){
-      // var result = 'http:'
-      return (window.location.hostname == 'localhost') ? '//' + window.location.hostname + ':3000/' : '//178.18.246.119:3000/' 
+      var result = 'https:'
+      return (window.location.hostname == 'localhost') ? result + '//' + window.location.hostname + ':3000/' : result + '//178.18.246.119:3000/' 
   }
 
   public getCampaigns(){
