@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class SendTokenInterceptor implements HttpInterceptor {
   // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000';
-  readonly rootUrl = 'http://localhost:3000/';
+  readonly rootUrl = 'http://178.18.246.119:3000';
   
   constructor(private authService: AuthService) {}
 

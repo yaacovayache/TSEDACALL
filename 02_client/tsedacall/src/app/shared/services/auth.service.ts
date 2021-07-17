@@ -14,8 +14,7 @@ export class AuthService {
   private authLocalStorageToken = `${environment.appVersion}-${environment.USERDATA_KEY}`;
 
   // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000/';
-  readonly rootUrl = 'http://localhost:3000/';
-  
+  readonly rootUrl = 'http://178.18.246.119:3000/';  
   user = new BehaviorSubject<User>(null);
   loggedIn = false;
 

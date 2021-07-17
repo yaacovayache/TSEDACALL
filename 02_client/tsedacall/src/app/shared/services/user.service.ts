@@ -13,8 +13,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class UserService {
   // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000/';
-  readonly rootUrl = 'http://localhost:3000/';
-  
+  readonly rootUrl = 'http://178.18.246.119:3000/';
+
   public chatIsEmpty=false;
 
   associationsStore:User[] = [];

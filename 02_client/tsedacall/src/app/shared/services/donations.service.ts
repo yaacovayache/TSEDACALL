@@ -8,8 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DonationsService {
   // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000/';
-  readonly rootUrl = 'http://localhost:3000/';
-
+  readonly rootUrl = 'http://178.18.246.119:3000/';
   constructor(private http: HttpClient) { }
 
   public getStatsByMonth(id){
