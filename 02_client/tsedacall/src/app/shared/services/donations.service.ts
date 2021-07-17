@@ -7,7 +7,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DonationsService {
-  readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000/';
+  // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000/';
+  readonly rootUrl = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }
 

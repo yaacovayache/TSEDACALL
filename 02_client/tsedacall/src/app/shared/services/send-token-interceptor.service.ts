@@ -8,7 +8,9 @@ import { AuthService } from './auth.service';
 // and attaches the token to the headers
 @Injectable()
 export class SendTokenInterceptor implements HttpInterceptor {
-  readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000';
+  // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000';
+  readonly rootUrl = 'http://localhost:3000/';
+  
   constructor(private authService: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
