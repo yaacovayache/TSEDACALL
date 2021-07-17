@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CampaignService {
-  readonly rootUrl = 'http://178.18.246.119:3000/';
+  readonly rootUrl = '//localhost:3000/';
   // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000/';
 
   campaignsStore:Campaign[] = [];
@@ -18,8 +18,13 @@ export class CampaignService {
 
   constructor(private http: HttpClient) { }
 
+  public ROOT_URL(){
+      // var result = 'http:'
+      return (window.location.hostname == 'localhost') ? '//' + window.location.hostname + ':3000/' : '//178.18.246.119:3000/' 
+  }
+
   public getCampaigns(){
-    return this.http.get<Campaign[]>(this.rootUrl + 'campaign').subscribe(
+    return this.http.get<Campaign[]>(this.ROOT_URL() + 'campaign').subscribe(
       campaigns => {
         console.log(campaigns)
         this.campaignsStore = campaigns;
@@ -28,10 +33,10 @@ export class CampaignService {
   }
 
   public getCampaignById(id){
-    return this.http.get<Campaign>(this.rootUrl + `campaign/${id}`)
+    return this.http.get<Campaign>(this.ROOT_URL() + `campaign/${id}`)
   }
 
   public getCampaignsByFounder(id){
-    return this.http.get<Campaign[]>(this.rootUrl + `campaigns/founder/${id}`)
+    return this.http.get<Campaign[]>(this.ROOT_URL() + `campaigns/founder/${id}`)
   }
 }
