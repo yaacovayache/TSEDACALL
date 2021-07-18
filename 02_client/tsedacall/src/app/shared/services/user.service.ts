@@ -13,7 +13,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class UserService {
   // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000/';
-  readonly rootUrl = 'http://178.18.246.119:3000/';
+  // readonly rootUrl = 'http://178.18.246.119:3000/';
 
   public chatIsEmpty=false;
 
@@ -27,8 +27,13 @@ export class UserService {
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
+  public ROOT_URL(){
+    var result = 'https:'
+    return (window.location.hostname == 'localhost') ? result + '//' + window.location.hostname + ':3000/' : result + '//178.18.246.119/' 
+  }
+
   public getAssociations(){
-    return this.http.get<User[]>(this.rootUrl + 'associations').subscribe(
+    return this.http.get<User[]>(this.ROOT_URL() + 'associations').subscribe(
       associations => {
         this.associationsStore = associations;
         this.associationsChanged.next(this.associationsStore);
@@ -36,15 +41,15 @@ export class UserService {
   }
 
   public getUserById(id){
-    return this.http.get<User>(this.rootUrl + `user/uid/${id}`);
+    return this.http.get<User>(this.ROOT_URL() + `user/uid/${id}`);
   }
 
   public sendMessageByChat(message, id){
-    return this.http.post<ReqMessage>(this.rootUrl + `send/message/${id}`, {message:message});
+    return this.http.post<ReqMessage>(this.ROOT_URL() + `send/message/${id}`, {message:message});
   }
 
   public getMessages(id){
-    return this.http.get<Chat[]>(this.rootUrl + `message/${id}`)
+    return this.http.get<Chat[]>(this.ROOT_URL() + `message/${id}`)
   }
 
   // public getProfilePicture(id:string): Observable<SafeResourceUrl> {

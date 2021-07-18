@@ -9,14 +9,19 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class SendTokenInterceptor implements HttpInterceptor {
   // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000';
-  readonly rootUrl = 'http://178.18.246.119:3000';
+  // readonly rootUrl = 'http://178.18.246.119:3000';
+
+  public ROOT_URL(){
+    var result = 'https:'
+    return (window.location.hostname == 'localhost') ? result + '//' + window.location.hostname + ':3000' : result + '//178.18.246.119' 
+  }
   
   constructor(private authService: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     if (
-      req.url == `${this.rootUrl}/register` ||
-      req.url == `${this.rootUrl}/login`
+      req.url == `${this.ROOT_URL()}/register` ||
+      req.url == `${this.ROOT_URL()}/login`
     )
       return next.handle(req);
 

@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CampaignService {
-  readonly rootUrl = '//localhost:3000/';
+  // readonly rootUrl = '//localhost:3000/';
   // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000/';
 
   campaignsStore:Campaign[] = [];

@@ -8,19 +8,24 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DonationsService {
   // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000/';
-  readonly rootUrl = 'http://178.18.246.119:3000/';
+  // readonly rootUrl = 'http://178.18.246.119:3000/';
   constructor(private http: HttpClient) { }
 
+  public ROOT_URL(){
+    var result = 'https:'
+    return (window.location.hostname == 'localhost') ? result + '//' + window.location.hostname + ':3000/' : result + '//178.18.246.119/' 
+  }
+
   public getStatsByMonth(id){
-    return this.http.get(this.rootUrl + `stats/donations/month/${id}`)
+    return this.http.get(this.ROOT_URL() + `stats/donations/month/${id}`)
   }
 
   public getDonatorsByCampaignId(id){
-    return this.http.get(this.rootUrl + `donators/campaign/${id}`)
+    return this.http.get(this.ROOT_URL() + `donators/campaign/${id}`)
   }
 
   public currentSumByCampaignId(id){
-    return this.http.get(this.rootUrl + `donations/campaign/${id}`)
+    return this.http.get(this.ROOT_URL() + `donations/campaign/${id}`)
   }
   
 }

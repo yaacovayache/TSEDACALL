@@ -14,7 +14,7 @@ export class AuthService {
   private authLocalStorageToken = `${environment.appVersion}-${environment.USERDATA_KEY}`;
 
   // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000/';
-  readonly rootUrl = 'http://178.18.246.119:3000/';  
+  // readonly rootUrl = 'http://178.18.246.119:3000/';  
   user = new BehaviorSubject<User>(null);
   loggedIn = false;
 
@@ -22,9 +22,13 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  public ROOT_URL(){
+    var result = 'https:'
+    return (window.location.hostname == 'localhost') ? result + '//' + window.location.hostname + ':3000/' : result + '//178.18.246.119/' 
+  }
 
   public SignUp(userInfos: User) {
-    return this.http.post<AuthResponseData>(this.rootUrl + 'register', userInfos)
+    return this.http.post<AuthResponseData>(this.ROOT_URL() + 'register', userInfos)
       .pipe(
         tap((res) => {
           this.handleAuth(res.user);
@@ -34,7 +38,7 @@ export class AuthService {
   
   public Login(userCredentials: { email: string; password: string }) {
     return this.http
-      .post<AuthResponseData>(this.rootUrl + 'login', userCredentials)
+      .post<AuthResponseData>(this.ROOT_URL() + 'login', userCredentials)
       .pipe(
         tap((res) => {
           this.handleAuth(res.user);
@@ -54,7 +58,7 @@ export class AuthService {
   }
 
   public logout() {
-    this.http.post(this.rootUrl + 'logout', {}).subscribe();
+    this.http.post(this.ROOT_URL() + 'logout', {}).subscribe();
 
     this.loggedIn = false;
     this.user.next(null);
