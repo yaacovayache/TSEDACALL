@@ -20,7 +20,7 @@ export class CampaignService {
 
   public ROOT_URL(){
       var result = 'https:'
-      return (window.location.hostname == 'localhost') ? result + '//' + window.location.hostname + ':3000/' : result + '//178.18.246.119:3000/' 
+      return (window.location.hostname == 'localhost') ? result + '//' + window.location.hostname + ':3000/' : result + '//178.18.246.119/' 
   }
 
   public getCampaigns(){
