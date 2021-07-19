@@ -19,7 +19,7 @@ export class CampaignService {
   constructor(private http: HttpClient) { }
 
   public ROOT_URL(){
-      return (window.location.hostname == 'localhost') ? 'http://' + window.location.hostname + ':3000/' : 'http://tsedacall.com/' 
+    return 'http://localhost:3000/' 
   }
 
   public getCampaigns(){

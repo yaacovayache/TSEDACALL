@@ -16,7 +16,7 @@ export class CreateOrSearchComponent implements OnInit {
   @ViewChild('modal') modal: ElementRef;
 
   public associations: Observable<User[]>;
-  public pattern_url = 'http://tsedacall.com/profile/'
+  public pattern_url = 'https://tsedacall.com/profile/'
   public searchText;
   public currentCampaign:Campaign[];
   public campaignFlag = false;
