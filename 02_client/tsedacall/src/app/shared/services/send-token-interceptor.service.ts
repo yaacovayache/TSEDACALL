@@ -12,8 +12,7 @@ export class SendTokenInterceptor implements HttpInterceptor {
   // readonly rootUrl = 'http://178.18.246.119:3000';
 
   public ROOT_URL(){
-    var result = 'https:'
-    return (window.location.hostname == 'localhost') ? result + '//' + window.location.hostname + ':3000' : result + '//178.18.246.119' 
+    return (window.location.hostname == 'localhost') ? 'http://' + window.location.hostname + ':3000' : 'http://tsedacall.com' 
   }
   
   constructor(private authService: AuthService) {}
