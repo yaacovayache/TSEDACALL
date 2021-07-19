@@ -26,7 +26,7 @@ export class AuthService {
   //   return (window.location.hostname == 'localhost') ? 'http://' + window.location.hostname + ':3000/' : 'http://tsedacall.com/' 
   // }
   public ROOT_URL(){
-    return 'http://localhost:3000/' 
+    return 'https://tsedacall.com/' 
   }
 
   public SignUp(userInfos: User) {

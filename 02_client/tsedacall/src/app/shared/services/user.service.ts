@@ -28,7 +28,7 @@ export class UserService {
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
   public ROOT_URL(){
-    return 'http://localhost:3000/' 
+    return 'https://tsedacall.com/' 
   }
 
   public getAssociations(){
