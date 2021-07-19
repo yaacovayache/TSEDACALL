@@ -2,25 +2,20 @@ import { Injectable } from '@angular/core';
 import {HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders} from '@angular/common/http';
 
 import { AuthService } from './auth.service';
+import { environment } from 'src/environments/environment';
 
 // This interceptor is a service that intercepts
 // all outgoing HTTP requests that require authentication,
 // and attaches the token to the headers
 @Injectable()
 export class SendTokenInterceptor implements HttpInterceptor {
-  // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000';
-  // readonly rootUrl = 'http://178.18.246.119:3000';
 
-  public ROOT_URL(){
-    return 'https://tsedacall.com' 
-  }
-  
   constructor(private authService: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     if (
-      req.url == `${this.ROOT_URL()}/register` ||
-      req.url == `${this.ROOT_URL()}/login`
+      req.url == `${environment.apiUrl}register` ||
+      req.url == `${environment.apiUrl}login`
     )
       return next.handle(req);
 

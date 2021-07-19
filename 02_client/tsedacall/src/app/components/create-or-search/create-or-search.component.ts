@@ -5,6 +5,7 @@ import { User } from 'src/app/shared/models/user.model';
 import { Campaign } from 'src/app/shared/models/campaign.model';
 import { CampaignService } from 'src/app/shared/services/campaign.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { environment } from 'src/environments/environment.prod';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class CreateOrSearchComponent implements OnInit {
   @ViewChild('modal') modal: ElementRef;
 
   public associations: Observable<User[]>;
-  public pattern_url = 'https://tsedacall.com/profile/'
+  public pattern_url = environment.apiUrl + 'profile/'
   public searchText;
   public currentCampaign:Campaign[];
   public campaignFlag = false;
@@ -31,9 +32,6 @@ export class CreateOrSearchComponent implements OnInit {
     this.modal.nativeElement.click();
     this.router.navigate([`/campaign/home/${id}`]);
   }
-  // onNavigation(){
-  //   this.router.navigate(['/associations']);
-  // }
 
   onClickAssociation(id){
     this.campaignService.getCampaignsByFounder(id).subscribe((res)=> {

@@ -8,10 +8,6 @@ const fs = require('fs');
 // const dotenv = require('dotenv') 
 // dotenv.config() // Makes environment variables available
 
-// var privateKey  = fs.readFileSync('/etc/letsencrypt/live/tsedacall.com/privkey.pem', 'utf8');
-// var certificate = fs.readFileSync('/etc/letsencrypt/live/tsedacall.com/fullchain.pem', 'utf8');
-// var credentials = {key: privateKey, cert: certificate};
-
 // Import mongoose models
 const User = require('../00_db/models/user')
 const Campaign = require('../00_db/models/campaign')
@@ -47,7 +43,6 @@ app.use(function(req, res, next) {
   
 app.use(express.static(process.cwd()+"/html/"));
 
-// var httpsServer = https.createServer(credentials, app);
 const port = process.env.PORT || 3000
 
 // Use routes
@@ -62,7 +57,6 @@ app.get('/', (req,res) => {
 
 // rewrite virtual urls to angular app to enable refreshing of internal pages
 app.get('*', function (req, res, next) {
-    console.log('HERE')
     res.sendFile(process.cwd() + "/html/index.html");
 });
 
@@ -70,7 +64,3 @@ app.get('*', function (req, res, next) {
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
 })
-
-// httpsServer.listen(port, () => {
-//     console.log(`Listening on port ${port}`)
-// })

@@ -4,26 +4,20 @@ import { tap } from 'rxjs/operators';
 
 import { Campaign } from '../models/campaign.model';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampaignService {
-  // readonly rootUrl = '//localhost:3000/';
-  // readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000/';
-
   campaignsStore:Campaign[] = [];
   campaignsChanged = new BehaviorSubject<Campaign[]>([]);
   readonly campaigns = this.campaignsChanged.asObservable();
 
   constructor(private http: HttpClient) { }
 
-  public ROOT_URL(){
-    return 'https://tsedacall.com/' 
-  }
-
   public getCampaigns(){
-    return this.http.get<Campaign[]>(this.ROOT_URL() + 'campaign').subscribe(
+    return this.http.get<Campaign[]>(environment.apiUrl+ 'campaign').subscribe(
       campaigns => {
         console.log(campaigns)
         this.campaignsStore = campaigns;
@@ -32,10 +26,10 @@ export class CampaignService {
   }
 
   public getCampaignById(id){
-    return this.http.get<Campaign>(this.ROOT_URL() + `campaign/${id}`)
+    return this.http.get<Campaign>(environment.apiUrl + `campaign/${id}`)
   }
 
   public getCampaignsByFounder(id){
-    return this.http.get<Campaign[]>(this.ROOT_URL() + `campaigns/founder/${id}`)
+    return this.http.get<Campaign[]>(environment.apiUrl + `campaigns/founder/${id}`)
   }
 }
