@@ -3,6 +3,6 @@ export const environment = {
   appVersion: 'v1tsedcall',
   USERDATA_KEY: 'authf649fc9a5f55',
   isMockEnabled: true,
-  apiUrl: 'https://tsedacall.com/'
+  apiUrl: 'http://localhost:3000/'
   // apiUrl: 'mysite.com/api'
 };

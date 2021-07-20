@@ -11,7 +11,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDividerModule} from '@angular/material/divider'; 
 import {MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table'  
 import { NguCarouselModule } from '@ngu/carousel';
@@ -50,6 +52,8 @@ import { ChartsModule } from 'ng2-charts';
 import { PresentationComponent } from './components/campaign-page/presentation/presentation.component';
 import { GraphicPerMonthComponent } from './components/campaign-page/graphic-per-month/graphic-per-month.component';
 import { DonatorListComponent } from './components/campaign-page/donator-list/donator-list.component';
+import { AdministrationPageComponent } from './components/administration-page/administration-page.component';
+import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
 
 
 @NgModule({
@@ -71,7 +75,9 @@ import { DonatorListComponent } from './components/campaign-page/donator-list/do
     CampaignPageComponent,
     PresentationComponent,
     GraphicPerMonthComponent,
-    DonatorListComponent
+    DonatorListComponent,
+    AdministrationPageComponent,
+    NavbarMobileComponent
   ],
   imports: [
     CommonModule,
@@ -87,6 +93,8 @@ import { DonatorListComponent } from './components/campaign-page/donator-list/do
     MatTableModule,
     MatToolbarModule,
     MatSnackBarModule,
+    MatDividerModule,
+    MatSidenavModule,
     MatProgressBarModule,
     BrowserAnimationsModule,
     NguCarouselModule,

@@ -56,4 +56,9 @@ onWindowScroll() {
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
   }
+
+  onNavigationProfile() {
+    if (JSON.parse(localStorage.getItem(this.authService.getLocalStorageToken())).role == 2)
+      this.router.navigate([`/administration`]);
+  }
 }

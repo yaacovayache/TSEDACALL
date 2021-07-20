@@ -22,7 +22,7 @@
         </ul>
         <form class="d-flex">
             <span class="navbar-text" *ngIf="!isAuthenticated" routerLinkActive="menu-item-active"><strong><a routerLink="/auth/login" routerLinkActive="active" class="login" [translate]="'navbar.LogIn'"></a></strong><strong><a class="btn btn-light action-button signup" role="button" routerLink="/auth/signup" routerLinkActive="active" [translate]="'navbar.SignUp'"></a></strong></span>
-            <span class="navbar-text" *ngIf="isAuthenticated" routerLinkActive="menu-item-active"><strong><a class="btn btn-light action-button signup" role="button" (click)="onLogout()" routerLinkActive="active" [translate]="'navbar.Logout'"></a></strong></span>
+            <span class="navbar-text" *ngIf="isAuthenticated" routerLinkActive="menu-item-active"><strong (click)="onNavigationProfile()"><a class="login cursor-pointer"><i class="fa fa-user-cog fa-2x"></i></a></strong><strong><a class="btn btn-light action-button signup" role="button" (click)="onLogout()" routerLinkActive="active" [translate]="'navbar.Logout'"></a></strong></span>
         </form>
       </div>
     </div>
