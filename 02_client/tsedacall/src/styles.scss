@@ -1,13 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
-
-// html, body { height: 100%; }
+@import url('https://fonts.googleapis.com/css?family=Commissioner');
 @import '~flag-icon-css/css/flag-icon.min';
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {margin: 0;
+  overflow-x: hidden!important;
+}
 
 html, body {
     height: 100%;
     margin: 0;
+    font-family: "Commissioner"!important;
   }
+
+  h1, p{
+    font-family: "Commissioner"!important;
+  }
+
 
 .cursor-pointer{
   cursor: pointer;
@@ -30,3 +37,4 @@ html, body {
 .home-section-action {
   padding: 2.5rem 0 0;
 }
+

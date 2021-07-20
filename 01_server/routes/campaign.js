@@ -4,6 +4,22 @@ const auth = require('../middleware/auth.js');
 const Campaign = require('../../00_db/models/campaign');
 const Payment = require('../../00_db/models/donation');
 const moment = require("moment");
+const uploadImage = require('../middleware/upload')
+var fs = require('fs');
+const path = require('path');
+var multer  = require('multer')
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, "../campaign"))
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname.toLowerCase())
+    }
+})
+const upload = multer({
+    storage: storage
+})
 
 
 // Create new campaign
@@ -65,6 +81,17 @@ router.put('/campaign/:id', auth, async(req, res) => {
         console.log(err)
         res.status(500).send()
     }
+})
+
+// Get cover picture campaign
+router.get('/cover/:id', async(req, res) => {
+    const campaign = await Campaign.findById({_id: req.params.id}, {_id:false, cover:true})
+    const imageName = campaign.cover.toString()
+    const imagePath = path.join(__dirname, "../campaign", imageName);
+    fs.exists(imagePath, exists => {
+        if (exists) res.sendFile(imagePath);
+        else res.status(400).send('Error: Image does not exists');
+    });
 })
 
 

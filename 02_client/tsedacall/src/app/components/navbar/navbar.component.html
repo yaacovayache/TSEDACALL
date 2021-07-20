@@ -1,11 +1,11 @@
-<nav id="home-header" class="navbar navbar-expand-lg navbar-light bg-white" [class.fixed]="navFixed">
+<nav id="home-header" class="navbar navbar-expand-lg navbar-light bg-white menu" [class.fixed]="navFixed">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Tsedacall</a>
       <button (click)="toggleNavbar()" class="navbar-toggler" type="button">
         <span><i class="fa fa-bars" style="color:black; font-size:20px;"></i>
         </span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 20%;" [ngClass]="{ 'show': navbarOpen }">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 15%;" [ngClass]="{ 'show': navbarOpen }">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item  cursor-pointer" routerLinkActive="menu-item-active">
           <strong><a class="nav-link active" aria-current="page" data-bs-toggle="collapse" [routerLink]="'/home'" [translate]="'navbar.Home'"></a></strong>
@@ -20,37 +20,27 @@
           <strong><a class="nav-link" scrollTo="campaign-section" [translate]="'navbar.Campaigns'"></a></strong>
           </li>
         </ul>
+        <!-- style="margin-left: -15%;margin-right: 5%;" -->
         <form class="d-flex">
+          
+          <div class="select-box">
+            <div class="select-box__current" tabindex="1">
+              <div class="select-box__value"><input class="select-box__input" type="radio" id="0" value="1" name="language" checked="checked" />
+                <label class="select-box__input-text">Language</label>
+              </div>
+                <div *ngFor= 'let flag of flags; let i = index' class="select-box__value"><input class="select-box__input" type="radio" id="{{i+1}}" value="{{i+2}}" name="Language"/>
+                    <label  class="select-box__input-text"><a style="margin-right: 5%;"><span class={{flag.class}}></span></a>{{flag.language}}</label>
+                </div>
+                <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" />
+            </div>
+            <ul class="select-box__list">
+              <li *ngFor= 'let flag of flags; let i = index' (click)="useLanguage(flag.countryCode)" for="{{i+1}}" aria-hidden="aria-hidden" class="select-box__option cursor-pointer"><a style="margin-right: 5%;"><span class={{flag.class}}></span></a>{{flag.language}}</li>
+            </ul>
+        </div>
+
             <span class="navbar-text" *ngIf="!isAuthenticated" routerLinkActive="menu-item-active"><strong><a routerLink="/auth/login" routerLinkActive="active" class="login" [translate]="'navbar.LogIn'"></a></strong><strong><a class="btn btn-light action-button signup" role="button" routerLink="/auth/signup" routerLinkActive="active" [translate]="'navbar.SignUp'"></a></strong></span>
             <span class="navbar-text" *ngIf="isAuthenticated" routerLinkActive="menu-item-active"><strong (click)="onNavigationProfile()"><a class="login cursor-pointer"><i class="fa fa-user-cog fa-2x"></i></a></strong><strong><a class="btn btn-light action-button signup" role="button" (click)="onLogout()" routerLinkActive="active" [translate]="'navbar.Logout'"></a></strong></span>
         </form>
       </div>
     </div>
   </nav>
-
-
-
- <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">
-    Brand
-  </a>
-
-  <button class="navbar-toggler" type="button"
-          (click)="toggleNavbar()">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse"
-       [ngClass]="{ 'show': navbarOpen }">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Item 1</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">Item 2</a>
-      </li>
-    </ul>
-  </div>
-</nav> -->

@@ -5,17 +5,14 @@
     </mat-form-field>
 </mat-toolbar>
 
-<div class="row">
+<!-- <div class="row">
     <div *ngFor="let campaign of campaigns | async | searchFilter: searchText" class="col">
-        <mat-card class="card-main cursor-pointer" (click)="onClick(campaign._id)" matRipple
-            matRippleColor="rgba(131, 167, 185, 0.22)" style="padding: 2rem; margin: 2rem; min-width: 20rem;">
+        <mat-card class="card-main cursor-pointer" (click)="onClick(campaign._id)" matRipple matRippleColor="rgba(131, 167, 185, 0.22)" style="padding: 2rem; margin: 2rem; min-width: 20rem;">
+            <img mat-card-image [src]="pattern_url + campaign._id" alt="Photo of a Shiba Inu">
             <mat-card-title style="padding-bottom: 1rem;">
                 {{campaign.name}}
             </mat-card-title>
             <mat-card-content style="padding-bottom: 1rem;">
-                <!-- <div class="mb-3">
-                    {{campaign.description}}
-                </div> -->
                 <div style="position: relative;">
                     <mat-progress-bar mode="determinate" [value]="(campaign.totalSum/campaign.goal)*100 | number">
                     </mat-progress-bar>
@@ -29,5 +26,29 @@
             </mat-card-footer>
         </mat-card>
     </div>
-</div>
+</div> -->
+
+<ul class="cards">
+    <li *ngFor="let campaign of campaigns | async | searchFilter: searchText">
+      <a href="" class="card" (click)="onClick(campaign._id)">
+        <img [src]="pattern_url + campaign._id" class="card__image" alt="" />
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
+            <div class="card__header-text">
+              <h3 class="card__title">{{campaign.name}}</h3>
+              <div style="position: relative;">
+                <mat-progress-bar mode="determinate" [value]="(campaign.totalSum/campaign.goal)*100 | number">
+                </mat-progress-bar>
+                <span style="position: absolute; top: 0.4em; left:1em"
+                    [ngStyle]="{'left': progress + '%'}">{{(campaign.totalSum/campaign.goal)*100 | number}}%</span>
+            </div>          
+              <span class="card__status">From {{campaign.createdAt | date}} to {{campaign.endAt | date}}</span>
+            </div>
+          </div>
+          <p class="card__description"></p>
+        </div>
+      </a>      
+    </li>
+  </ul>
 </section>
