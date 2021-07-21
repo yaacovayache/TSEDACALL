@@ -1,4 +1,5 @@
 <section id="campaign-section">
+  <div class="container text-center" style="text-align:center; margin:auto;">
 <mat-toolbar style="background-color: white;">
     <mat-form-field style="width: 100%" floatLabel='never'>
         <input matInput [(ngModel)]="searchText" autocomplete="off">
@@ -28,7 +29,7 @@
     </div>
 </div> -->
 
-<ul class="cards">
+<!-- <ul class="cards">
     <li *ngFor="let campaign of campaigns | async | searchFilter: searchText">
       <a href="" class="card" (click)="onClick(campaign._id)">
         <img [src]="pattern_url + campaign._id" class="card__image" alt="" />
@@ -50,5 +51,66 @@
         </div>
       </a>      
     </li>
-  </ul>
+  </ul> -->
+
+
+  <!-- ================================================================= -->
+
+  <!-- <ul>
+    <li class="booking-card" *ngFor="let campaign of campaigns | async | searchFilter: searchText"[ngStyle]="{'background-image': 'url(' + pattern_url + campaign._id + ')'}">
+      <div class="book-container">
+        <div class="content">
+          <button class="btn">Réserver</button>
+        </div>
+      </div>
+      <div class="informations-container">
+        <h2 class="title">{{campaign.name}}</h2>
+        <div style="position: relative;">
+          <mat-progress-bar mode="determinate" [value]="(campaign.totalSum/campaign.goal)*100 | number">
+          </mat-progress-bar>
+          <span style="position: absolute; top: 0.4em; left:1em"
+              [ngStyle]="{'left': progress + '%'}">{{(campaign.totalSum/campaign.goal)*100 | number}}%</span>
+        </div>    
+        <p class="price"></p>
+        <div class="more-information">
+          <p class="disclaimer">{{campaign.description}}</p>
+          </div>
+      </div>
+    </li>
+  </ul> -->
+
+  <div class="wrapper">
+    <div class="card" *ngFor="let campaign of campaigns | async | searchFilter: searchText">
+        <input type="checkbox" id="{{campaign._id}}" class="more" aria-hidden="true">
+        <div class="content">
+            <div class="front" [ngStyle]="{'background-image': 'url(' + pattern_url + campaign._id + ')'}">
+                <div class="inner">
+                    <label  for="{{campaign._id}}" class="button" ><h2>{{campaign.name}}</h2></label>
+                    <!-- <label for="{{campaign._id}}" class="button" aria-hidden="true">
+                        Details
+                    </label> -->
+                </div>
+            </div>
+            <div class="back">
+                <div class="inner">
+                  <div style="position: relative;">
+                    <mat-progress-bar mode="determinate" [value]="(campaign.totalSum/campaign.goal)*100 | number">
+                    </mat-progress-bar>
+                    <span style="position: absolute; top: 0.4em; left:1em"
+                        [ngStyle]="{'left': progress + '%'}">{{(campaign.totalSum/campaign.goal)*100 | number}}%</span>
+                  </div>  
+                  <h2>{{campaign.name}}</h2>
+                    <div class="description">
+                      <p class="disclaimer">{{campaign.description}}</p>
+                    </div>
+                    <label for="{{campaign._id}}" class="button return" aria-hidden="true">
+                        <i class="fas fa-arrow-left"></i>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
 </section>
