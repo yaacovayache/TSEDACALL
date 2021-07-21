@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser');
 const https = require('https');
 const fs = require('fs');
+const path = require('path');
 // const dotenv = require('dotenv') 
 // dotenv.config() // Makes environment variables available
 
@@ -41,7 +42,7 @@ app.use(function(req, res, next) {
 });
 
   
-app.use(express.static(process.cwd()+"/html/"));
+app.use(express.static(path.resolve(__dirname,"../html/")));
 
 const port = process.env.PORT || 3000
 
@@ -52,12 +53,12 @@ app.use(teamRouter)
 app.use(paymentRouter)
 
 app.get('/', (req,res) => {
-    res.sendFile(process.cwd()+"/html/")
+    res.sendFile(path.resolve(__dirname,"../html/"))
 });
 
 // rewrite virtual urls to angular app to enable refreshing of internal pages
 app.get('*', function (req, res, next) {
-    res.sendFile(process.cwd() + "/html/index.html");
+    res.sendFile(path.resolve(__dirname,"../html/index.html"));
 });
 
 // Listening for incoming connections
