@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy, HostListener, HostBinding, Inject, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
+import {FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { WINDOW_PROVIDERS, WINDOW } from 'src/app/shared/helpers/window.helper';
 import { DOCUMENT } from '@angular/common';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
@@ -12,12 +14,18 @@ import { DOCUMENT } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
   isAuthenticated: boolean = false;
+  disableSelect = new FormControl(false);
   userSubscription = new Subscription();
   userName: string;
   navbarOpen:boolean = false;
   isFixed:boolean;
+  public flags = [
+    {country: 'France', language: 'Français', countryCode: 'fr', class:'flag-icon flag-icon-fr flag-icon-squared'},
+    {country: 'United-Kingdom', language: 'English', countryCode: 'en', class:'flag-icon flag-icon-gb flag-icon-squared'},
+    {country: 'Israel', language: 'עיברית', countryCode: 'he', class:'flag-icon flag-icon-il flag-icon-squared'}
+  ]
 
-  constructor(private authService: AuthService, private router: Router, @Inject(DOCUMENT) private document: Document, @Inject(WINDOW) private window: Window) { }
+  constructor(private translate: TranslateService, private authService: AuthService, private router: Router, @Inject(DOCUMENT) private document: Document, @Inject(WINDOW) private window: Window) { }
 
   ngOnInit(): void {
     this.userSubscription = this.authService.user.subscribe((user) => {
@@ -35,6 +43,11 @@ export class NavbarComponent implements OnInit {
 
 navFixed: boolean = false;
 private scrollOffset: number = 70;
+
+useLanguage(language: string): void {
+  console.log(language)
+  this.translate.use(language);
+}
 
 @HostListener('window:scroll')
 onWindowScroll() {
@@ -55,5 +68,10 @@ onWindowScroll() {
 
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
+  }
+
+  onNavigationProfile() {
+    if (JSON.parse(localStorage.getItem(this.authService.getLocalStorageToken())).role == 2)
+      this.router.navigate([`/administration`]);
   }
 }

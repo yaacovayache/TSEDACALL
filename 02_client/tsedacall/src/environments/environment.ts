@@ -7,7 +7,7 @@ export const environment = {
   appVersion: 'v1tsedcall',
   USERDATA_KEY: 'authf649fc9a5f55',
   isMockEnabled: true,
-  apiUrl: 'api'
+  apiUrl: 'http://localhost:3000/'
 };
 
 /*

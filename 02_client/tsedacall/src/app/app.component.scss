@@ -3,3 +3,22 @@
     min-height: 87.6%;
     margin: 0 auto -50px;
 }
+
+.header-desktop{
+    display: block;
+}
+
+.header-mobile{
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .header-desktop{
+        display: none;
+    }
+    
+    .header-mobile{
+        display: block;
+    }
+  }
+

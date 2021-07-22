@@ -1,0 +1,57 @@
+<div class="header" [style.background-color]="isClose ? 'transparent': 'white'"
+  [style.width]="isClose ? '100%': '250px'"></div>
+<input (click)="onChange()" type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+<label for="openSidebarMenu" class="sidebarIconToggle">
+  <div class="spinner diagonal part-1"></div>
+  <div class="spinner horizontal"></div>
+  <div class="spinner diagonal part-2"></div>
+</label>
+<div id="sidebarMenu" [ngStyle]="{'transform':isClose ? 'translateX(-250px)' : 'translateX(0)' }">
+  <ul class="navbar-nav" style="margin-left: 5%;">
+    <li (click)="onChange()" class="nav-item  cursor-pointer" routerLinkActive="menu-item-active">
+      <strong><a class="nav-link active" aria-current="page" data-bs-toggle="collapse" [routerLink]="'/home'"
+          [translate]="'navbar.Home'"></a></strong>
+    </li>
+    <li (click)="onChange()" class="nav-item  cursor-pointer" routerLinkActive="menu-item-active">
+      <i class="fa fa-question-circle"></i><strong><a class="nav-link" scrollTo="service-section"
+          [translate]="'navbar.HowItWork'"></a></strong>
+    </li>
+    <li (click)="onChange()" class="nav-item  cursor-pointer" routerLinkActive="menu-item-active">
+      <i class="fa fa-search"></i><strong><a class="nav-link" scrollTo="search-section"
+          [translate]="'navbar.Search'"></a></strong>
+    </li>
+    <li (click)="onChange()" class="nav-item  cursor-pointer" routerLinkActive="menu-item-active">
+      <i class="fa fa-hand-holding-heart"></i><strong><a class="nav-link" scrollTo="campaign-section"
+          [translate]="'navbar.Campaigns'"></a></strong>
+    </li>
+    <li>
+      <div class="select-box">
+        <div class="select-box__current" tabindex="1">
+          <div class="select-box__value"><input class="select-box__input" type="radio" id="0" value="1" name="language" checked="checked" />
+            <label class="select-box__input-text">Language</label>
+          </div>
+          <div class="select-box__value" *ngFor='let flag of flags; let i = index'><input class="select-box__input" type="radio" id="{{i+1}}" value="{{i+2}}" name="language"/>
+            <label class="select-box__input-text"><a style="margin-right: 5%;"><span class={{flag.class}}></span></a>{{flag.language}}</label>
+          </div>
+          <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon"
+            aria-hidden="true" />
+        </div>
+        <ul class="select-box__list">
+          <li for="0" aria-hidden="aria-hidden" class="select-box__option cursor-pointer">Language</li>
+          <li *ngFor='let flag of flags; let j = index' (click)="useLanguage(flag.countryCode)" for="{{j+1}}" aria-hidden="aria-hidden" class="select-box__option cursor-pointer"><a style="margin-right: 5%;"><span class={{flag.class}}></span></a>{{flag.language}}</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <form class="d-flex" style="margin-left: 5%;">
+    <span class="navbar-text" *ngIf="!isAuthenticated" routerLinkActive="menu-item-active"><strong><a
+          routerLink="/auth/login" routerLinkActive="active" class="login"
+          [translate]="'navbar.LogIn'"></a></strong><strong><a class="btn btn-light action-button signup" role="button"
+          routerLink="/auth/signup" routerLinkActive="active" [translate]="'navbar.SignUp'"></a></strong></span>
+    <span class="navbar-text" *ngIf="isAuthenticated" routerLinkActive="menu-item-active"><strong
+        (click)="onNavigationProfile()"><a class="login cursor-pointer"><i
+            class="fa fa-user-cog fa-2x"></i></a></strong><strong><a class="btn btn-light action-button signup"
+          role="button" (click)="onLogout()" routerLinkActive="active"
+          [translate]="'navbar.Logout'"></a></strong></span>
+  </form>
+</div>

@@ -4,13 +4,12 @@ import { tap } from 'rxjs/operators';
 
 import { Campaign } from '../models/campaign.model';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampaignService {
-readonly rootUrl = window.location.protocol + '//' + window.location.hostname + ':3000/';
-
   campaignsStore:Campaign[] = [];
   campaignsChanged = new BehaviorSubject<Campaign[]>([]);
   readonly campaigns = this.campaignsChanged.asObservable();
@@ -18,7 +17,7 @@ readonly rootUrl = window.location.protocol + '//' + window.location.hostname + 
   constructor(private http: HttpClient) { }
 
   public getCampaigns(){
-    return this.http.get<Campaign[]>(this.rootUrl + 'campaign').subscribe(
+    return this.http.get<Campaign[]>(environment.apiUrl+ 'campaign').subscribe(
       campaigns => {
         console.log(campaigns)
         this.campaignsStore = campaigns;
@@ -27,6 +26,10 @@ readonly rootUrl = window.location.protocol + '//' + window.location.hostname + 
   }
 
   public getCampaignById(id){
-    return this.http.get<Campaign>(this.rootUrl + `campaign/${id}`)
+    return this.http.get<Campaign>(environment.apiUrl + `campaign/${id}`)
+  }
+
+  public getCampaignsByFounder(id){
+    return this.http.get<Campaign[]>(environment.apiUrl + `campaigns/founder/${id}`)
   }
 }

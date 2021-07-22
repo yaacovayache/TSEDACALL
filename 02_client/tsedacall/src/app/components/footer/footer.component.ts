@@ -22,7 +22,7 @@ export class FooterComponent implements OnInit {
   useLanguage(language: string): void {
     console.log(language)
     this.translate.use(language);
-}
+  }
 
 
 
