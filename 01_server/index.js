@@ -30,6 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors())
+app.use(express.static(process.cwd()+"/02_client/tsedacall/dist/tsedacall/"));
 
 const port = process.env.PORT || 3000
 
@@ -39,6 +40,9 @@ app.use(campaignRouter)
 app.use(teamRouter)
 app.use(paymentRouter)
 
+app.get('/', (req,res) => {
+    res.sendFile(process.cwd()+"/02_client/tsedacall/dist/tsedacall/index.html")
+});
 
 // Listening for incoming connections
 app.listen(port, () => {

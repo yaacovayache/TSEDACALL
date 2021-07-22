@@ -18,14 +18,13 @@ export class DonatorListComponent implements OnInit {
   ngOnInit(): void {
     this.donationsService.getDonatorsByCampaignId(this.id).subscribe((donators:any[])=>{
       for (let data of donators){
-        ELEMENT_DATA.push({fname: data.fname, lname: data.lname, email: data.email, isRegistered: data.isRegistered})
+        ELEMENT_DATA.push({fname: data.fname, lname: data.lname, email: data.email, isRegisteredStr: (data.isRegistered) ? 'check' : 'close', message: data.message})
       }
-      console.log(ELEMENT_DATA)
       this.display=true
     })
   }
   
-  displayedColumns: string[] = ['fname', 'lname', 'email', 'isRegistered'];
+  displayedColumns: string[] = ['fname', 'lname', 'email', 'isRegistered', 'message'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(event: Event) {

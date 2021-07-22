@@ -11,24 +11,24 @@ export class HowItWorksComponent implements OnInit {
   public carouselOptions: NguCarouselConfig;
   public services = [{
     icon: 'people',
-    text: `Create your charity's raising page and give to your community the option to make one-time or monthly donations. You can also manage all your tax receipt for free.`,
-    title: 'You are a charity',
-    button: 'Start NOW'
+    text: `home.how-it-work.first.text`,
+    title: 'home.how-it-work.first.title',
+    button: 'form.Start'
   }, {
     icon: 'person',
-    text: `Double your donation, possibility of paying the donation in several installments, possibility of creating a team in order to carry out your campaign objective.`,
-    title: 'You are a donor',
-    button: 'Start NOW'
+    text: `home.how-it-work.second.text`,
+    title: 'home.how-it-work.second.title',
+    button: 'form.Start'
   }, {
     icon: 'storage',
-    text: `Set your goal, start the countdown, if your campaign reaches its goal in time a Matcher will double the amount already raised ! Find new donors, manage your tax receipts for free, get your donations instantly.`,
-    title: 'Why use TsedaCall',
-    button: 'Learn more'
+    text: `home.how-it-work.third.text`,
+    title: 'home.how-it-work.third.title',
+    button: 'form.LearnMore'
   }, {
     icon: 'enhanced_encryption',
-    text: `We care deeply about how your organization is viewed by your donors and  your community. We take responsability for building a foundation of trust by enhancing and protecting your mission, brand and governance rules.`,
-    title: 'Why donate with TsedaCall',
-    button: 'Learn more'
+    text: `home.how-it-work.fourth.text`,
+    title: 'home.how-it-work.fourth.title',
+    button: 'form.LearnMore'
   }]
   
   constructor() { }

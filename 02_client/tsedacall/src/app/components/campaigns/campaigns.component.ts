@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Campaign } from 'src/app/shared/models/campaign.model';
 import { CampaignService } from 'src/app/shared/services/campaign.service';
+import { DonationsService } from 'src/app/shared/services/donations.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class CampaignsComponent implements OnInit {
   searchText;
   fund = 2570;
 
-  constructor(private campaignService:CampaignService, private userService:UserService, private router:Router) { }
+  constructor(private campaignService:CampaignService, private donationsService:DonationsService, private userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
     this.campaigns = this.campaignService.campaigns; // subscribe to entire collection

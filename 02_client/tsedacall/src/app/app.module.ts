@@ -20,6 +20,9 @@ import { NguCarouselModule } from '@ngu/carousel';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { WINDOW_PROVIDERS, WINDOW } from 'src/app/shared/helpers/window.helper';
+import { SharedDirectivesModule } from './shared/directive/shared-directives.module';
+
 
 // Pipes 
 import { SearchFilterPipe } from './shared/pipes/search-filter.pipe';
@@ -93,6 +96,7 @@ import { ExcellComponent } from './components/administration-page/excell/excell.
     MatProgressBarModule,
     BrowserAnimationsModule,
     NguCarouselModule,
+    SharedDirectivesModule,
     ChartsModule,
             // ngx-translate and the loader module
             HttpClientModule,
@@ -104,7 +108,7 @@ import { ExcellComponent } from './components/administration-page/excell/excell.
                 }
             })
   ],
-  providers: [DatePipe, { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true }],
+  providers: [DatePipe, { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true }, WINDOW_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

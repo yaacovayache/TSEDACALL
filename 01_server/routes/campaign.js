@@ -2,6 +2,7 @@ const express = require('express');
 const router = new express.Router();
 const auth = require('../middleware/auth.js');
 const Campaign = require('../../00_db/models/campaign');
+const Payment = require('../../00_db/models/donation');
 const moment = require("moment");
 
 
@@ -32,6 +33,10 @@ router.get('/campaign/:id', async(req, res) => {
 router.get('/campaign', async(req, res) => {
     try {
         let campaigns = await Campaign.find()
+        for (let campaign of campaigns){
+            let totalSum = await Payment.aggregate([{$match:{"campaignId": campaign._id}},{ $group: { _id: false, sum: {$sum: "$sum"}}}])
+            campaign.totalSum = totalSum[0].sum
+        }
         res.send(campaigns)
     } catch (err) {
         console.log(err)
