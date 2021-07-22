@@ -47,6 +47,9 @@ import { ChartsModule } from 'ng2-charts';
 import { PresentationComponent } from './components/campaign-page/presentation/presentation.component';
 import { GraphicPerMonthComponent } from './components/campaign-page/graphic-per-month/graphic-per-month.component';
 import { DonatorListComponent } from './components/campaign-page/donator-list/donator-list.component';
+import { AdministrationPageComponent } from './components/administration-page/administration-page.component';
+import { ListDonatorsComponent } from './components/administration-page/list-donators/list-donators.component';
+import { ExcellComponent } from './components/administration-page/excell/excell.component';
 
 
 @NgModule({
@@ -68,7 +71,10 @@ import { DonatorListComponent } from './components/campaign-page/donator-list/do
     CampaignPageComponent,
     PresentationComponent,
     GraphicPerMonthComponent,
-    DonatorListComponent
+    DonatorListComponent,
+    AdministrationPageComponent,
+    ListDonatorsComponent,
+    ExcellComponent
   ],
   imports: [
     CommonModule,

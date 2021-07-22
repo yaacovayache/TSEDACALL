@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AssociationsListComponent } from './components/associations-list/associations-list.component';
 import { CampaignPageComponent } from './components/campaign-page/campaign-page.component';
+import { AdministrationPageComponent } from './components/administration-page/administration-page.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
     path: 'campaign/:id',
     component: CampaignPageComponent,
   },
+{
+  path: 'administration',
+  component: AdministrationPageComponent,
+},
 ];
 
 @NgModule({
