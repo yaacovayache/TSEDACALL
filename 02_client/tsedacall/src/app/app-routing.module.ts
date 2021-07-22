@@ -31,10 +31,10 @@ const routes: Routes = [
     path: 'campaign/home/:id',
     component: CampaignPageComponent,
   },
-  {
-    path: 'administration',
-    component: AdministrationPageComponent,
-  },
+{
+  path: 'administration',
+  component: AdministrationPageComponent,
+},
 ];
 
 @NgModule({

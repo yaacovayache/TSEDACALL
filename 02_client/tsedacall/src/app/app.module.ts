@@ -55,6 +55,8 @@ import { PresentationComponent } from './components/campaign-page/presentation/p
 import { GraphicPerMonthComponent } from './components/campaign-page/graphic-per-month/graphic-per-month.component';
 import { DonatorListComponent } from './components/campaign-page/donator-list/donator-list.component';
 import { AdministrationPageComponent } from './components/administration-page/administration-page.component';
+import { ListDonatorsComponent } from './components/administration-page/list-donators/list-donators.component';
+import { ExcellComponent } from './components/administration-page/excell/excell.component';
 import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
 
 
@@ -79,6 +81,8 @@ import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.
     GraphicPerMonthComponent,
     DonatorListComponent,
     AdministrationPageComponent,
+    ListDonatorsComponent,
+    ExcellComponent,
     NavbarMobileComponent
   ],
   imports: [
