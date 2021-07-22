@@ -19,6 +19,9 @@
           <li class="nav-item  cursor-pointer" routerLinkActive="menu-item-active">
           <strong><a class="nav-link" scrollTo="campaign-section" [translate]="'navbar.Campaigns'"></a></strong>
           </li>
+          <li class="nav-item  cursor-pointer" routerLinkActive="menu-item-active" *ngIf="isAssociation">
+            <strong><a class="nav-link" routerLink="/administration" [translate]="'navbar.Administration'"></a></strong>
+            </li>
         </ul>
         <!-- style="margin-left: -15%;margin-right: 5%;" -->
         <form class="d-flex">

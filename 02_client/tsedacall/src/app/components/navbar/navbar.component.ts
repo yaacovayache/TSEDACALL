@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   isAuthenticated: boolean = false;
   disableSelect = new FormControl(false);
   userSubscription = new Subscription();
+  isAssociation = false;
   userName: string;
   navbarOpen:boolean = false;
   isFixed:boolean;
@@ -35,7 +36,7 @@ export class NavbarComponent implements OnInit {
         this.isAuthenticated = user ? true : false;
         if (this.isAuthenticated){
           this.userName = user.fname;
-          // if (user.isAdmin) this.isAdmin=true;
+          if (user.role == 2) this.isAssociation=true;
         } else this.userName = null;
       }, 500);
     });
