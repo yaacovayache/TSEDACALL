@@ -19,6 +19,10 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table'  
 import { NguCarouselModule } from '@ngu/carousel';
+import {ProgressBarModule} from "angular-progress-bar";
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -58,6 +62,11 @@ import { AdministrationPageComponent } from './components/administration-page/ad
 import { ListDonatorsComponent } from './components/administration-page/list-donators/list-donators.component';
 import { ExcellComponent } from './components/administration-page/excell/excell.component';
 import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
+import { IntroComponent } from './components/home/intro/intro.component';
+import { CampaignsListComponent } from './components/home/campaigns-list/campaigns-list.component';
+import { HowItWorkComponent } from './components/home/how-it-work/how-it-work.component';
+import { BannerComponent } from './components/home/banner/banner.component';
+
 
 
 @NgModule({
@@ -83,7 +92,11 @@ import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.
     AdministrationPageComponent,
     ListDonatorsComponent,
     ExcellComponent,
-    NavbarMobileComponent
+    NavbarMobileComponent,
+    IntroComponent,
+    CampaignsListComponent,
+    HowItWorkComponent,
+    BannerComponent
   ],
   imports: [
     CommonModule,
@@ -107,6 +120,8 @@ import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.
     BrowserAnimationsModule,
     NguCarouselModule,
     SharedDirectivesModule,
+    ProgressBarModule,
+    CarouselModule,
     ChartsModule,
             // ngx-translate and the loader module
             HttpClientModule,

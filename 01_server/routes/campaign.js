@@ -3,6 +3,7 @@ const router = new express.Router();
 const auth = require('../middleware/auth.js');
 const Campaign = require('../../00_db/models/campaign');
 const Payment = require('../../00_db/models/donation');
+const User = require('../../00_db/models/user');
 const moment = require("moment");
 const uploadImage = require('../middleware/upload')
 var fs = require('fs');
@@ -64,6 +65,8 @@ router.get('/campaign', async(req, res) => {
         for (let campaign of campaigns){
             let totalSum = await Payment.aggregate([{$match:{"campaignId": campaign._id}},{ $group: { _id: false, sum: {$sum: "$sum"}}}])
             campaign.totalSum = totalSum[0].sum
+            let user = await User.findById(campaign.founder._id)
+            campaign.founder = user
         }
         res.send(campaigns)
     } catch (err) {
@@ -88,6 +91,24 @@ router.get('/cover/:id', async(req, res) => {
     const campaign = await Campaign.findById({_id: req.params.id}, {_id:false, cover:true})
     const imageName = campaign.cover.toString()
     const imagePath = path.join(__dirname, "../campaign", imageName);
+    fs.exists(imagePath, exists => {
+        if (exists) res.sendFile(imagePath);
+        else res.status(400).send('Error: Image does not exists');
+    });
+})
+
+// Get media names
+router.get('/media/name/:id', async(req, res) => {
+    const id = req.params.id
+    const media = await Campaign.findById({_id: req.params.id}, {_id:false, media:true})
+    res.send(media);
+})
+
+// Get media campaign
+router.get('/media/:id/:name', async(req, res) => {
+    const imageName = req.params.name
+    const id = req.params.id
+    const imagePath = path.join(__dirname, `../campaign/${id}`, imageName);
     fs.exists(imagePath, exists => {
         if (exists) res.sendFile(imagePath);
         else res.status(400).send('Error: Image does not exists');

@@ -1,4 +1,4 @@
-<section class="home-section home-cta" *ngIf="campaign">
+<!-- <section class="home-section home-cta" *ngIf="campaign">
     <div class="container">
       <div class="row">
         <div class="text-center">
@@ -12,4 +12,10 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
+
+  <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="carouselItems">
+    <div *nguCarouselDef="let media;" class="item">
+      <div class="tile" [ngStyle]="{'background': 'url(' + pattern_url + campaign._id + '/' + media + ') no-repeat center center'}"></div>
+    </div>
+  </ngu-carousel>

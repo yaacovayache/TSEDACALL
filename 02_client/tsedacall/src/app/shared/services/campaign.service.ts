@@ -32,4 +32,8 @@ export class CampaignService {
   public getCampaignsByFounder(id){
     return this.http.get<Campaign[]>(environment.apiUrl + `campaigns/founder/${id}`)
   }
+
+  public getCampaignMediaName(id){
+    return this.http.get<any>(environment.apiUrl + `media/name/${id}`)
+  }
 }

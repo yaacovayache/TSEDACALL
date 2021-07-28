@@ -11,16 +11,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'tsedacall';
-  isMobile:boolean = false
+  // isMobile:boolean = false
 
   constructor(private translate: TranslateService, private authService: AuthService) {
     translate.setDefaultLang('en');
   }
 
   ngOnInit() {
-    if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-      this.isMobile = true
-    }
+    // if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    //   this.isMobile = true
+    // }
     this.authService.autoLogin();
   }
 }

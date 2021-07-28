@@ -7,10 +7,7 @@ const userSubSchema = new mongoose.Schema({
     ref: "users",
     required: true,
   },
-  fname: {
-    type: String,
-  },
-  lname: {
+  associationName: {
     type: String,
   },
   email: {
@@ -41,7 +38,7 @@ const campaignSchema = new mongoose.Schema({
       required:true
     },
     media: { 
-      type: String
+      type: [String]
     },
     founder: {
       type: userSubSchema,

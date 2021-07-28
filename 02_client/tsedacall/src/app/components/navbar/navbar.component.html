@@ -1,4 +1,4 @@
-<nav id="home-header" class="navbar navbar-expand-lg navbar-light bg-white menu" [class.fixed]="navFixed">
+<!-- <nav id="home-header" class="navbar navbar-expand-lg navbar-light bg-white menu" [class.fixed]="navFixed">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Tsedacall</a>
       <button (click)="toggleNavbar()" class="navbar-toggler" type="button">
@@ -20,7 +20,6 @@
           <strong><a class="nav-link" scrollTo="campaign-section" [translate]="'navbar.Campaigns'"></a></strong>
           </li>
         </ul>
-        <!-- style="margin-left: -15%;margin-right: 5%;" -->
         <form class="d-flex">
           
           <div class="select-box">
@@ -43,4 +42,77 @@
         </form>
       </div>
     </div>
-  </nav>
+  </nav> -->
+
+
+  
+<section class="navbar-section">
+
+  <div class="container">
+    <div class="row">
+
+      <nav class="navbar fixed-top navbar-expand-md navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style="color: #222;">LOGO</a>
+          <button id="showOpen" onclick="openNav()" class="navbar-toggler" type="button" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <button id="closeNav" href="javascript:void(0)" class="closebtn" onclick="closeNav()" class="navbar-toggler" type="button" aria-label="Toggle navigation">
+            <span class=""> X </span>
+          </button>
+
+          <div class="sidenav centerNavbar" id="mySidenav">
+            <ul class="navbar-nav mb-2 mb-lg-0" style="margin-left: auto;">
+              <li class="nav-item cursor-pointer" routerLinkActive="menu-item-active">
+                <a class="nav-link active" aria-current="page" [routerLink]="'/home'"> <i class="fa fa-home"></i>HOME</a>
+              </li>
+              <li class="nav-item cursor-pointer" routerLinkActive="menu-item-active">
+                <a class="nav-link" scrollTo="campaign-section"> <i class="fa fa-briefcase"></i> Campaigns</a>
+              </li>
+              <li class="nav-item cursor-pointer" routerLinkActive="menu-item-active">
+                <a class="nav-link" scrollTo="slider-section"> <i class="fa fa-globe"></i> How it work</a>
+              </li>
+              <li class="nav-item cursor-pointer" routerLinkActive="menu-item-active">
+                <a class="nav-link" scrollTo="team-section"><i class="fa fa-user"></i> looking for an association</a>
+              </li>
+              
+              <li class="nav-item dropdown" id="lang_id">
+                
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-language" ></i>  Language
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" onclick="set('FRENCH', 'assets/image/france.png')">  <img src="assets/image/france.png" alt=""> FRENCH</a></li>
+                  <li><a class="dropdown-item" onclick="set('ENGLISH', 'assets/image/united-kingdom.png')"> <img src="assets/image/united-kingdom.png" alt="">ENGLISH</a></li> 
+                  <li><a class="dropdown-item" onclick="set('HEBREW', 'assets/image/israel.png')"><img src="assets/image/israel.png" alt="">HEBREW</a></li> 
+                </ul>
+              </li>
+
+              <li class="nav-item" *ngIf="!isAuthenticated" routerLinkActive="menu-item-active">
+                <a class="nav-link" routerLink="/auth/login"><i class="fa fa-sign-in" aria-hidden="true"></i> login</a>
+              </li>
+              <li class="nav-item" *ngIf="!isAuthenticated" routerLinkActive="menu-item-active">
+                <a class="nav-link" routerLink="/auth/signup"> <i class="fa fa-sign-out" aria-hidden="true"></i>Sign up</a>
+              </li>
+
+              <li class="nav-item cursor-pointer" *ngIf="isAuthenticated" routerLinkActive="menu-item-active" (click)="onNavigationProfile()">
+                <a><i class="fa fa-id-card fa-2x"></i></a>
+              </li>
+
+              <li class="nav-item  cursor-pointer" *ngIf="isAuthenticated" routerLinkActive="menu-item-active" (click)="onLogout()">
+                <a class="nav-link"> <i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+              </li>
+            </ul>
+          </div>
+
+
+
+        </div>
+      </nav>
+      
+    </div>
+  </div>
+
+
+ 
+</section>

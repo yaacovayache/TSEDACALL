@@ -25,6 +25,7 @@
     "@ngu/carousel": "^3.0.2",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "angular-progress-bar": "^1.0.11",
     "bootstrap": "^5.0.1",
     "chart.js": "^2.9.3",
     "country-list": "^2.2.0",
@@ -35,6 +36,7 @@
     "ng2-charts": "^2.4.2",
     "ngx-mat-drm-countries-flags": "^3.0.0",
     "popper.js": "^1.16.1",
+    "ngx-owl-carousel-o": "^6.0.0",
     "rxjs": "^6.6.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

@@ -1,0 +1,84 @@
+<section class="card-section" id="campaign-section">
+    <div class="container">
+
+      <!-- <mat-toolbar style="background-color: white;">
+        <mat-form-field style="width: 100%" floatLabel='never'>
+          <i class="fa fa-search"></i>
+            <input matInput [(ngModel)]="searchText" autocomplete="off">
+        </mat-form-field>
+      </mat-toolbar> -->
+
+      <form action="" class="search-bar">
+        <input type="search" name="search" pattern=".*\S.*"  [(ngModel)]="searchText" required>
+        <button class="search-btn" type="submit">
+          <span>Search</span>
+        </button>
+      </form>
+
+      
+      <div class="row mobileCard">
+       <div class="col-md-12">
+        <owl-carousel-o [options]="customOptionsMobile">
+          <ng-template carouselSlide *ngFor="let campaign of campaigns | async | searchFilter: searchText">
+            <div class="card mb-3" (click)="onClick(campaign._id)">
+              <div class="row g-0">
+                <div class="col-md-6">
+                  <img [src]="pattern_url + campaign._id" class="rounded-start" alt="card" height="100%" width="100%">
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body">
+                    <h2 class="card-title font_Roboto">{{campaign.name}}</h2>
+                    <h4 class="markerH4"><i class="fa fa-map-marker" aria-hidden="true"></i>{{campaign.founder.associationName}}</h4>
+    
+                    <h4 class="collectedPrice">${{campaign.totalSum}}</h4>
+                    <progress-bar [progress]="(campaign.totalSum/campaign.goal)*100 | number" color="#107598">
+                    </progress-bar>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <span class="goal">Goal</span>
+                      </div>
+                      <div class="col-md-6 ">
+                        <span class="float-end goal_price">${{campaign.goal}}</span>
+                      </div>
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </owl-carousel-o>
+       </div>
+      </div>
+      <div class="row PcCard">
+        <div class="col-md-6"  *ngFor="let campaign of campaigns | async | searchFilter: searchText">
+          <div class="card mb-3" (click)="onClick(campaign._id)">
+            <div class="row g-0">
+              <div class="col-md-6 rnd">
+                <img [src]="pattern_url + campaign._id" class="rounded-start" alt="card" height="100%" width="100%">
+              </div>
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h2 class="card-title font_Roboto">{{campaign.name}}</h2>
+                  <h4 class="markerH4"><i class="fa fa-map-marker" aria-hidden="true"></i>{{campaign.founder.associationName}}</h4>
+  
+                  <h4 class="collectedPrice">${{campaign.totalSum}}</h4>
+                  <progress-bar  [progress]="(campaign.totalSum/campaign.goal)*100 | number" color="#107598">
+                  </progress-bar>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <span class="goal">Goal</span>
+                    </div>
+                    <div class="col-md-6 ">
+                      <span class="float-end goal_price">${{campaign.goal}}</span>
+                    </div>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

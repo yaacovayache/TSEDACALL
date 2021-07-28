@@ -23,6 +23,7 @@ const userRouter = require('./routes/user')
 const campaignRouter = require('./routes/campaign')
 const teamRouter = require('./routes/team')
 const paymentRouter = require('./routes/donation')
+const cerfaRouter = require('./cerfa/cerfa')
 
 
 
@@ -51,6 +52,7 @@ app.use(userRouter)
 app.use(campaignRouter)
 app.use(teamRouter)
 app.use(paymentRouter)
+app.use(cerfaRouter)
 
 app.get('/', (req,res) => {
     res.sendFile(path.resolve(__dirname,"../html/"))
