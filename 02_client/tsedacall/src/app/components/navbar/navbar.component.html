@@ -4,14 +4,14 @@
     <div class="row">
 
       <nav class="navbar fixed-top navbar-expand-md navbar-light">
-        <div class="container-fluid">
+        <!-- <div class="container-fluid"> -->
           <a class="navbar-brand" href="#" style="color: #222;">LOGO</a>
-          <button id="showOpen" onclick="openNav()" class="navbar-toggler" type="button" aria-label="Toggle navigation">
+          <!-- <button id="showOpen" onclick="openNav()" class="navbar-toggler" type="button" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <button id="closeNav" href="javascript:void(0)" class="closebtn" onclick="closeNav()" class="navbar-toggler" type="button" aria-label="Toggle navigation">
             <span class=""> X </span>
-          </button>
+          </button> -->
 
           <div class="sidenav centerNavbar" id="mySidenav">
             <ul class="navbar-nav mb-2 mb-lg-0" style="margin-left: auto;">
@@ -55,10 +55,16 @@
                   <a class="nav-link"> <i class="fa fa-sign-out" aria-hidden="true"></i>{{'navbar.Logout' | translate}}</a>
                 </li>
               </ul>
+
+  
             </div>
 
 
-
+          <!-- </div> -->
+          <div class="hamburger" onclick="mobileMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
           </div>
         </nav>
         

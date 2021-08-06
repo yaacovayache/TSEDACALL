@@ -101,8 +101,14 @@ h1 {
     // animation-iteration-count: infinite;
 	left: 75%;
 }
-.not-alert {
-   display: none
+// .not-alert {
+//    display: none
+// }
+
+@media (max-width:500px) {
+    .toast{
+      display: none
+  }
 }
 
 /* OBJECTS */

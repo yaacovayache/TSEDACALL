@@ -483,7 +483,7 @@ h1,h2,h3,h4,h5,h6,p,span{
 } */
 
 .rnd img{
-  border-radius: 30px 0 0 30px !important;
+  border-radius: 30px 30px 30px 30px !important;
 }
 
 
@@ -501,6 +501,9 @@ h1,h2,h3,h4,h5,h6,p,span{
 // =============================================================================================================
 
 
+img {
+  max-height: 120px;
+}
 
 body, button, input {
 	font: 1em Hind, sans-serif;

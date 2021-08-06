@@ -6,3 +6,9 @@
   width: 100%;
   height: 60vh;
 }
+
+@media (max-width:500px) {
+  .carouselBox img{
+    height: 20vh;
+  }
+}

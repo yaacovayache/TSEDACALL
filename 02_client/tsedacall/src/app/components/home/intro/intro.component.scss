@@ -33,13 +33,13 @@ h1,h2,h3,h4,h5,h6,p,span{
  border-bottom: 1px solid #d91483;
 } */
 .banner-section{
- background-image: url("/assets/image/back1.jpg");  
+//  background-image: url("/assets/image/back1.jpg");  
    background-color: #fff;
    background-position: center;
    background-repeat: no-repeat;
    background-size: cover;
    position: relative;
-   height: 100vh;
+   height: 80vh;
    width: 100%;
    padding: 20px 0px;
 }
@@ -259,6 +259,7 @@ h1,h2,h3,h4,h5,h6,p,span{
        margin-bottom: 0;
      }
    }
+   
  
    .footer-dark .item.text p {
      opacity: 0.6;
@@ -418,7 +419,7 @@ h1,h2,h3,h4,h5,h6,p,span{
 .mobileCard{
   display: none;
 }
-@media (max-width:400px) {
+@media (max-width:500px) {
   .centered{
     position: relative;
     top: 10%;
