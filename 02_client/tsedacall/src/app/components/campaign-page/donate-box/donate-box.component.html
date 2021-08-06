@@ -1,0 +1,24 @@
+<section class="chart-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 amountBox" *ngIf="campaign">
+                <h1 class="text-center price">{{campaign.totalSum}}€</h1>
+                <h2 class="text-center rsdAmt">Raised Amount</h2>
+               
+                <progress-bar [progress]="(campaign.totalSum/campaign.goal)*100 | number" color="#107598">
+                </progress-bar>
+                <div class="col-md-12">
+                    <h3 class="text-center float-end mt-4">Goal: {{campaign.goal}}€</h3>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="chart-wrapper">
+                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                        [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+                        [plugins]="lineChartPlugins">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

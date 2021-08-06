@@ -23,8 +23,9 @@ export class CampaignsListComponent implements OnInit {
   constructor(private campaignService:CampaignService, private donationsService:DonationsService, private userService:UserService, private router:Router) { }
 
   
-  onClick(id){
-    this.router.navigate([`/campaign/home/${id}`]);
+  onClick(id, name){
+    name = name.replace(' ', '-').toLowerCase()
+    this.router.navigate([`/campaign/home/${id}/${name}`]);
   }
 
 

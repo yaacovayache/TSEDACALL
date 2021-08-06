@@ -28,7 +28,7 @@ const routes: Routes = [
     component: AssociationsListComponent,
   },
   {
-    path: 'campaign/home/:id',
+    path: 'campaign/home/:id/:name',
     component: CampaignPageComponent,
   },
 {

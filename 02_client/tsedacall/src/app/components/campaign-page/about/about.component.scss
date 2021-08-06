@@ -1,0 +1,26 @@
+/* about us */
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap');
+.about-section {
+  padding: 80px 40px;
+}
+.about-section .aboutPadding {
+  padding: 0px 110px;
+}
+.about-section .aboutPadding h1 {
+  font-size: 58px;
+  color: rgb(167, 72, 162);
+  font-family: 'Otomanopee One', sans-serif;
+}
+.about-section .aboutPadding p {
+  font-size: 28px;
+  font-family: 'Baloo Chettan 2', cursive;
+  line-height: 36px;
+}
+
+
+@media (max-width: 474px){
+  .about-section .aboutPadding {
+    padding: 0px 0px;
+  }
+}

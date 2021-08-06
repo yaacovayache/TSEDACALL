@@ -19,8 +19,12 @@
         "Follow-us" : "לעקוב אחרינו"
     },
     "home":{
+        "home-top":{
+            "title": "קמפיין ראשי"
+        },
         "home-intro":{
-            "title": "גיוס תרומות מקוון פשוט וחזק"
+            "title-first": "גיוס תרומות מקוון",
+            "title-second": "פשוט וחזק"
         },
         "how-it-work":{
             "title": "איך זה עובד",

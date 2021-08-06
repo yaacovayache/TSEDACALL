@@ -7,6 +7,7 @@ export class Campaign {
       public goal: number,
       public endAt: string,
       public createdAt: string,
-      public media?: string[]
+      public media?: string[],
+      public totalSum?:number
     ) {}
 }

@@ -1,10 +1,17 @@
-<app-presentation [campaign]="campaign"></app-presentation>
-<div class="row">
-    <div class="col">
-        <app-graphic-per-month [id]="id"></app-graphic-per-month>
-    </div>
-    <div class="col text-center">
-        <!-- <img src="\assets\icons\graph.png" width="150" height="150"> -->
-    </div>
+<div *ngIf="campaign">
+    <app-presentation [campaign]="campaign"></app-presentation>
+    <app-association [campaign]="campaign"></app-association>
+    <app-donate-box [campaign]="campaign"></app-donate-box>
+    <app-timer [campaign]="campaign"></app-timer>
+    <!-- <div class="row">
+        <div class="col">
+            <app-graphic-per-month [id]="id"></app-graphic-per-month>
+        </div>
+        <div class="col text-center">
+        </div>
+    </div> -->
+    <app-donator-list [campaign]="campaign"></app-donator-list>
+    <app-share-banner></app-share-banner>
+    <app-about [campaign]="campaign"></app-about>
 </div>
-<app-donator-list [id]="id"></app-donator-list>
+<app-donate-share-banner></app-donate-share-banner>

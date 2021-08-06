@@ -1,0 +1,43 @@
+/* bottom box */
+.bottom-section{
+    padding: 10px 0px;
+    background-color:  #107598;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+    transition: bottom 0.3s ease-in-out;
+  }
+
+  .donate{
+    text-align: center;
+  }
+  .donate button{
+    text-align: center;
+    padding: 15px 40px;
+    /* background-color: red; */
+    color: #d8d3d6;
+    border: 2px solid #fafafa;
+    border-radius: 25px;
+  }
+  .donate button:hover{
+     background-color: #d91483; 
+    color: #fff;
+  }
+
+  .share{
+    text-align: center;
+  }
+  .share button{
+    text-align: center;
+    padding: 15px 40px;
+    /* background-color: red; */
+    color: #d8d3d6;
+    border: 2px solid #fafafa;
+    border-radius: 25px;
+  }
+  .share button:hover{
+     background-color: #d91483; 
+    color: #fff;
+  }
+  

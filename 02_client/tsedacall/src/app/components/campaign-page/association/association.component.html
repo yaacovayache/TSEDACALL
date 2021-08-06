@@ -1,0 +1,14 @@
+<section class="association-section" *ngIf='campaign'>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 association">
+                <img [src]="pattern_url + campaign.founder._id" alt="">
+                <h1>{{campaign.founder.associationName}}</h1>
+                <hr>
+            </div>
+           <!-- <div class="col-md-12">
+               <h3 class="text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, minima a? Accusamus non dicta sunt obcaecati. Optio, repellendus eaque eum aliquam temporibus dolor veniam necessitatibus nam voluptates quasi! Fuga, dolor?</h3>
+           </div> -->
+        </div>
+    </div>
+</section>

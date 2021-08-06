@@ -250,18 +250,7 @@ body{ text-align: center;
     text-align: center;
     margin-top: 36px;
   }
-  .btn{ text-align: center;
-    border: 1px solid #3498db;
-    background: none;
-    padding: 10px 40px 3px;
-    font-size: 20px;
-    font-family: "montserrat";
-    cursor: pointer;
-    margin: 50px;
-    transition: 0.20s;
-    position: relative;
-    overflow: hidden;
-  }
+
   .btn1,.btn2{
     color: #3498db;
   }
@@ -301,4 +290,7 @@ body{ text-align: center;
   .btn3:hover::before,.btn4:hover::before{
     height: 0%;
   }
+  
+
+  // ====================================================================================
   

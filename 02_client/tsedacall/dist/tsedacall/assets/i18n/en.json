@@ -12,15 +12,19 @@
     "footer":{
         "Terms":"Terms",
         "PrivacyPolicy":"Privacy Policy",
-        "Contact":"Contact",
+        "Contact":"Contact Us",
         "Find-us": "Find us",
         "Summary":"Tsedacall makes it easy and safe for you to give to local projects anywhere in the world, while providing nonprofits with the tools, training, and support they need to thrive.",
         "Quick-links" : "Quick links",
         "Follow-us" : "Follow us"
     },
     "home":{
+        "home-top":{
+            "title": "Featured Campaign"
+        },
         "home-intro":{
-            "title": "Powerfully simple online fundraising"
+            "title-first": "Powerfully simple",
+            "title-second": "online fundraising"
         },
         "how-it-work":{
             "title": "How it works",
@@ -66,7 +70,7 @@
         "SubmitButtonSignup":"SIGNUP",
         "ErrorEmail":"The value is not a valid email address",
         "FieldRequired": "This field is required !",
-        "GetStarted": "Get started NOW",
+        "GetStarted": "Get started",
         "Start": "Start NOW",
         "LearnMore": "Learn more"
     }

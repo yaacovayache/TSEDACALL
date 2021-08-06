@@ -1,21 +1,15 @@
-<!-- <section class="home-section home-cta" *ngIf="campaign">
-    <div class="container">
-      <div class="row">
-        <div class="text-center">
-          <h1>{{campaign.name}}</h1>
+  <section class="slider-section">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let media of carouselItems">
+        <div class="card carouselBox" style="width: 100%;">
+          <img [src]="pattern_url + campaign._id + '/' + media" class="text-center" alt="...">
         </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="text-center">
-          <p>{{campaign.description}}</p>
+      </ng-template>
+      <!-- <ng-template carouselSlide>
+        <div class="card carouselBox" style="width: 100%;">
+          <iframe class="embed-responsive-item" [src]="pattern_url + campaign._id + + '/' + media" allowfullscreen></iframe>
+            alt="...">
         </div>
-      </div>
-    </div>
-  </section> -->
-
-  <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="carouselItems">
-    <div *nguCarouselDef="let media;" class="item">
-      <div class="tile" [ngStyle]="{'background': 'url(' + pattern_url + campaign._id + '/' + media + ') no-repeat center center'}"></div>
-    </div>
-  </ngu-carousel>
+      </ng-template> -->
+    </owl-carousel-o>
+  </section>

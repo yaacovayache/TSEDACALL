@@ -21,6 +21,8 @@ import { MatTableModule } from '@angular/material/table'
 import { NguCarouselModule } from '@ngu/carousel';
 import {ProgressBarModule} from "angular-progress-bar";
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 
 
@@ -30,6 +32,7 @@ import { AppComponent } from './app.component';
 
 import { WINDOW_PROVIDERS, WINDOW } from 'src/app/shared/helpers/window.helper';
 import { SharedDirectivesModule } from './shared/directive/shared-directives.module';
+import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
 
 
 // Pipes 
@@ -66,6 +69,13 @@ import { IntroComponent } from './components/home/intro/intro.component';
 import { CampaignsListComponent } from './components/home/campaigns-list/campaigns-list.component';
 import { HowItWorkComponent } from './components/home/how-it-work/how-it-work.component';
 import { BannerComponent } from './components/home/banner/banner.component';
+import { TopCampaignComponent } from './components/home/top-campaign/top-campaign.component';
+import { AssociationComponent } from './components/campaign-page/association/association.component';
+import { DonateBoxComponent } from './components/campaign-page/donate-box/donate-box.component';
+import { TimerComponent } from './components/campaign-page/timer/timer.component';
+import { ShareBannerComponent } from './components/campaign-page/share-banner/share-banner.component';
+import { AboutComponent } from './components/campaign-page/about/about.component';
+import { DonateShareBannerComponent } from './components/campaign-page/donate-share-banner/donate-share-banner.component';
 
 
 
@@ -96,7 +106,14 @@ import { BannerComponent } from './components/home/banner/banner.component';
     IntroComponent,
     CampaignsListComponent,
     HowItWorkComponent,
-    BannerComponent
+    BannerComponent,
+    TopCampaignComponent,
+    AssociationComponent,
+    DonateBoxComponent,
+    TimerComponent,
+    ShareBannerComponent,
+    AboutComponent,
+    DonateShareBannerComponent
   ],
   imports: [
     CommonModule,
@@ -123,6 +140,11 @@ import { BannerComponent } from './components/home/banner/banner.component';
     ProgressBarModule,
     CarouselModule,
     ChartsModule,
+    NgxHideOnScrollModule,
+    ShareButtonsModule.withConfig({
+      debug: true
+    }),
+    ShareIconsModule,
             // ngx-translate and the loader module
             HttpClientModule,
             TranslateModule.forRoot({

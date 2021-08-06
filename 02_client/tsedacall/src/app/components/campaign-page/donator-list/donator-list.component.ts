@@ -1,7 +1,11 @@
 import { Component, OnInit,Input } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import { Observable } from 'rxjs';
+import { Campaign } from 'src/app/shared/models/campaign.model';
+import { Donation } from 'src/app/shared/models/donation.model';
 import { User } from 'src/app/shared/models/user.model';
 import { DonationsService } from 'src/app/shared/services/donations.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -10,27 +14,18 @@ import { DonationsService } from 'src/app/shared/services/donations.service';
   styleUrls: ['./donator-list.component.scss']
 })
 export class DonatorListComponent implements OnInit {
-  @Input() id:string;
+  @Input() campaign:Campaign;
   public display:boolean=false;
-  public ELEMENT_DATA: User[] = [];
+  pattern_url = environment.apiUrl + 'profile/'
+  public searchDonators;
+  public donations: Observable<Donation[]>;
+
 
   constructor(private donationsService:DonationsService) { }
 
   ngOnInit(): void {
-    this.donationsService.getDonatorsByCampaignId(this.id).subscribe((donators:any[])=>{
-      for (let data of donators){
-        this.ELEMENT_DATA.push({fname: data.fname, lname: data.lname, email: data.email, isRegisteredStr: (data.isRegistered) ? 'check' : 'close', message: data.message})
-      }
-      this.display=true
-    })
-  }
-  
-  displayedColumns: string[] = ['fname', 'lname', 'email', 'isRegistered', 'message'];
-  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.donations = this.donationsService.allDonations; // subscribe to entire collection
+    this.donationsService.getAllDonations(this.campaign._id);      // for (let data of donators){
   }
 
 }

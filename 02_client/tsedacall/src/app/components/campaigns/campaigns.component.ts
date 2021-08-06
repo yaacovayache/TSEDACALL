@@ -18,7 +18,7 @@ export class CampaignsComponent implements OnInit {
   campaigns: Observable<Campaign[]>;
   searchText;
   fund = 2570;
-  public pattern_url = environment.apiUrl + 'cover/'
+  public pattern_url = environment.apiUrl + 'cover/';
 
   constructor(private campaignService:CampaignService, private donationsService:DonationsService, private userService:UserService, private router:Router) { }
 

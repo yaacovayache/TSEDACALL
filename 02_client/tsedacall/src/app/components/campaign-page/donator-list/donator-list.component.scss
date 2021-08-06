@@ -1,9 +1,86 @@
-/* Structure */
-table {
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap');
+
+.tableBox{
+    margin-top: 20px;
+    background-color: rgb(238, 238, 238);
+    border-radius: 10px;
+    box-shadow: 2px 5px 6px 1px rgb(218, 211, 211);
+    cursor: pointer;
+}
+.centerTable{
+    margin-left: 50%;
+    transform: translate(-50%,0);
+}
+.search {
     width: 100%;
+    position: relative;
+    display: flex;
+  }
+.search input{
+    font-size: 17px;
+}
+  .searchTerm {
+    width: 100%;
+    border: 1px solid rgb(167, 72, 162);
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    box-shadow: 2px 5px 6px 1px rgb(218, 211, 211);
+    color: #000;
+    padding: 5px;
   }
   
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
+  .searchTerm:focus{
+    color: #222;
   }
+  
+  .searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid rgb(43, 16, 41);
+    background: rgb(167, 72, 162);
+    text-align: center;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+.profile{
+    font-size: 18px;
+    padding: 10px 0px;
+}
+.profile span{
+    margin-left: 10px;
+}
+.headingTet span{
+    font-size: 24px;
+    margin-left: 15px;
+    font-family: 'Otomanopee One', sans-serif;
+}
+.rightText{
+    text-align: end;
+}
+.rightText h4{
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0px;
+    color: rgb(167, 72, 162);
+    font-family: 'Baloo Chettan 2', cursive;
+}
+.rightText h6{
+    font-size: 14px;
+    color: grey;
+    font-family: 'Baloo Chettan 2', cursive;
+}
+.footerText p{
+    font-size: 16px;
+    font-family: 'Baloo Chettan 2', cursive;
+}
+.line hr{
+    margin: 0px;
+}
+
+.search .fa .fa-search{
+    background-color: whitesmoke;
+}

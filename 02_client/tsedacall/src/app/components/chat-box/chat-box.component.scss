@@ -26,14 +26,33 @@ p{
     border-radius: 50%;
     opacity: 0.8;
     transition: opacity 0.3s;
-    box-shadow: 0 5px 5px rgba(0,0,0,0.4);
+    // box-shadow: 0 5px 5px rgba(0,0,0,0.4);
     display:flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
     // animation: 1.5s linear 3s infinite jump
+    box-shadow: 0 0 0 0 rgba(52, 172, 224, 1);
+    animation: pulse-blue 2s infinite;
 }
 
+@keyframes pulse-blue {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(52, 172, 224, 0.7);
+    }
+    
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(52, 172, 224, 0);
+    }
+    
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(52, 172, 224, 0);
+    }
+  }
+    
 @keyframes jump {
     0% { transform: translate(-50%, -50%) scale(1.25, 0.75); }
     50% { transform: translate(-50%, -150%) scale(1, 1); }

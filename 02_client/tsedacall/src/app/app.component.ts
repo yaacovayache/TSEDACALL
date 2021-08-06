@@ -14,7 +14,7 @@ export class AppComponent {
   // isMobile:boolean = false
 
   constructor(private translate: TranslateService, private authService: AuthService) {
-    translate.setDefaultLang('en');
+    translate.setDefaultLang('fr');
   }
 
   ngOnInit() {

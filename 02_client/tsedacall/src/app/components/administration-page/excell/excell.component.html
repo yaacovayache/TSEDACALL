@@ -1,38 +1,16 @@
 
 <div class= "textfirst"> 
   <h1>Je veux : </h1> </div>
-<!-- <div class = "wrapper">
-    <div class = "center">
-      <div class = "button-wrap">
-        <button class = "rad-button warning flat">Ajouter <br>Un Don</button>
-      </div>
-  
-      <div class = "button-wrap">
-        <button class = "rad-button danger flat">Chercher/Modifier <br> CERFA</button>
-      </div>
-  
-      <div class = "button-wrap">
-        <button class = "rad-button good flat">Chercher <br> Un Donnateur </button>
-      </div>
-  
-      <div class = "button-wrap">
-        <button class = "rad-button wwt flat">Modifier <br> Ma Page De Campagne</button>
-      </div>
-    </div>
-  </div> -->
   <div class="container">
   <div class="btn-group" role="group" aria-label="Basic outlined example">
-    <button class = "rad-button warning flat">Ajouter <br>Un Don</button>
+    <button class = "rad-button warning flat" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter <br>Un Don</button>
     <button class = "rad-button danger flat">Chercher/Modifier <br> CERFA</button>
     <button class = "rad-button good flat">Chercher <br> Un Donnateur </button>
     <button class = "rad-button wwt flat">Modifier <br> Ma Page De Campagne</button>
   </div>
 </div>
-  <!--wrapper-->
-    
-  
 
-<!-- <div>  Exporter   </div>  -->
+
 <div class="excel">  
   <h1> Exporter  Vers   Un   Fichier   Excel : </h1>
 <br>
@@ -40,4 +18,25 @@
 <button class="btn btn2">Liste des donateurs</button>
 <button class="btn btn3">Emails des donateurs</button>
 <button class="btn btn4">Numero tel donateurs</button>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

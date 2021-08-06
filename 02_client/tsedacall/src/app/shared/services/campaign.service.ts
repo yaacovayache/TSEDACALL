@@ -36,4 +36,8 @@ export class CampaignService {
   public getCampaignMediaName(id){
     return this.http.get<any>(environment.apiUrl + `media/name/${id}`)
   }
+
+  public getCampaignVedette(){
+    return this.http.get<any>(environment.apiUrl + `campaign/find/top`)
+  }
 }

@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap');
+.card, img{
+    border-radius: 20px!important;
+}
+
+h1 {
+    font-family: 'Baloo Chettan 2', cursive;
+}
+.card:hover{
+    cursor: pointer;
+    -webkit-animation: action 0.5s infinite  alternate;
+    animation: action 0.5s infinite  alternate;
+}
+
+@-webkit-keyframes action {
+    0% { transform: translateY(10); }
+    100% { transform: translateY(-10px); }
+}
+@keyframes action {
+    0% { transform: translateY(10); }
+    100% { transform: translateY(-10px); }
+}
+
+
+
+// ==================================================================================================
+
+/* KEYFRAMES */
+
+@-webkit-keyframes animateBubble {
+    0% {
+        margin-top: 200px;
+    }
+    50% {
+        margin-top: 100px;
+    }
+    100% {
+        margin-top: -100%;
+    }
+}
+
+@-moz-keyframes animateBubble {
+    0% {
+        margin-top: 200px;
+    }
+    50% {
+        margin-top: 100px;
+    }
+    100% {
+        margin-top: -100%;
+    }
+}
+
+@keyframes animateBubble {
+    0% {
+        margin-top: 200px;
+    }
+    50% {
+        margin-top: 100px;
+    }
+    100% {
+        margin-top: -100%;
+    }
+}
+
+@-webkit-keyframes sideWays { 
+    0% { 
+        margin-left:0px;
+    }
+    100% { 
+        margin-left:50px;
+    }
+}
+
+@-moz-keyframes sideWays { 
+    0% { 
+        margin-left:0px;
+    }
+    100% { 
+        margin-left:50px;
+    }
+}
+
+@keyframes sideWays { 
+    0% { 
+        margin-left:0px;
+    }
+    100% { 
+        margin-left:50px;
+    }
+}
+
+/* ANIMATIONS */
+
+.alert-toast {
+    -webkit-animation: animateBubble 5s linear infinite, sideWays 30s ease-in-out infinite alternate;
+	-moz-animation: animateBubble 5s linear infinite, sideWays 30s ease-in-out infinite alternate;
+	animation: animateBubble 5s linear infinite, sideWays 30s ease-in-out infinite alternate;
+    // animation-name: animateBubble;
+    // animation-duration: 5s;
+    // animation-iteration-count: infinite;
+	left: 75%;
+}
+.not-alert {
+   display: none
+}
+
+/* OBJECTS */
+
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+
+.toast{
+    position: absolute!important;
+    opacity: 1!important;
+}
+
+.toast:after{
+    position: absolute!important;
+    opacity: 1!important;
+}

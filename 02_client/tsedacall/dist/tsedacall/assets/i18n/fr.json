@@ -7,20 +7,24 @@
         "Administration": "Administration",
         "LogIn": "Connexion",
         "SignUp": "Inscription",
-        "Logout": "Se déconnecter"
+        "Logout": "Sortir"
     },
     "footer":{
         "Terms":"Termes",
         "PrivacyPolicy":"Politique De Confidentialité",
-        "Contact":"Contact",
+        "Contact":"Contactez Nous",
         "Find-us": "Trouve nous",
         "Summary":"Tsedacall vous permet de donner facilement et en toute sécurité à des projets locaux partout dans le monde, tout en fournissant aux organisations à but non lucratif les outils, la formation et le soutien dont elles ont besoin pour prospérer.",
         "Quick-links" : "Liens rapides",
         "Follow-us" : "Suivez nous"
     },
     "home":{
+        "home-top":{
+            "title": "Campagne Vedette"
+        },
         "home-intro":{
-            "title": "Collecte de fonds en ligne extrêmement simple"
+            "title-first": "Collecte de fonds",
+            "title-second": " en ligne extrêmement simple"
         },
         "how-it-work":{
             "title": "Comment ça marche",
@@ -66,7 +70,7 @@
         "SubmitButtonSignup":"INSCRIPTION",
         "ErrorEmail":"La valeur n'est pas une adresse e-mail valide",
         "FieldRequired": "Ce champ est requis !",
-        "GetStarted": "Commencez MAINTENANT",
+        "GetStarted": "Commencez",
         "Start": "Commencez MAINTENANT",
         "LearnMore": "Lire plus"
     }

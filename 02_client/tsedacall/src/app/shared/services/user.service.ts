@@ -45,13 +45,4 @@ export class UserService {
   public getMessages(id){
     return this.http.get<Chat[]>(environment.apiUrl + `message/${id}`)
   }
-
-  // public getProfilePicture(id:string): Observable<SafeResourceUrl> {
-  //   return this.http.get(this.rootUrl + `profile/${id}`, { responseType: 'blob' })
-  //     .pipe(map(x => { const urlToBlob = window.URL.createObjectURL(x) // get a URL for the blob
-  //         return this.sanitizer.bypassSecurityTrustResourceUrl(urlToBlob); // tell Anuglar to trust this value
-  //       }),
-  //     );
-  // }
-
 }
