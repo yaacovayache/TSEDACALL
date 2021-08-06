@@ -9,6 +9,8 @@ const uploadImage = require('../middleware/upload')
 var fs = require('fs');
 const path = require('path');
 var multer  = require('multer')
+const {ObjectId} = require('mongodb'); // or ObjectID 
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -38,7 +40,12 @@ router.post('/campaign', auth, async(req, res) => {
 // Get exist campaign
 router.get('/campaign/:id', async(req, res) => {
     try {
-        let campaign = await Campaign.findById(req.params.id)
+        campaignId = req.params.id;
+        console.log(campaignId)
+        let campaign = await Campaign.findById(campaignId)
+        let totalSum = await Payment.aggregate([{$match:{"campaignId": ObjectId(campaignId)}},{ $group: { _id: false, sum: {$sum: "$sum"}}}])
+        campaign.totalSum = totalSum[0].sum
+        console.log(totalSum)
         res.send(campaign)
     } catch (err) {
         console.log(err)
@@ -61,7 +68,7 @@ router.get('/campaigns/founder/:id', async(req, res) => {
 // Get all campaigns
 router.get('/campaign', async(req, res) => {
     try {
-        let campaigns = await Campaign.find()
+        let campaigns = await Campaign.find({actif:true})
         for (let campaign of campaigns){
             let totalSum = await Payment.aggregate([{$match:{"campaignId": campaign._id}},{ $group: { _id: false, sum: {$sum: "$sum"}}}])
             campaign.totalSum = totalSum[0].sum
@@ -90,7 +97,7 @@ router.put('/campaign/:id', auth, async(req, res) => {
 router.get('/cover/:id', async(req, res) => {
     const campaign = await Campaign.findById({_id: req.params.id}, {_id:false, cover:true})
     const imageName = campaign.cover.toString()
-    const imagePath = path.join(__dirname, "../campaign", imageName);
+    const imagePath = path.join(__dirname, `../campaign/${req.params.id}/cover`, imageName);
     fs.exists(imagePath, exists => {
         if (exists) res.sendFile(imagePath);
         else res.status(400).send('Error: Image does not exists');
@@ -108,12 +115,37 @@ router.get('/media/name/:id', async(req, res) => {
 router.get('/media/:id/:name', async(req, res) => {
     const imageName = req.params.name
     const id = req.params.id
-    const imagePath = path.join(__dirname, `../campaign/${id}`, imageName);
+    const imagePath = path.join(__dirname, `../campaign/${id}/media`, imageName);
     fs.exists(imagePath, exists => {
         if (exists) res.sendFile(imagePath);
         else res.status(400).send('Error: Image does not exists');
     });
 })
 
+function compare( a, b ) {
+    if ( a.totalSum < b.totalSum ){
+      return 1;
+    }
+    if ( a.totalSum > b.totalSum ){
+      return -1;
+    }
+    return 0;
+  }
+
+// Get vedette campaign
+router.get('/campaign/find/top', async(req, res) => {
+    try {
+        let campaigns = await Campaign.find({actif:true});
+        for (let campaign of campaigns){
+            let totalSum = await Payment.aggregate([{$match:{"campaignId": campaign._id}},{ $group: { _id: false, sum: {$sum: "$sum"}}}])
+            campaign.totalSum = totalSum[0].sum
+        }
+        campaigns = campaigns.sort(compare);
+        res.send(campaigns[0])
+    } catch (err) {
+        console.log(err)
+        res.status(500).send()
+    }
+})
 
 module.exports = router

@@ -99,4 +99,34 @@ router.get('/donators/campaign/:id', async(req, res) => {
   }
 })
 
+// Get donations by campaign (limit 1)
+router.get('/dons/campaign/:id', async(req, res) => {
+  try {
+      let count = await Payment.find({campaignId:req.params.id}).countDocuments();
+      var random = randomNumber((count> 10) ? count-10: 1, count)
+      let donations = await Payment.find({campaignId:req.params.id}, {sum:true, userDetails:true}).limit(1).skip(random);
+      res.send(donations)
+  } catch (err) {
+      console.log(err)
+      res.status(500).send()
+  }
+})
+
+// Get donation by campaingId
+router.get('/all/donations/campaign/:id', async(req, res) => {
+  try {
+      let campaignId = ObjectId(req.params.id)
+      let donations = await Payment.find({campaignId:campaignId})
+      console.log(donations)
+      res.send(donations)
+  } catch (err) {
+      console.log(err)
+      res.status(500).send()
+  }
+})
+
+
+function randomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
 module.exports = router

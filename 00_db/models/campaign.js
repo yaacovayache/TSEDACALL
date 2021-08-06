@@ -55,6 +55,10 @@ const campaignSchema = new mongoose.Schema({
     totalSum: {
       type: Number
     },
+    actif: {
+      type:Boolean,
+      default:true
+    },
     createdAt: {
       type: String,
       default: new Date()

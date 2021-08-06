@@ -51,6 +51,9 @@ const donationSchema = new mongoose.Schema({
     asmachta: {
         type: String,
     },
+    promise: {
+        type: Boolean,
+    },
     cardBrand: {
         type: String,
     },
