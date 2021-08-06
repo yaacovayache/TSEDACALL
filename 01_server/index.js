@@ -43,7 +43,9 @@ app.use(function(req, res, next) {
 });
 
   
-app.use(express.static(path.resolve(__dirname,"../html/")));
+// app.use(express.static(path.resolve(__dirname,"../html/")));
+app.use(express.static(path.resolve(__dirname,"../02_client/tsedacall/dist/tsedacall/")));
+
 
 const port = process.env.PORT || 3000
 
@@ -55,12 +57,14 @@ app.use(paymentRouter)
 app.use(cerfaRouter)
 
 app.get('/', (req,res) => {
-    res.sendFile(path.resolve(__dirname,"../html/"))
+    // res.sendFile(path.resolve(__dirname,"../html/"))
+    res.sendFile(path.resolve(__dirname,"../02_client/tsedacall/dist/tsedacall/"))
 });
 
 // rewrite virtual urls to angular app to enable refreshing of internal pages
 app.get('*', function (req, res, next) {
-    res.sendFile(path.resolve(__dirname,"../html/index.html"));
+    // res.sendFile(path.resolve(__dirname,"../html/index.html"));
+    res.sendFile(path.resolve(__dirname,"../02_client/tsedacall/dist/tsedacall/index.html"));
 });
 
 // Listening for incoming connections
