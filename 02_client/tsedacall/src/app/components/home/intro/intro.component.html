@@ -1,11 +1,18 @@
 <section class="banner-section">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 top-part">
           <div class="centered">
-            <h1 class="h1_1st">{{'home.home-intro.title-first' | translate}}</h1> 
-            <h1 class="h1_2nd">{{'home.home-intro.title-second' | translate}}</h1>
-            <button class="btn btn-outline-danger">{{'form.GetStarted' | translate}}</button>
+            <h1 class="h1_1st text-center">{{'home.home-intro.title-first' | translate}}</h1> 
+            <h1 class="h1_2nd text-center">{{'home.home-intro.title-second' | translate}}</h1>
+            <div class="row">
+              <div class="col">
+                <button class="btn btn-outline-danger" (click)="navTo('/auth/login')">{{'form.SubmitButtonLogin' | translate}}</button>
+              </div>
+              <div class="col">
+                <button class="btn btn-outline-danger" (click)="navTo('/auth/signup')">{{'form.SubmitButtonSignup' | translate}}</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-6 banner-img">

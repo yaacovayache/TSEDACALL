@@ -12,6 +12,7 @@ function closeNav() {
 
 function set(name, path){
   document.getElementById('navbarDropdownMenuLink').innerHTML = `<img src="${path}" width="20px" height="20px" alt=""> ${name} `
+  document.getElementById('navbarDropdownMenuLinkMobile').innerHTML = `<img src="${path}" width="20px" height="20px" alt=""> ${name} `
 }
 
 

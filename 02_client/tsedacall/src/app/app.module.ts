@@ -62,8 +62,6 @@ import { PresentationComponent } from './components/campaign-page/presentation/p
 import { GraphicPerMonthComponent } from './components/campaign-page/graphic-per-month/graphic-per-month.component';
 import { DonatorListComponent } from './components/campaign-page/donator-list/donator-list.component';
 import { AdministrationPageComponent } from './components/administration-page/administration-page.component';
-import { ListDonatorsComponent } from './components/administration-page/list-donators/list-donators.component';
-import { ExcellComponent } from './components/administration-page/excell/excell.component';
 import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
 import { IntroComponent } from './components/home/intro/intro.component';
 import { CampaignsListComponent } from './components/home/campaigns-list/campaigns-list.component';
@@ -76,6 +74,8 @@ import { TimerComponent } from './components/campaign-page/timer/timer.component
 import { ShareBannerComponent } from './components/campaign-page/share-banner/share-banner.component';
 import { AboutComponent } from './components/campaign-page/about/about.component';
 import { DonateShareBannerComponent } from './components/campaign-page/donate-share-banner/donate-share-banner.component';
+import { DashboardComponent } from './components/administration-page/dashboard/dashboard.component';
+import { DonatorsTableComponent } from './components/administration-page/donators-table/donators-table.component';
 
 
 
@@ -100,8 +100,6 @@ import { DonateShareBannerComponent } from './components/campaign-page/donate-sh
     GraphicPerMonthComponent,
     DonatorListComponent,
     AdministrationPageComponent,
-    ListDonatorsComponent,
-    ExcellComponent,
     NavbarMobileComponent,
     IntroComponent,
     CampaignsListComponent,
@@ -113,7 +111,9 @@ import { DonateShareBannerComponent } from './components/campaign-page/donate-sh
     TimerComponent,
     ShareBannerComponent,
     AboutComponent,
-    DonateShareBannerComponent
+    DonateShareBannerComponent,
+    DashboardComponent,
+    DonatorsTableComponent
   ],
   imports: [
     CommonModule,

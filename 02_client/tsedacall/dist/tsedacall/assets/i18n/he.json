@@ -51,9 +51,36 @@
             "associationCreation":"מחפש עמותה"
         }
     },
+    "administration":{
+        "dashboard":{
+            "IWant": "אני רוצה",
+            "Button1": "הוספה תרומה",
+            "Button2": "חפש / שינוי קבלה",
+            "Button3": "חפש תורם",
+            "Button4": "שינוי קמפיין",
+            "Button5": "קמפיין חדש"
+        },
+        "excel":{
+            "Title": "ייצא אקסל",
+            "Button1": "רשימת התרומות",
+            "Button2": "רשימת התורמים"
+        },
+        "last-table":{
+            "last": "התרומות אחרונות",
+            "seeAll": "ראה את כל התרומות",
+            "col1": "שם פרטי",
+            "col2": "שם משפחה",
+            "col3": "עולה",
+            "col4": "קמפיין",
+            "col5": "סוג",
+            "col6": "תאריך",
+            "col7": "הורד את Cerfa",
+            "col8": "לראות"
+        }
+    },
     "form":{
         "TitleLogin":"התחבר לחשבונך",
-        "TitleSignup":"הירשם עכשיו",
+        "TitleSignUp":"הירשם עכשיו",
         "EmailPlaceholder":"כתובת מייל",
         "Password":"סיסמא",
         "Role":"תורם או עמותה ?*",

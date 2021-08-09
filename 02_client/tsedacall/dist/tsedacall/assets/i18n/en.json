@@ -51,6 +51,33 @@
             "associationCreation":"Looking for an association"
         }
     },
+    "administration":{
+        "dashboard":{
+            "IWant": "I want",
+            "Button1": "Add Donation",
+            "Button2": "Looking for / modification of cerfa",
+            "Button3": "Looking for donator",
+            "Button4": "Campaign modification",
+            "Button5": "New campaign"
+        },
+        "excel":{
+            "Title": "Excel Export",
+            "Button1": "Donations List",
+            "Button2": "Donators List"
+        },
+        "last-table":{
+            "last": "Last Donations",
+            "seeAll": "To see all Donations",
+            "col1": "First Name",
+            "col2": "Last Name",
+            "col3": "Amount",
+            "col4": "Campaign",
+            "col5": "Type",
+            "col6": "Date",
+            "col7": "Download Cerfa",
+            "col8": "To see"
+        }
+    },
     "form":{
         "TitleLogin":"Login to your account",
         "TitleSignUp":"Join now",

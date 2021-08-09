@@ -39,7 +39,7 @@ h1,h2,h3,h4,h5,h6,p,span{
    background-repeat: no-repeat;
    background-size: cover;
    position: relative;
-   height: 80vh;
+   height: 70vh;
    width: 100%;
    padding: 20px 0px;
 }
@@ -275,6 +275,10 @@ h1,h2,h3,h4,h5,h6,p,span{
        text-align: center;
        margin-top: 20px;
      }
+
+     .top-part{
+         height: 35vh;
+      }
    }
  
    .footer-dark .item.social>a {
@@ -482,3 +486,7 @@ h1,h2,h3,h4,h5,h6,p,span{
 .owl-next {
   right: -2rem;
 } */
+
+.col{
+  margin-bottom: 5%!important;
+}

@@ -1,17 +1,10 @@
-<section class="navbar-section">
+<!-- <section class="navbar-section">
 
   <div class="container">
     <div class="row">
 
       <nav class="navbar fixed-top navbar-expand-md navbar-light">
-        <!-- <div class="container-fluid"> -->
           <a class="navbar-brand" href="#" style="color: #222;">LOGO</a>
-          <!-- <button id="showOpen" onclick="openNav()" class="navbar-toggler" type="button" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <button id="closeNav" href="javascript:void(0)" class="closebtn" onclick="closeNav()" class="navbar-toggler" type="button" aria-label="Toggle navigation">
-            <span class=""> X </span>
-          </button> -->
 
           <div class="sidenav centerNavbar" id="mySidenav">
             <ul class="navbar-nav mb-2 mb-lg-0" style="margin-left: auto;">
@@ -60,7 +53,6 @@
             </div>
 
 
-          <!-- </div> -->
           <div class="hamburger" onclick="mobileMenu()">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -73,4 +65,73 @@
 
 
   
+  </section> -->
+
+
+  <section class="navbar-section">
+    <header class="header">
+      <nav class="navbar fixed-top navbar-expand-md navbar-light">
+          <a href="#" class="nav-logo">LOGO</a>
+          <ul class="navbar-nav mb-2 mb-lg-0 nav-menu" style="margin: auto;">
+            <li class="nav-item cursor-pointer" routerLinkActive="menu-item-active">
+              <a class="nav-link active" aria-current="page" [routerLink]="'/home'"> <i class="fa fa-home"></i>{{'navbar.Home' | translate}}</a>
+            </li>
+            <li class="nav-item cursor-pointer" routerLinkActive="menu-item-active">
+              <a class="nav-link" scrollTo="campaign-section"> <i class="fa fa-briefcase"></i> {{'navbar.Campaigns' | translate}}</a>
+            </li>
+            <li class="nav-item cursor-pointer" routerLinkActive="menu-item-active">
+              <a class="nav-link" scrollTo="slider-section"> <i class="fa fa-globe"></i> {{'navbar.HowItWork' | translate}}</a>
+            </li>
+            <li class="nav-item cursor-pointer" routerLinkActive="menu-item-active">
+              <a class="nav-link" scrollTo="team-section"><i class="fa fa-user"></i> {{'navbar.Search' | translate}}</a>
+            </li>
+            
+            <li class="nav-item dropdown" id="lang_id">
+              
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/image/france.png" alt=""> Français
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li (click)="useLanguage('fr')"><a class="dropdown-item" onclick="set('Français', 'assets/image/france.png')">  <img src="assets/image/france.png" alt="">Français</a></li>
+                <li (click)="useLanguage('en')"><a class="dropdown-item" onclick="set('ENGLISH', 'assets/image/united-kingdom.png')"> <img src="assets/image/united-kingdom.png" alt="">ENGLISH</a></li> 
+                <li (click)="useLanguage('he')"><a class="dropdown-item" onclick="set('עברית', 'assets/image/israel.png')"><img src="assets/image/israel.png" alt="">עברית</a></li> 
+              </ul>
+            </li>
+
+              <li class="nav-item" *ngIf="!isAuthenticated" routerLinkActive="menu-item-active">
+                <a class="nav-link" routerLink="/auth/login"><i class="fa fa-sign-in" aria-hidden="true"></i>{{'navbar.LogIn' | translate}}</a>
+              </li>
+              <li class="nav-item" *ngIf="!isAuthenticated" routerLinkActive="menu-item-active">
+                <a class="nav-link" routerLink="/auth/signup"> <i class="fa fa-sign-out" aria-hidden="true"></i>{{'navbar.SignUp' | translate}}</a>
+              </li>
+
+              <li class="nav-item cursor-pointer" *ngIf="isAuthenticated" routerLinkActive="menu-item-active" (click)="onNavigationProfile()">
+                <a><i class="fa fa-id-card fa-2x"></i></a>
+              </li>
+
+              <li class="nav-item  cursor-pointer" *ngIf="isAuthenticated" routerLinkActive="menu-item-active" (click)="onLogout()">
+                <a class="nav-link"> <i class="fa fa-sign-out" aria-hidden="true"></i>{{'navbar.Logout' | translate}}</a>
+              </li>
+          </ul>
+          <div class="hamburgerMobile">
+            <li class="nav-item dropdown" id="lang_id">
+              
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLinkMobile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/image/france.png" alt=""> Français
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li (click)="useLanguage('fr')"><a class="dropdown-item" onclick="set('Français', 'assets/image/france.png')">  <img src="assets/image/france.png" alt="">Français</a></li>
+                <li (click)="useLanguage('en')"><a class="dropdown-item" onclick="set('ENGLISH', 'assets/image/united-kingdom.png')"> <img src="assets/image/united-kingdom.png" alt="">ENGLISH</a></li> 
+                <li (click)="useLanguage('he')"><a class="dropdown-item" onclick="set('עברית', 'assets/image/israel.png')"><img src="assets/image/israel.png" alt="">עברית</a></li> 
+              </ul>
+            </li>
+          </div> 
+          <div class="hamburger" onclick="mobileMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
   </section>
+  

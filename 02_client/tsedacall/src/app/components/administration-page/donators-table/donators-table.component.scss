@@ -1,0 +1,84 @@
+
+.data-section {
+    margin: 80px 0px;
+  }
+  .table button {
+    border-radius: 5px;
+  }
+  
+  .btn {
+    background-color: whitesmoke;
+    color: #f3558e;
+    text-align: center;
+    padding: 15px 40px;
+    border-radius: 25px;
+    border: 1px solid #f3558e;
+    box-shadow: 0px 1px 3px 2px #0000005e;
+  }
+  
+  /* .btn:hover {
+    color: whitesmoke;
+    background-color: #252425;
+  } */
+  
+  .t-head {
+    background-color: #fff;
+    color: #f3558e;
+  }
+  
+  .b-even {
+    background-color: #fff;
+  }
+  
+  .last {
+    font-size: 22px;
+    font-weight: 600;
+    font-family: "Baloo Chettan 2", cursive;
+  }
+  
+  .seeAll {
+    text-align: right;
+  }
+  .seeAll button:hover{
+    background-color: #f3558e;
+    color: #fff;
+  }
+  
+  .btn-down {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  .success {
+    color: whitesmoke;
+    background-color: #17b978;
+    border: none;
+  }
+  
+  .view {
+    color: whitesmoke;
+    background-color: #43dde6;
+    border: none;
+  }
+  
+  .danger {
+    color: whitesmoke;
+    background-color: #f3558e;
+    border: none;
+  }
+  
+  .stdd {
+    color: whitesmoke;
+    background-color: #a56cc1;
+    border: none;
+  }
+  
+  .yellow {
+    color: whitesmoke;
+    background-color: #2d767f;
+    border: none;
+  }
+  .btn-danger {
+    padding: 10px;
+  }
+  

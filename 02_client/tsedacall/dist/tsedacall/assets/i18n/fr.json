@@ -51,9 +51,36 @@
             "associationCreation":"A la recherche d'une association"
         }
     },
+    "administration":{
+        "dashboard":{
+            "IWant": "Je veux",
+            "Button1": "Ajout De Don",
+            "Button2": "Chercher / Modifier un cerfa",
+            "Button3": "Chercher un donateur",
+            "Button4": "Modification de campagne",
+            "Button5": "Nouvelle campagne"
+        },
+        "excel":{
+            "Title": "Export Excel",
+            "Button1": "List de dons",
+            "Button2": "List des donateurs"
+        },
+        "last-table":{
+            "last": "Derniers Dons",
+            "seeAll": "Voir tous les dons",
+            "col1": "Prénom",
+            "col2": "Nom",
+            "col3": "Montant",
+            "col4": "Campagne",
+            "col5": "Type",
+            "col6": "Date",
+            "col7": "Télécharger le Cerfa",
+            "col8": "Voir"
+        }
+    },
     "form":{
         "TitleLogin":"Connectez-vous à votre compte",
-        "TitleSignup":"Inscrivez vous maintenant",
+        "TitleSignUp":"Inscrivez vous maintenant",
         "EmailPlaceholder":"Adresse e-mail",
         "Password":"Mot de passe",
         "Role":"Donateur ou Association ?*",
