@@ -794,7 +794,7 @@ h1,h2,h3,h4,h5,h6,p,span{
   background-color: #fff;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  // padding-top: 60px;
   margin: auto;
 }
 }
@@ -851,6 +851,7 @@ a{
   transition: all 0.3s ease-in-out;
   background-color: #101010;
 }
+
 .nav-menu {
   display: flex;
   justify-content: space-between;
@@ -878,13 +879,14 @@ a{
 }
 @media only screen and (max-width: 1072px) {
   .nav-menu {
+      justify-content:left;
       position: fixed;
-      height: 100vh;
+      height: 97vh;
       left: -100%;
       top: 5rem;
       flex-direction: column;
       background-color: #fff;
-      width: 90%;
+      width: 80%;
       text-align: left;
       transition: 0.3s;
       box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
@@ -912,9 +914,9 @@ a{
   list-style-type: none;
 }
 .hamburgerMobile .nav-link{
-  font-size: 15px;
-font-weight: 400;
-color: #475569;
+  font-size: 13px;
+  font-weight: 400;
+  color: #475569;
 /* margin-right: auto; */
 }
   .hamburger.active .bar:nth-child(2) {

@@ -292,6 +292,10 @@ h1,h2,h3,h4,h5,h6,p,span{
     .mobileCard{
       display: block;
     }
+    .wrap-button{
+      margin: auto;
+      justify-content: center;
+    }
    }
    
  
@@ -374,7 +378,6 @@ h1,h2,h3,h4,h5,h6,p,span{
   border-radius: 5px;
   color: #fc5c9c;
   border-color: #fc5c9c;
-  margin-left: 30%;
   font-size: 24px;
   font-weight: 500;
 }
