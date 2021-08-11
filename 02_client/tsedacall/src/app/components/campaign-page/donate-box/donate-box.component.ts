@@ -19,24 +19,35 @@ export class DonateBoxComponent implements OnInit {
   constructor(private donationsService:DonationsService, private campaignService:CampaignService) { }
 
   ngOnInit(): void {
-    this.donationsService.getStatsByMonth(this.campaign._id).subscribe((stats:any[])=>{
-      stats = stats.sort(this.compare) // Sort array by month 
-      for (let index in stats){
-        this.total += stats[index].sum
-        this.lineChartData[0].data.push(stats[index].sum)
-        this.months[stats[index]._id - 1] in this.lineChartLabels ? console.log("This item already exists") : this.lineChartLabels.push(this.months[stats[index]._id - 1]);
+    this.donationsService.getStatsByDay(this.campaign._id).subscribe((stats:any[]) => {
+      stats = stats.sort(this.compare)
+      for (let value of stats){
+        this.lineChartData[0].data.push(value.sum)
+        this.lineChartLabels.push(value.date)
       }
     })
   }
 
   lineChartData:ChartDataSets[] = [
-    { data: [], label: 'Donations Per Month' },
+    { data: [], label: 'Donations Per Day' },
   ];
 
   lineChartLabels: Label[] = [];
 
   lineChartOptions = {
     responsive: true,
+    scales: {
+      xAxes: [{
+        type: 'time',
+        time: {
+          unit: 'day',
+          displayFormats: {
+            day: 'D MMM YYYY',
+          },
+        }
+      }]
+    }
+    
   };
 
   lineChartColors: Color[] = [
@@ -51,10 +62,10 @@ export class DonateBoxComponent implements OnInit {
   public lineChartType = "line" as const;
 
   compare( a, b ) {
-    if ( a._id < b._id ){
+    if ( a.date < b.date ){
       return -1;
     }
-    if ( a._id > b._id ){
+    if ( a.date > b.date ){
       return 1;
     }
     return 0;

@@ -53,6 +53,42 @@ router.get('/stats/donations/month/:id', async(req, res) => {
     }
 })
 
+
+// Stats per day
+router.get('/stats/donations/day/:id', async(req, res) => {
+  try {
+      let campaignId = ObjectId(req.params.id)
+      let payment = await Payment.aggregate(
+          [
+            {
+                $match:{
+                    "campaignId": campaignId
+                }
+            },
+            {
+              $group: {
+                  _id: {$dayOfYear: "$createdAt"},
+                  date:{$min: "$createdAt"},
+                  sum: {$sum: "$sum"}, 
+                  counter: {$sum: 1} 
+              }
+            }
+          ],
+      
+          function(err, result) {
+            if (err) {
+              res.send(err);
+            } else {
+              res.json(result);
+            }
+          }
+        );
+  } catch (err) {
+      console.log(err)
+      res.status(500).send()
+  }
+})
+
 // Current sum by campaign
 router.get('/donations/campaign/:id', async(req, res) => {
   try {
@@ -117,7 +153,6 @@ router.get('/all/donations/campaign/:id', async(req, res) => {
   try {
       let campaignId = ObjectId(req.params.id)
       let donations = await Payment.find({campaignId:campaignId})
-      console.log(donations)
       res.send(donations)
   } catch (err) {
       console.log(err)

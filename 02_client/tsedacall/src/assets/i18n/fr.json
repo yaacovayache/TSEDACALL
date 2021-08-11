@@ -7,7 +7,7 @@
         "Administration": "Administration",
         "LogIn": "Connexion",
         "SignUp": "Inscription",
-        "Logout": "Sortir"
+        "Logout": "Déconnexion"
     },
     "footer":{
         "Terms":"Termes",

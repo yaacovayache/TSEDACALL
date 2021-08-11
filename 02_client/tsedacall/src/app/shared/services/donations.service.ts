@@ -23,6 +23,10 @@ export class DonationsService {
     return this.http.get(environment.apiUrl + `stats/donations/month/${id}`)
   }
 
+  public getStatsByDay(id){
+    return this.http.get(environment.apiUrl + `stats/donations/day/${id}`)
+  }
+
   public getDonatorsByCampaignId(id){
     return this.http.get(environment.apiUrl + `donators/campaign/${id}`)
   }

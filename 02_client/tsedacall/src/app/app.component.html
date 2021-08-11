@@ -1,7 +1,8 @@
 <div>
 <app-navbar class="header-desktop"></app-navbar>
-<app-navbar-mobile class="header-mobile"></app-navbar-mobile>
+<!-- <app-navbar-mobile class="header-mobile"></app-navbar-mobile> -->
 <div>
+    <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center"></app-loading-spinner>
     <router-outlet></router-outlet>
 </div>
 <app-chat-box></app-chat-box>

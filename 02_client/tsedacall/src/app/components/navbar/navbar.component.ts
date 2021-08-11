@@ -34,7 +34,6 @@ export class NavbarComponent implements OnInit {
       // fix bug: unwanted 500ms delay when refreshing page, keep only for login
       setTimeout(() => {
         this.isAuthenticated = user ? true : false;
-        console.log(this.isAuthenticated)
         if (this.isAuthenticated){
           this.userName = user.fname;
           if (user.role == 2) this.isAssociation=true;

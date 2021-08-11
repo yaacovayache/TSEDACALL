@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './shared/services/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { Event, Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel } from '@angular/router';
 
 
 @Component({
@@ -11,9 +12,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'tsedacall';
-  // isMobile:boolean = false
+  isLoading: boolean = false;
 
-  constructor(private translate: TranslateService, private authService: AuthService) {
+  constructor(private translate: TranslateService, private authService: AuthService, private router: Router) {
+    this.router.events.subscribe((routerEvent: Event) => {
+      // On NavigationStart, set showLoadingIndicator to ture
+      if (routerEvent instanceof NavigationStart) {
+        this.isLoading = true;
+      }
+
+      // On NavigationEnd or NavigationError or NavigationCancel
+      // set showLoadingIndicator to false
+      if (routerEvent instanceof NavigationEnd || routerEvent instanceof NavigationError || routerEvent instanceof NavigationCancel) {
+        this.isLoading = false;
+      }
+    })
     translate.setDefaultLang('fr');
   }
 
