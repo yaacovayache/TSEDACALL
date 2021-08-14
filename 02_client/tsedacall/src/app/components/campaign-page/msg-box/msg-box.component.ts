@@ -27,9 +27,9 @@ export class MsgBoxComponent implements OnInit, OnDestroy {
         this.fadeClass = 'fadeout'
         this.intervalTime = 10000
       } else {
+        this.fadeClass = 'fadein'
         this.donations = this.donationsService.donations; // subscribe to entire collection
         this.donationsService.getDonationsByCampaignId(this.campaign._id);
-        this.fadeClass = 'fadein'
         this.intervalTime = 5000
       }
       this.ref.detectChanges();
