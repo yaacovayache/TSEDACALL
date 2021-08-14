@@ -62,6 +62,10 @@ export class AuthService {
   getLocalStorageToken(){
     return this.authLocalStorageToken;
   }
+
+  getLocalStorageUser(){
+    return JSON.parse(localStorage.getItem(this.authLocalStorageToken));
+  }
   
   autoLogin() {
     const userData: User = JSON.parse(localStorage.getItem(this.authLocalStorageToken));

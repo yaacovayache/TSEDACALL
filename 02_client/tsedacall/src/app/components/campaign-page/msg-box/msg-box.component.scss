@@ -1,0 +1,178 @@
+
+
+    // animation-name: example;
+    // animation-duration: 10s;  
+    // animation-fill-mode: backwards;
+    // animation-iteration-count: infinite;
+    // animation-delay: 0s;
+  
+    .fadein{
+        z-index: 99999;
+        opacity: 1;
+        animation-name: fadeIn;
+        // animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 5s;
+        // animation-delay: 2s;
+    }
+    
+
+    // 0% {
+    //     transform: scale(0.9);
+    //     box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+    //   }
+    //   5% {
+    //     transform: scale(0.9);
+    //     box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+    //   }
+    //   10% {
+    //     transform: scale(1);
+    //     box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+    //   }
+    //   15% {
+    //     transform: scale(0.9);
+    //     box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+    //   }
+    
+    //   50% {
+    //     transform: scale(1);
+    //     box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+    //   }
+    
+    //   100% {
+    //     transform: scale(1);
+    //     box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+    //   }
+@keyframes fadeIn {
+	0% {
+        position: fixed;
+        bottom: 30%;
+		opacity: 0;
+        // transform: scale(0.9);
+        // box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+	}
+    15% {
+        position: fixed;
+        bottom: 30%;
+		opacity: 0.5;
+	}
+    30% {
+        position: fixed;
+        bottom: 30%;
+		opacity: 1;
+        // transform: scale(0.9);
+        box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+	}
+    80%{
+        // transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+        position: fixed;
+        bottom: 30%;
+		opacity: 1;
+    }
+	100% {
+        position: fixed;
+        bottom: 30%;
+		opacity: 1;
+        // transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+	}
+}
+
+    .fadeout{
+        z-index: 99999;
+        opacity: 1;
+        animation-name: fadeOut;
+        // animation-iteration-count: 1;
+        animation-timing-function: ease-out;
+        animation-duration: 2s;
+        // animation-delay: 2s;
+    }
+
+    @keyframes fadeOut {
+        0% {
+            position: fixed;
+            bottom: 30%;
+            opacity: 1;
+        }
+        100% {
+            position: fixed;
+            bottom: 30%;
+            opacity: 0;
+        }
+    }
+
+   .msg {
+    position: fixed;
+    bottom: 30%;
+    padding: 10px;
+    z-index: 99999;
+    background-color: #f3558e;
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 1px 5px 1px #f3558fcc;
+    // position: relative;
+    // animation-name: fadeinout;
+    // animation-duration: 4s;  
+    // animation-fill-mode: backwards;
+    // animation-iteration-count: infinite;
+    // animation-delay: 2s;
+    right: 10px;
+  }
+  
+  @keyframes fadeinout {
+    0%,100% {
+        position: fixed;
+        bottom: 30%;
+        opacity: 0;
+    }
+    50% {
+        position: fixed;
+        bottom: 30%;
+        opacity: 1;
+    }
+  }
+
+  @keyframes example {
+    0% {
+      position: fixed;
+      bottom: -5%; 
+      opacity: 0;
+  
+    }
+    10% {
+      position: fixed;
+      bottom: -5%; 
+      opacity: 0;
+  
+    }
+    40% {
+      position: fixed;
+      bottom: 30%; 
+      opacity: 0;
+  
+    }
+    45% {
+      position: fixed;
+      bottom: 30%; 
+      opacity: 0;
+  
+    }
+    50% {
+      position: fixed;
+      bottom: 30%; 
+      opacity: 1;
+  
+    }
+    //  30% {
+    //   position: fixed;
+    //   bottom: 10%; 
+    //   opacity: 1;
+  
+    // }
+
+    100% {
+    bottom: 30%;
+    position: fixed;
+    opacity: 1;
+    }
+  }

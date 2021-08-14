@@ -1,6 +1,6 @@
 
 <!-- table data start -->
-<section class="data-section">
+<section class="data-section" *ngIf="displayedDonations">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -27,35 +27,14 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr class="b-even">
-                            <td scope="row">First Name</td>
-                            <td scope="row">Last Name</td>
-                            <td scope="row">30000</td>
-                            <td scope="row">Campaign 1</td>
-                            <td scope="row">Monthly</td>
-                            <td scope="row">01-01-2021</td>
-                            <td scope="row"><button class="success"> <i class="fa fa-download"></i> </button></td>
-                            <td scope="row"><button class="view"><i class="fa fa-eye"></i> </button></td>
-                
-                        </tr>
-                        <tr>
-                            <td scope="row">First Name</td>
-                            <td scope="row">Last Name</td>
-                            <td scope="row">30000</td>
-                            <td scope="row">Campaign 1</td>
-                            <td scope="row">Monthly</td>
-                            <td scope="row">01-01-2021</td>
-                            <td scope="row"><button class=" success"> <i class="fa fa-download"></i> </button></td>
-                            <td scope="row"><button class="view"><i class="fa fa-eye"></i> </button></td>
-                        </tr>
-                        <tr class="b-even">
-                            <td scope="row">First Name</td>
-                            <td scope="row">Last Name</td>
-                            <td scope="row">30000</td>
-                            <td scope="row">Campaign 1</td>
-                            <td scope="row">Monthly</td>
-                            <td scope="row">01-01-2021</td>
-                            <td scope="row"><button class="success"> <i class="fa fa-download"></i> </button></td>
+                        <tr class="b-even" *ngFor="let don of displayedDonations">
+                            <td scope="row">{{don.fname}}</td>
+                            <td scope="row">{{don.lname}}</td>
+                            <td scope="row">{{don.email}}</td>
+                            <td scope="row">{{don.sum}}</td>
+                            <td scope="row">{{don.campaign_name}}</td>
+                            <td scope="row">{{don.date | date}}</td>
+                            <td scope="row"><button class="success" (click)="CerfaDownload(don)"> <i class="fa fa-download"></i> </button></td>
                             <td scope="row"><button class="view"><i class="fa fa-eye"></i> </button></td>
                         </tr>
                     </tbody>

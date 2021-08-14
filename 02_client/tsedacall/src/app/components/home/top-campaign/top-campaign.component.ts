@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './top-campaign.component.html',
   styleUrls: ['./top-campaign.component.scss']
 })
-export class TopCampaignComponent implements OnInit {
+export class TopCampaignComponent implements OnInit, OnDestroy {
 
   constructor(private campaignService:CampaignService, private donationsService:DonationsService, private ref: ChangeDetectorRef, private router:Router) { }
   public vedette:Campaign;
@@ -22,6 +22,7 @@ export class TopCampaignComponent implements OnInit {
   public time:number=5000;
   public hours:number=1;
   public pattern_url = environment.apiUrl + 'cover/'
+  public interval;
 
   ngOnInit(): void {
     this.campaignService.getCampaignVedette().subscribe((res)=>{
@@ -30,7 +31,7 @@ export class TopCampaignComponent implements OnInit {
       this.donationsService.getDonationsByCampaignId(this.vedette._id);
       // RECURSION OF SET INTERVALL FOR DONATION AND NOTIFICATIONS
       var refreshClassAndDonations = () =>{
-        clearInterval(interval);
+        clearInterval(this.interval);
         this.class = !this.class;
         if (this.class){
           this.time = 5000
@@ -41,9 +42,9 @@ export class TopCampaignComponent implements OnInit {
           this.donationsService.getDonationsByCampaignId(this.vedette._id);
         }
         this.ref.detectChanges();
-        interval = setInterval(refreshClassAndDonations, this.time);
+        this.interval = setInterval(refreshClassAndDonations, this.time);
       }
-      var interval = setInterval(refreshClassAndDonations, this.time);
+      this.interval = setInterval(refreshClassAndDonations, this.time);
       
     })
   }
@@ -64,5 +65,11 @@ export class TopCampaignComponent implements OnInit {
     this.router.navigate([`/campaign/home/${id}/${name}`]);
   }
 
+
+  ngOnDestroy() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    } 
+  }
 
 }

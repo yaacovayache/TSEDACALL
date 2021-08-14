@@ -70,9 +70,9 @@
             "seeAll": "Voir tous les dons",
             "col1": "Prénom",
             "col2": "Nom",
-            "col3": "Montant",
-            "col4": "Campagne",
-            "col5": "Type",
+            "col3": "Email",
+            "col4": "Montant",
+            "col5": "Campagne",
             "col6": "Date",
             "col7": "Télécharger le Cerfa",
             "col8": "Voir"

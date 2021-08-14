@@ -76,6 +76,7 @@ import { AboutComponent } from './components/campaign-page/about/about.component
 import { DonateShareBannerComponent } from './components/campaign-page/donate-share-banner/donate-share-banner.component';
 import { DashboardComponent } from './components/administration-page/dashboard/dashboard.component';
 import { DonatorsTableComponent } from './components/administration-page/donators-table/donators-table.component';
+import { MsgBoxComponent } from './components/campaign-page/msg-box/msg-box.component';
 
 
 
@@ -113,7 +114,8 @@ import { DonatorsTableComponent } from './components/administration-page/donator
     AboutComponent,
     DonateShareBannerComponent,
     DashboardComponent,
-    DonatorsTableComponent
+    DonatorsTableComponent,
+    MsgBoxComponent
   ],
   imports: [
     CommonModule,

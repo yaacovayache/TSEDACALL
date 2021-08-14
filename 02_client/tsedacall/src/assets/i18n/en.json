@@ -70,9 +70,9 @@
             "seeAll": "To see all Donations",
             "col1": "First Name",
             "col2": "Last Name",
-            "col3": "Amount",
-            "col4": "Campaign",
-            "col5": "Type",
+            "col3": "Email",
+            "col4": "Amount",
+            "col5": "Campaign",
             "col6": "Date",
             "col7": "Download Cerfa",
             "col8": "To see"

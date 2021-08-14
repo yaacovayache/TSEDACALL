@@ -7,6 +7,7 @@ var multer  = require('multer')
 const uploadImage = require('../middleware/upload')
 var fs = require('fs');
 const path = require('path');
+const {ObjectId} = require('mongodb'); // or ObjectID
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -116,6 +117,52 @@ router.get('/profile/:id', async(req, res) => {
         else res.status(400).send('Error: Image does not exists');
     });
 })
+
+// Get donation by association Id (limit = 5)
+router.get('/donations/association/:id', async(req, res) => {
+    try {
+        let associationId = ObjectId(req.params.id)
+        let donations = await User.aggregate([
+            {
+                $lookup:{
+                    from: "campaigns",
+                    localField: "_id",
+                    foreignField: "founder._id",
+                    as: "campaignColl"
+                }
+            },
+            {   $unwind:"$campaignColl" },
+            {
+                $lookup:{
+                    from: "donations", 
+                    localField: "campaignColl._id", 
+                    foreignField: "campaignId",
+                    as: "donationsColl"
+                }
+            },
+            {   $unwind:"$donationsColl" },        
+            {
+                $match:{"_id" : associationId}
+            },
+            { $limit : 5 },
+            {   
+                $project:{
+                    _id : 1,
+                    fname : "$donationsColl.userDetails.fname",
+                    lname : "$donationsColl.userDetails.lname",
+                    email : "$donationsColl.userDetails.email",
+                    sum : "$donationsColl.sum",
+                    campaign_name : "$campaignColl.name",
+                    date : "$donationsColl.createdAt"
+                } 
+            }
+        ]);
+        res.send(donations)
+    } catch (err) {
+        console.log(err)
+        res.status(500).send()
+    }
+  })
 
 
 module.exports = router

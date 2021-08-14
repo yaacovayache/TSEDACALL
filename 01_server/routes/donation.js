@@ -139,8 +139,11 @@ router.get('/donators/campaign/:id', async(req, res) => {
 router.get('/dons/campaign/:id', async(req, res) => {
   try {
       let count = await Payment.find({campaignId:req.params.id}).countDocuments();
-      var random = randomNumber((count> 10) ? count-10: 1, count)
+      console.log(count)
+      var random = randomNumber((count> 10) ? count-10: 0, count)
       let donations = await Payment.find({campaignId:req.params.id}, {sum:true, userDetails:true}).limit(1).skip(random);
+      console.log(req.params.id)
+      console.log(donations)
       res.send(donations)
   } catch (err) {
       console.log(err)

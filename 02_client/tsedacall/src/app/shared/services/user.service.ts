@@ -45,4 +45,8 @@ export class UserService {
   public getMessages(id){
     return this.http.get<Chat[]>(environment.apiUrl + `message/${id}`)
   }
+
+  public getDonationsByAssociationId(id){
+    return this.http.get<any[]>(environment.apiUrl + `donations/association/${id}`)
+  }
 }

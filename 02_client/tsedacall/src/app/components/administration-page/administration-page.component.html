@@ -1,2 +1,4 @@
-<app-dashboard></app-dashboard>
-<app-donators-table></app-donators-table>
+<div *ngIf="currentAssociation">
+    <app-dashboard></app-dashboard>
+    <app-donators-table [id]="currentAssociation._id"></app-donators-table>
+</div>
