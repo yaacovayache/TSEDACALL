@@ -20,7 +20,7 @@
                 <div class="col-md-6">
                   <div class="card-body">
                     <h2 class="card-title font_Roboto">{{campaign.name}}</h2>
-                    <h4 class="markerH4"><i class="fa fa-map-marker" aria-hidden="true"></i>{{campaign.founder.associationName}}</h4>
+                    <h4 class="markerH4"><i class="fa fa-map-marker" aria-hidden="true"></i>{{campaign.associationName}}</h4>
     
                     <h4 class="collectedPrice">${{campaign.totalSum}}</h4>
                     <progress-bar [progress]="(campaign.totalSum/campaign.goal)*100 | number" color="#107598">
@@ -52,7 +52,7 @@
               <div class="col-md-12">
                 <div class="card-body">
                   <h2 class="card-title font_Roboto">{{campaign.name}}</h2>
-                  <h4 class="markerH4"><i class="fa fa-map-marker" aria-hidden="true"></i>{{campaign.founder.associationName}}</h4>
+                  <h4 class="markerH4"><i class="fa fa-map-marker" aria-hidden="true"></i>{{campaign.associationName}}</h4>
   
                   <h4 class="collectedPrice">${{campaign.totalSum}}</h4>
                   <progress-bar  [progress]="(campaign.totalSum/campaign.goal)*100 | number" color="#107598">

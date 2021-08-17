@@ -56,8 +56,8 @@ router.get('/campaign/:id', async(req, res) => {
 // Get campaign by founder
 router.get('/campaigns/founder/:id', async(req, res) => {
     try {
-        founder = {_id: req.params.id}
-        let campaigns = await Campaign.find({founder:founder})
+        founder = req.params.id
+        let campaigns = await Campaign.find({founder_id:founder})
         res.send(campaigns)
     } catch (err) {
         console.log(err)
@@ -72,8 +72,6 @@ router.get('/campaign', async(req, res) => {
         for (let campaign of campaigns){
             let totalSum = await Payment.aggregate([{$match:{"campaignId": campaign._id}},{ $group: { _id: false, sum: {$sum: "$sum"}}}])
             campaign.totalSum = totalSum[0].sum
-            let user = await User.findById(campaign.founder._id)
-            campaign.founder = user
         }
         res.send(campaigns)
     } catch (err) {

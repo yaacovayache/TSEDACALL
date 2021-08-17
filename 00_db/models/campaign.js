@@ -1,29 +1,5 @@
 const mongoose = require("mongoose");
 
-// Item Sub-Schema that will populate orderSchema 'users' field.
-const userSubSchema = new mongoose.Schema({
-  _id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
-    required: true,
-  },
-  associationName: {
-    type: String,
-  },
-  email: {
-    type: String,
-  },
-  img: { 
-    type: String, 
-  },
-  telephone: {
-    type: String,
-  },
-  address: {
-    type: String,
-  }
-}, { _id: false });
-
 const campaignSchema = new mongoose.Schema({
     name: {
       type: String,
@@ -40,9 +16,34 @@ const campaignSchema = new mongoose.Schema({
     media: { 
       type: [String]
     },
-    founder: {
-      type: userSubSchema,
-      required: true
+    founder_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+      required: true,
+    },
+    associationName: {
+      type: String,
+    },
+    email: {
+      type: String,
+    },
+    img: { 
+      type: String, 
+    },
+    telephone: {
+      type: String,
+    },
+    address: {
+      type: String,
+    },
+    zip: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    country: {
+      type: String,
     },
     goal: {
       type: Number,

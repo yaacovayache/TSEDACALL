@@ -13,7 +13,7 @@ router.post('/payment', async(req, res) => {
     try {
         await payment.save()
 
-        res.status(201).send({ payment })
+        res.status(201).send(payment)
     } catch (err) {
         res.status(400).send(err)
     }
@@ -127,7 +127,7 @@ router.get('/donations/campaign/:id', async(req, res) => {
 router.get('/donators/campaign/:id', async(req, res) => {
   try {
       let campaignId = ObjectId(req.params.id)
-      let donators = await Payment.find({campaignId:campaignId}).distinct("userDetails")
+      let donators = await Payment.find({campaignId:campaignId}).distinct("email")
       res.send(donators)
   } catch (err) {
       console.log(err)
@@ -141,9 +141,7 @@ router.get('/dons/campaign/:id', async(req, res) => {
       let count = await Payment.find({campaignId:req.params.id}).countDocuments();
       console.log(count)
       var random = randomNumber((count> 10) ? count-10: 0, count)
-      let donations = await Payment.find({campaignId:req.params.id}, {sum:true, userDetails:true}).limit(1).skip(random);
-      console.log(req.params.id)
-      console.log(donations)
+      let donations = await Payment.find({campaignId:req.params.id}, {sum:true, fname:true, lname:true, email:true, message:true, createdAt:true}).limit(1).skip(random);
       res.send(donations)
   } catch (err) {
       console.log(err)

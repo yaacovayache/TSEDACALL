@@ -127,7 +127,7 @@ router.get('/donations/association/:id', async(req, res) => {
                 $lookup:{
                     from: "campaigns",
                     localField: "_id",
-                    foreignField: "founder._id",
+                    foreignField: "founder_id",
                     as: "campaignColl"
                 }
             },
@@ -148,11 +148,15 @@ router.get('/donations/association/:id', async(req, res) => {
             {   
                 $project:{
                     _id : 1,
-                    fname : "$donationsColl.userDetails.fname",
-                    lname : "$donationsColl.userDetails.lname",
-                    email : "$donationsColl.userDetails.email",
+                    fname : "$donationsColl.fname",
+                    lname : "$donationsColl.lname",
+                    email : "$donationsColl.email",
+                    address : "$donationsColl.address",
+                    zip : "$donationsColl.zip",
+                    city : "$donationsColl.city",
                     sum : "$donationsColl.sum",
                     campaign_name : "$campaignColl.name",
+                    campaign_id : "$campaignColl._id",
                     date : "$donationsColl.createdAt"
                 } 
             }

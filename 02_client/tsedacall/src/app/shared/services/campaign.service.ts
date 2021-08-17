@@ -25,12 +25,16 @@ export class CampaignService {
       });
   }
 
-  public getCampaignById(id){
-    return this.http.get<Campaign>(environment.apiUrl + `campaign/${id}`)
+  public getCampaignsByFounder(id){
+    return this.http.get<Campaign[]>(environment.apiUrl + `campaigns/founder/${id}`).subscribe(
+      campaigns => {
+        this.campaignsStore = campaigns;
+        this.campaignsChanged.next(this.campaignsStore);
+      });
   }
 
-  public getCampaignsByFounder(id){
-    return this.http.get<Campaign[]>(environment.apiUrl + `campaigns/founder/${id}`)
+  public getCampaignById(id){
+    return this.http.get<Campaign>(environment.apiUrl + `campaign/${id}`)
   }
 
   public getCampaignMediaName(id){

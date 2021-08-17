@@ -14,6 +14,8 @@ const User = require('../00_db/models/user')
 const Campaign = require('../00_db/models/campaign')
 const Team = require('../00_db/models/team')
 const Payment = require('../00_db/models/donation')
+const Currency = require('../00_db/models/currency')
+const PaymentType = require('../00_db/models/paymentType')
 
 
 
@@ -24,6 +26,7 @@ const campaignRouter = require('./routes/campaign')
 const teamRouter = require('./routes/team')
 const paymentRouter = require('./routes/donation')
 const cerfaRouter = require('./cerfa/cerfa')
+const extraRouter = require('./routes/extra')
 
 
 
@@ -55,6 +58,7 @@ app.use(campaignRouter)
 app.use(teamRouter)
 app.use(paymentRouter)
 app.use(cerfaRouter)
+app.use(extraRouter)
 
 app.get('/', (req,res) => {
     res.sendFile(path.resolve(__dirname,"../html/"))

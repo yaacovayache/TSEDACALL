@@ -31,13 +31,20 @@
         <input type="number" formControlName="telephone" placeholder="{{'form.Phone' | translate}}">
         <div class="row">
           <div class="col-md-8">
-            <input type="text" formControlName="street" placeholder="{{'form.Street' | translate}}">
+            <input type="text" formControlName="address" placeholder="{{'form.Address' | translate}}">
           </div>
           <div class="col-md-4">
-            <input type="text" formControlName="number" placeholder="{{'form.Number' | translate}}">
+            <input type="text" formControlName="zip" placeholder="{{'form.Zip' | translate}}">
           </div>
         </div>
-        <input type="text" formControlName="city" placeholder="{{'form.City' | translate}}">
+        <div class="row">
+          <div class="col-md-6">
+            <input type="text" formControlName="city" placeholder="{{'form.City' | translate}}">
+          </div>
+          <div class="col-md-6">
+            <input type="text" formControlName="country" placeholder="{{'form.Country' | translate}}">
+          </div>
+        </div>
       </div>
       
       <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center"></app-loading-spinner>

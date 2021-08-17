@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                <div class="table-responsive">
+                <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center"></app-loading-spinner>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -34,7 +35,9 @@
                             <td scope="row">{{don.sum}}</td>
                             <td scope="row">{{don.campaign_name}}</td>
                             <td scope="row">{{don.date | date}}</td>
-                            <td scope="row"><button class="success" (click)="CerfaDownload(don)"> <i class="fa fa-download"></i> </button></td>
+                            <td scope="row">
+                                <button class="success" (click)="CerfaDownload(don)"><i class="fa fa-download"></i></button>
+                            </td>
                             <td scope="row"><button class="view"><i class="fa fa-eye"></i> </button></td>
                         </tr>
                     </tbody>

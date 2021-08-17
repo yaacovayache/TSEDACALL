@@ -4,12 +4,16 @@ import { tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Donation } from '../models/donation.model';
+import { NumberToWordsPipe } from 'src/app/shared/pipes/number-to-word.pipe';
+import { ToWords } from 'to-words';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DonationsService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private pipeNumberToWords: NumberToWordsPipe) { }
+  public toWords = new ToWords({localeCode: 'fr-FR', converterOptions: {currency: true, ignoreDecimal: false,ignoreZeroCurrency: false,}});
+
 
   donationsStore:Donation[] = [];
   donationsChanged = new BehaviorSubject<Donation[]>([]);
@@ -18,6 +22,11 @@ export class DonationsService {
   allDonationsStore:Donation[] = [];
   allDonationsChanged = new BehaviorSubject<Donation[]>([]);
   readonly  allDonations = this.allDonationsChanged.asObservable();
+
+
+  public addDonation(item){
+    return this.http.post<Donation>(environment.apiUrl + `payment`, item)
+  }
 
   public getStatsByMonth(id){
     return this.http.get(environment.apiUrl + `stats/donations/month/${id}`)
@@ -49,6 +58,16 @@ export class DonationsService {
         this.allDonationsStore = donations;
         this.allDonationsChanged.next(this.allDonationsStore);
       });
+  }
+
+  public downloadCerfa(item){
+    item.donator.sumWords = this.toWords.convert(item.donator.sum)
+    return this.http.post(environment.apiUrl + `cerfa`, item, { responseType: 'blob' });
+  }
+
+  public sendCerfaByMail(item){
+    item.cerfa.donator.sumWords = this.toWords.convert(item.cerfa.donator.sum)
+    return this.http.post(environment.apiUrl + `cerfa/mail`, item);
   }
   
 }

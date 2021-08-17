@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   private handleAuth(userData:User) {
-    const user = new User(userData.email, userData.fname, userData.lname, userData._id, userData.accessToken, userData.role, userData.img);
+    const user = new User(userData.email, userData.fname, userData.lname, userData._id, userData.accessToken, userData.role, userData.img, userData.associationName, userData.address, userData.zip, userData.city);
     this.token = userData.accessToken;
 
     this.loggedIn = true;
@@ -81,7 +81,11 @@ export class AuthService {
       userData._id,
       userData.accessToken,
       userData.role,
-      userData.img
+      userData.img,
+      userData.associationName,
+      userData.address,
+      userData.zip,
+      userData.city
     );
     this.token = loadedUser.accessToken;
 

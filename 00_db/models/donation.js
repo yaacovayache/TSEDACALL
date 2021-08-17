@@ -1,8 +1,58 @@
 const mongoose = require("mongoose");
 const moment = require("moment");
 
-const userSubSchema = new mongoose.Schema({
-    _id: {
+// const userSubSchema = new mongoose.Schema({
+//     _id: {
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "users"
+//     },
+//     fname: {
+//         type: String,
+//         required: true,
+//     },
+//     lname: {
+//         type: String,
+//         required: true,
+//     },
+//     telephone: {
+//         type: String
+//     },
+//     email: {
+//         type: String,
+//         required:true
+//     },
+//     address: {
+//         type: String
+//     },
+//     zip: {
+//         type: String
+//     },
+//     city: {
+//         type: String
+//     },
+//     country: {
+//         type: String
+//     },
+//     anonymous: {
+//         type: Boolean,
+//         default:false
+//     },
+//     isRegistered: {
+//         type: Boolean,
+//         required:true
+//     },
+//     message: {
+//         type: String,
+//         default:''
+//     }
+// }, { _id: false });
+
+const donationSchema = new mongoose.Schema({
+    // userDetails: {
+    //     type: userSubSchema,
+    //     required: true,
+    // },
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "users"
     },
@@ -24,20 +74,27 @@ const userSubSchema = new mongoose.Schema({
     address: {
         type: String
     },
+    zip: {
+        type: String
+    },
+    city: {
+        type: String
+    },
+    country: {
+        type: String
+    },
+    anonymous: {
+        type: Boolean,
+        default:false
+    },
     isRegistered: {
         type: Boolean,
-        required:true
+        required:true,
+        default:false
     },
     message: {
         type: String,
         default:''
-    }
-}, { _id: false });
-
-const donationSchema = new mongoose.Schema({
-    userDetails: {
-        type: userSubSchema,
-        required: true,
     },
     processId: {
         type: String,
@@ -114,6 +171,12 @@ const donationSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "campaigns",
         required: true,
+    },
+    type_payment:{
+        type: String,
+    },
+    type_donator:{
+        type: String,
     },
     createdAt: {
         type: Date,

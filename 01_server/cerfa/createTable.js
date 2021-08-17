@@ -5,7 +5,7 @@ const data = require('./data.json');
 const buildPaths = require('./buildPaths');
 
 
-const createHeader = () => `
+const createHeader = (id) => `
     <header id="container" style="white-space:nowrap">
         <div id="outer-cerfa" style="display:inline;">
             <img width="50", height="50" src="https://upload.wikimedia.org/wikipedia/fr/thumb/0/08/Logo_Cerfa.svg/2560px-Logo_Cerfa.svg.png"/>
@@ -15,7 +15,7 @@ const createHeader = () => `
             <p class="ft0">Reçu au titre des dons à certains <br> organismes d’intérêt général <br> <span class="ft1">Article 200, 238 bis et 978 du code général des impôts (CGI)</span></p>
         </div>
         <div id="image" style="display:inline; float:right">
-            <img width="50", height="50" src="https://upload.wikimedia.org/wikipedia/commons/5/59/Logo-Logo.svg" alt="star"/>
+            <img width="50", height="50" src="https://tsedacall.com/profile/${id}" alt="logo_association"/>
         </div>
     </header>
 `;
@@ -81,11 +81,11 @@ const createDonatorTable = (name, address) => `
   </table>
 `;
 
-const createDisplayAmount = (sum) => `
+const createDisplayAmount = (sum, sumWords) => `
   <h3>Le bénéficiaire reconnait avoir reçu au titre des dons et versements ouvrant droit à </h3>
   <div class="flex-container">
     <h3 style="margin-right: 5%;"> réduction d’impôts, la somme de :</h3>
-    <div class="flex-child" style="padding-right: 0;">***${sum} euros***deux cent dix-sept euros</div>
+    <div class="flex-child" style="padding-right: 0;">***${sum} euros*** ${sumWords}</div>
   </div>
 `;
 
@@ -293,7 +293,7 @@ const createHtmlCerfa = (data) =>{
             fs.unlinkSync(buildPaths.buildPathHtml());
         }
         /* generate header */
-        const header = createHeader();
+        const header = createHeader(data.association.id);
         /* generate first title */
         const fTitle = createFirstTitle();
         /* generate association table */
@@ -301,9 +301,9 @@ const createHtmlCerfa = (data) =>{
         /* generate second title */
         const sTitle = createSecondTitle()
         /* generate donator table */
-        const donatorTable = createDonatorTable(data.donator.name, data.donator.address)
+        const donatorTable = createDonatorTable(data.donator.fname + ' ' + data.donator.lname, data.donator.address)
         /* generate display amount */
-        const displayAmount =  createDisplayAmount(data.donator.sum)
+        const displayAmount =  createDisplayAmount(data.donator.sum, data.donator.sumWords)
         /* generate table Law */
         const tableLaws =  createTableLaw()
         /* generate commantaire Row */
@@ -320,7 +320,7 @@ const createHtmlCerfa = (data) =>{
         if (!fs.existsSync(buildPaths.buildPathDir())){
           fs.mkdirSync(buildPaths.buildPathDir());
         }
-        fs.writeFileSync(buildPaths.buildPathHtml(data.donator._id), html);
+        fs.writeFileSync(buildPaths.buildPathHtml(data.campaign._id + '-' + data.donator.fname + '-' + data.donator.lname), html);
         console.log('Succesfully created an HTML table');
     } catch (error) {
         console.log('Error generating table', error);

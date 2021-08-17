@@ -32,8 +32,8 @@
                             </div>
                         </div>
                         <div class="col-md-8 headingTet">
-                            <img *ngIf="dons.userDetails.isRegistered" [src]="pattern_url + dons.userDetails._id" alt="" width="30px" height="30px">
-                            <span>{{dons.userDetails.lname}} {{dons.userDetails.fname}}</span>
+                            <img *ngIf="dons.isRegistered" [src]="pattern_url + dons.userId" alt="" width="30px" height="30px">
+                            <span>{{dons.lname}} {{dons.fname}}</span>
                         </div>
                         <div class="col-md-4 rightText">
                             <h4>{{dons.sum}}€</h4>
@@ -43,7 +43,7 @@
                             <hr>
                         </div>
                         <div class="col-md-12 footerText">
-                            <p>{{dons.userDetails.message}}</p>
+                            <p>{{dons.message}}</p>
                         </div>
                     </div>
                 </div>

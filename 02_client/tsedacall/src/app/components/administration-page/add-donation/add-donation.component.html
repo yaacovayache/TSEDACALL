@@ -1,0 +1,139 @@
+<!-- 1st section -->
+
+<div class="mb-5">
+<div class="container-fluid">
+    <div class="row text-center first_div">
+      <div class="col-md-12 bg-dark-blue">
+        <h1>AJOUTER UN NOUVEAU DON</h1>
+      </div>
+      <!-- <div class="col-md-6 bg-light-blue">
+        <h1>FIND AN EXISTING DONOR</h1>
+      </div> -->
+    </div>
+  </div>
+  
+  <!-- 1st section -->
+  
+  <!-- 2nd section -->
+  <form class="container" [formGroup]="donationForm" (ngSubmit)="onSubmit()">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <label for="campaign">Campagne</label>
+        <select formControlName="campaignId" class="form-control input-sm" id="campaign">
+          <option *ngFor="let campaign of campaigns | async" [value]="campaign._id">{{campaign.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-6">
+        <label for="donnor">Donateur</label>
+        <select formControlName="type_donator" class="form-control input-sm" id="donnor">
+          <option value="Particular">Particulier</option>
+          <option value="Compagny">Entreprise</option>
+        </select>
+      </div>
+  
+      <div class="col-md-6">
+        <label for="email">Email (Optionnel)</label>
+        <input formControlName="email" class="form-control input-sm" id="email" type="email" />
+        <span>* Un reçu fiscal sera envoyé par email à ce contact</span>
+      </div>
+    </div>
+    <div class="row text-center mt-3">
+      <div class="col-md-3 offset-md-3">
+        <label for="name">Nom</label>
+        <input formControlName="lname" class="form-control input-sm" id="name" type="text" />
+      </div>
+  
+      <div class="col-md-3">
+        <label for="fname">Prénom</label>
+        <input formControlName="fname"  class="form-control input-sm" id="fname" type="text" />
+      </div>
+    </div>
+  
+    <div class="row text-center mt-3">
+      <div class="col-md-8">
+        <label for="address">Adresse</label>
+        <input formControlName="address" class="form-control input-sm" id="address" type="text" />
+      </div>
+  
+      <div class="col-md-4">
+        <label for="postal">Code Postal</label>
+        <input formControlName="zip"  class="form-control input-sm" id="postal" type="number" />
+      </div>
+    </div>
+    <div class="row text-center mt-3">
+      <div class="col-md-4">
+        <label for="country">Pays</label>
+        <input formControlName="country" class="form-control input-sm" id="country" type="text" />
+      </div>
+  
+      <div class="col-md-4">
+        <label for="city">Ville</label>
+        <input formControlName="city" class="form-control input-sm" id="city" type="text" />
+      </div>
+  
+      <div class="col-md-4">
+        <label for="phone">Téléphone</label>
+        <input formControlName="telephone" class="form-control input-sm" id="phone" type="number" />
+      </div>
+    </div>
+    <div class="row text-center mt-3">
+      <div class="col-md-4">
+        <label for="donation">Montant du don :</label>
+        <input formControlName="sum" class="form-control input-sm" id="donation" type="number" />
+      </div>
+  
+      <div class="col-md-4">
+        <label for="currency">Monnaie</label>
+        <select formControlName="currency" class="form-control input-sm" id="currency">
+          <option value="Euro">Euro</option>
+          <option value="USD">USD</option>
+          <option value="Shekel">Shekel</option>
+        </select>
+      </div>
+  
+      <div class="col-md-4">
+        <label for="method">Méthode de payement</label>
+        <select formControlName="type_payment" class="form-control input-sm" id="method">
+          <option value="Check">Check</option>
+          <option value="Cash">Cash</option>
+          <option value="Transfer">Transfer</option>
+          <option value="Direct Debit">Direct Debit</option>
+          <option value="Annual Transfer">Annual Transfer</option>
+          <option value="Monthly Transfer">Monthly Transfer</option>
+        </select>
+      </div>
+    </div>
+    <div class="row text-center mt-3">
+      <div class="col-md-4  offset-md-4">
+        <label for="anonymous">Anonyme</label>
+        <select formControlName="anonymous" class="form-control input-sm" id="anonymous">
+          <option [value]="true">Yes</option>
+          <option [value]="false">No</option>
+        </select>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+    <div class="row text-center mt-3">
+      <div class="col-md-4">
+        
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="sendCerfa" [ngModelOptions]="{standalone: true}">
+          <label class="form-check-label" for="flexCheckDefault">
+            Envoyer le cerfa après sa création (Email obligatoire)
+          </label>
+        </div>
+      </div>
+  
+      <div class="col-md-4">
+        <textarea formControlName="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center"></app-loading-spinner>
+      <div class="col-md-4">
+        <button class="btn custome-btn mt-3">Enregistrer et envoyer le cerfa</button>
+      </div>
+    </div>
+  </form>
+  <!-- 2nd section -->
+</div>

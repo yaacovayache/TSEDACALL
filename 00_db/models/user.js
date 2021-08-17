@@ -52,14 +52,16 @@ const userSchema = new mongoose.Schema({
   telephone: {
     type: String,
   },
-  street: {
+  address: {
     type: String,
   },
-  number: {
-    type: Number,
-    default:''
+  zip: {
+    type: String,
   },
   city: {
+    type: String,
+  },
+  country: {
     type: String,
   },
   associationName: {

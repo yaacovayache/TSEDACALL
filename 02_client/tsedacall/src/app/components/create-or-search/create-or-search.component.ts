@@ -19,7 +19,7 @@ export class CreateOrSearchComponent implements OnInit {
   public associations: Observable<User[]>;
   public pattern_url = environment.apiUrl + 'profile/'
   public searchText;
-  public currentCampaign:Campaign[];
+  public currentCampaign:Observable<Campaign[]>;
   public campaignFlag = false;
   constructor(private router:Router, private userService:UserService, private campaignService:CampaignService) { }
 
@@ -34,16 +34,14 @@ export class CreateOrSearchComponent implements OnInit {
   }
 
   onClickAssociation(id){
-    this.campaignService.getCampaignsByFounder(id).subscribe((res)=> {
-      console.log(res)
-      this.currentCampaign = res
-      this.campaignFlag = true;
-    })
+    this.currentCampaign = this.campaignService.campaigns; // subscribe to entire collection
+    this.campaignService.getCampaignsByFounder(id);
+    this.campaignFlag = true;
   }
 
   previousAssociation(){
     console.log('previous')
-    this.currentCampaign = []
+    this.currentCampaign = new Observable<Campaign[]>();
     this.campaignFlag = false;
   }
 

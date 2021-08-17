@@ -41,7 +41,7 @@
 
           <main class="leaderboard__profiles" *ngIf="campaignFlag">
 
-            <article class="leaderboard__profile" (click)="onNavigation(campaign._id)" *ngFor="let campaign of currentCampaign | searchFilter: searchText">
+            <article class="leaderboard__profile" (click)="onNavigation(campaign._id)" *ngFor="let campaign of currentCampaign | async | searchFilter: searchText">
               <!-- <img [src]="pattern_url + association._id" alt="Mark Zuckerberg" class="leaderboard__picture"> -->
               <span class="leaderboard__name text-center" (click)="onClickAssociation(association._id)">{{campaign.name}}</span>
               <span class="leaderboard__value">From {{campaign.createdAt | date}} to {{campaign.endAt | date}}</span>

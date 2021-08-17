@@ -7,6 +7,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { AssociationsListComponent } from './components/associations-list/associations-list.component';
 import { CampaignPageComponent } from './components/campaign-page/campaign-page.component';
 import { AdministrationPageComponent } from './components/administration-page/administration-page.component';
+import { AddDonationComponent } from './components/administration-page/add-donation/add-donation.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,10 @@ const routes: Routes = [
   path: 'administration',
   component: AdministrationPageComponent,
 },
+{
+  path: 'add',
+  component: AddDonationComponent,
+}
 ];
 
 @NgModule({

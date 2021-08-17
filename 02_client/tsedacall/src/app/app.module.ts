@@ -77,7 +77,8 @@ import { DonateShareBannerComponent } from './components/campaign-page/donate-sh
 import { DashboardComponent } from './components/administration-page/dashboard/dashboard.component';
 import { DonatorsTableComponent } from './components/administration-page/donators-table/donators-table.component';
 import { MsgBoxComponent } from './components/campaign-page/msg-box/msg-box.component';
-
+import { NumberToWordsPipe } from './shared/pipes/number-to-word.pipe';
+import { AddDonationComponent } from './components/administration-page/add-donation/add-donation.component';
 
 
 @NgModule({
@@ -115,7 +116,9 @@ import { MsgBoxComponent } from './components/campaign-page/msg-box/msg-box.comp
     DonateShareBannerComponent,
     DashboardComponent,
     DonatorsTableComponent,
-    MsgBoxComponent
+    MsgBoxComponent,
+    NumberToWordsPipe,
+    AddDonationComponent
   ],
   imports: [
     CommonModule,
@@ -155,9 +158,9 @@ import { MsgBoxComponent } from './components/campaign-page/msg-box/msg-box.comp
                     useFactory: HttpLoaderFactory,
                     deps: [HttpClient]
                 }
-            })
+            }),
   ],
-  providers: [DatePipe, { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true }, WINDOW_PROVIDERS],
+  providers: [DatePipe, NumberToWordsPipe, { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true }, WINDOW_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

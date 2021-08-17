@@ -25,9 +25,10 @@ export class SignupComponent implements OnInit {
       role: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       telephone: new FormControl(''),
-      street: new FormControl(''),
-      number: new FormControl(''),
+      address: new FormControl(''),
+      zip: new FormControl(''),
       city: new FormControl(''),
+      country: new FormControl(''),
       associationName: new FormControl(''),
     });
   }
@@ -40,9 +41,10 @@ export class SignupComponent implements OnInit {
       password: this.signUpForm.get('password').value,
       role: this.signUpForm.get('role').value,
       telephone: this.signUpForm.get('telephone').value,
-      street: this.signUpForm.get('street').value,
-      number: this.signUpForm.get('number').value,
+      address: this.signUpForm.get('address').value,
+      zip: this.signUpForm.get('zip').value,
       city: this.signUpForm.get('city').value,
+      country: this.signUpForm.get('country').value,
       associationName: this.signUpForm.get('associationName').value,
     };
     

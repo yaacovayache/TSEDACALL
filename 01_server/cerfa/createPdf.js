@@ -5,14 +5,14 @@ const buildPaths = require('./buildPaths');
 const createHtmlCerfa = require('./createTable');
 // const pathPdf = require('./buildPaths');
 
-const printPdf = async () => {
+const printPdf = async (data) => {
 	console.log('Starting: Generating PDF Process, Kindly wait ..');
 	/** Launch a headleass browser */
 	const browser = await puppeteer.launch();
 	/* 1- Ccreate a newPage() object. It is created in default browser context. */
 	const page = await browser.newPage();
 	/* 2- Will open our generated `.html` file in the new Page instance. */
-	await page.goto(buildPaths.buildPathHtml(data.donator._id), { waitUntil: 'networkidle0' });
+	await page.goto(buildPaths.buildPathHtml(data.campaign._id + '-' + data.donator.fname + '-' + data.donator.lname), { waitUntil: 'networkidle0' });
 	/* 3- Take a snapshot of the PDF */
 	const pdf = await page.pdf({
 		format: 'A4',
@@ -29,13 +29,13 @@ const printPdf = async () => {
 	return pdf;
 };
 
-const init = async () => {
+const init = async (data) => {
 	try {
-		const pdf = await printPdf();
+		const pdf = await printPdf(data);
 		if (!fs.existsSync(buildPaths.buildPathDir())){
 			fs.mkdirSync(buildPaths.buildPathDir());
 		}
-		fs.writeFileSync(buildPaths.buildPathPdf(data.donator._id), pdf);
+		fs.writeFileSync(buildPaths.buildPathPdf(data.campaign._id + '-' + data.donator.fname + '-' + data.donator.lname), pdf);
 		console.log('Successfully created an PDF table');
 		return pdf
 	} catch (error) {
