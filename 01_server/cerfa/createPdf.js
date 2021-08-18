@@ -1,6 +1,5 @@
 const fs = require('fs');
 const puppeteer = require('puppeteer');
-const htmlPdf = require('html-pdf');
 // Build paths
 const buildPaths = require('./buildPaths');
 const createHtmlCerfa = require('./createTable');
