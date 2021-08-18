@@ -1,19 +1,20 @@
 const fs = require('fs');
 const puppeteer = require('puppeteer');
+const htmlPdf = require('html-pdf');
 // Build paths
 const buildPaths = require('./buildPaths');
 const createHtmlCerfa = require('./createTable');
 // const pathPdf = require('./buildPaths');
 
+
 const printPdf = async (data) => {
 	console.log('Starting: Generating PDF Process, Kindly wait ..');
 	/** Launch a headleass browser */
-	const browser = await puppeteer.launch();
+	const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox'], headless: true});
 	/* 1- Ccreate a newPage() object. It is created in default browser context. */
 	const page = await browser.newPage();
 	/* 2- Will open our generated `.html` file in the new Page instance. */
-	await page.goto(buildPaths.buildPathHtml(data.campaign._id + '-' + data.donator.fname + '-' + data.donator.lname), { waitUntil: 'networkidle0' });
-	/* 3- Take a snapshot of the PDF */
+	await page.goto('file:' + buildPaths.buildPathHtml(data.campaign._id + '-' + data.donator.fname + '-' + data.donator.lname), { waitUntil: 'networkidle0' });
 	const pdf = await page.pdf({
 		format: 'A4',
 		margin: {
@@ -23,7 +24,6 @@ const printPdf = async (data) => {
 			left: '20px'
 		}
 	});
-	/* 4- Cleanup: close browser. */
 	await browser.close();
 	console.log('Ending: Generating PDF Process');
 	return pdf;
