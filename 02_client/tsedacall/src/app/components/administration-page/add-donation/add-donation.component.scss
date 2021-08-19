@@ -9,10 +9,32 @@
 }
 
 .bg-dark-blue {
-  background-color: #2d6cdf;
+  background-color: rgb(45, 108, 223);
   color: white;
+}
+
+.banner-dark-blue {
   padding-top: 15px;
 }
+
+@media (min-width:800px) {
+  .btn-dark-blue {
+    width: 5%;
+  }
+}
+
+@media (max-width:800px) {
+  .btn-dark-blue {
+    margin-top: 3%;
+  }
+}
+
+
+
+.btn-dark-blue:hover {
+  background-color:rgba(26, 59, 122, 0.3);
+}
+
 
 .bg-light-blue {
   background-color: #c5e3f6;

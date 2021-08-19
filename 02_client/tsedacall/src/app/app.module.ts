@@ -33,6 +33,7 @@ import { AppComponent } from './app.component';
 import { WINDOW_PROVIDERS, WINDOW } from 'src/app/shared/helpers/window.helper';
 import { SharedDirectivesModule } from './shared/directive/shared-directives.module';
 import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
+import { ToastrModule } from 'ngx-toastr';
 
 
 // Pipes 
@@ -149,6 +150,7 @@ import { AddDonationComponent } from './components/administration-page/add-donat
     ShareButtonsModule.withConfig({
       debug: true
     }),
+    ToastrModule.forRoot(),
     ShareIconsModule,
             // ngx-translate and the loader module
             HttpClientModule,

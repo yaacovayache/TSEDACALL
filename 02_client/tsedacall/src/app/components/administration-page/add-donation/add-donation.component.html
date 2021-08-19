@@ -3,7 +3,8 @@
 <div class="mb-5">
 <div class="container-fluid">
     <div class="row text-center first_div">
-      <div class="col-md-12 bg-dark-blue">
+      <div class="col-md-12 bg-dark-blue banner-dark-blue">
+        <button (click)="back()" class="btn btn-light bg-dark-blue btn-dark-blue" style="float: left;"><i class="fa fa-arrow-left"></i></button>
         <h1>AJOUTER UN NOUVEAU DON</h1>
       </div>
       <!-- <div class="col-md-6 bg-light-blue">
@@ -87,21 +88,14 @@
       <div class="col-md-4">
         <label for="currency">Monnaie</label>
         <select formControlName="currency" class="form-control input-sm" id="currency">
-          <option value="Euro">Euro</option>
-          <option value="USD">USD</option>
-          <option value="Shekel">Shekel</option>
+          <option [value]="currency.value" *ngFor="let currency of currencies">{{currency.name}}</option>
         </select>
       </div>
   
       <div class="col-md-4">
         <label for="method">Méthode de payement</label>
         <select formControlName="type_payment" class="form-control input-sm" id="method">
-          <option value="Check">Check</option>
-          <option value="Cash">Cash</option>
-          <option value="Transfer">Transfer</option>
-          <option value="Direct Debit">Direct Debit</option>
-          <option value="Annual Transfer">Annual Transfer</option>
-          <option value="Monthly Transfer">Monthly Transfer</option>
+          <option [value]="type.value" *ngFor="let type of paymentTypes">{{type.name}}</option>
         </select>
       </div>
     </div>

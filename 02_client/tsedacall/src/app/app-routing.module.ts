@@ -32,14 +32,14 @@ const routes: Routes = [
     path: 'campaign/home/:id/:name',
     component: CampaignPageComponent,
   },
-{
-  path: 'administration',
-  component: AdministrationPageComponent,
-},
-{
-  path: 'add',
-  component: AddDonationComponent,
-}
+  {
+    path: 'administration',
+    component: AdministrationPageComponent,
+  },
+  {
+    path: 'add',
+    component: AddDonationComponent,
+  }
 ];
 
 @NgModule({

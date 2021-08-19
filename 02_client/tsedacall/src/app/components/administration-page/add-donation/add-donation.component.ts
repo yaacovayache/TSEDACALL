@@ -5,6 +5,10 @@ import { Campaign } from 'src/app/shared/models/campaign.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CampaignService } from 'src/app/shared/services/campaign.service';
 import { DonationsService } from 'src/app/shared/services/donations.service';
+import { ExtraService } from 'src/app/shared/services/extra.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-add-donation',
@@ -16,16 +20,36 @@ export class AddDonationComponent implements OnInit {
   campaigns: Observable<Campaign[]>;
   public sendCerfa:boolean=false;
   public formsData;
+  public paymentTypes;
+  public currencies;
   public isLoading: boolean = false;
 
 
 
-  constructor(private donationsService:DonationsService, private campaignService:CampaignService, private authService:AuthService) { }
+  constructor(private router: Router, private toastr: ToastrService, private donationsService:DonationsService, private campaignService:CampaignService, private authService:AuthService, private extraService:ExtraService) { }
+
+  showSuccess() {
+    this.toastr.success('Success');
+  }
+
+  showError() {
+    this.toastr.error('Forms incomplet');
+  }
+
+  back(): void {
+    this.router.navigate([`administration`]);
+  }
 
   ngOnInit(): void {
     this.campaigns = this.campaignService.campaigns; // subscribe to entire collection
     this.campaignService.getCampaignsByFounder(this.authService.getLocalStorageUser()._id);
-
+    this.extraService.getPaymentType().subscribe((res)=>{
+      this.paymentTypes = res
+    })
+    this.extraService.getCurrencies().subscribe((res)=>{
+      this.currencies = res
+      console.log(this.currencies)
+    })
     this.donationForm = new FormGroup({
       type_donator: new FormControl('', Validators.required),
       email: new FormControl('', Validators.email),
@@ -46,7 +70,9 @@ export class AddDonationComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log('==================')
     this.isLoading = true
+    console.log(this.donationForm)
     this.formsData = {
       type_donator: this.donationForm.get('type_donator').value,
       email: this.donationForm.get('email').value,
@@ -64,9 +90,10 @@ export class AddDonationComponent implements OnInit {
       campaignId: this.donationForm.get('campaignId').value,
       message: this.donationForm.get('message').value,
     }
-
     if(this.donationForm.valid){
       this.donationsService.addDonation(this.formsData).subscribe((res)=>{
+        this.donationForm.reset();
+        this.showSuccess()
       })
       if (this.sendCerfa){
         let association = this.authService.getLocalStorageUser()
@@ -80,7 +107,11 @@ export class AddDonationComponent implements OnInit {
         })
       } else {this.isLoading = false}
 
+    } else {
+      this.isLoading = false
+      this.showError()
     }
+    console.log('==================')
 
   }
 
