@@ -20,7 +20,8 @@
     <div class="row text-center">
       <div class="col-md-12">
         <label for="campaign">Campagne</label>
-        <select formControlName="campaignId" class="form-control input-sm" id="campaign">
+        <select [value]='default.value' formControlName="campaignId" class="form-control input-sm" id="campaign">
+          <option [value]="default.value" disabled>{{default.label}}</option>
           <option *ngFor="let campaign of campaigns | async" [value]="campaign._id">{{campaign.name}}</option>
         </select>
       </div>
@@ -123,7 +124,7 @@
       <div class="col-md-4">
         <textarea formControlName="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
-      <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center"></app-loading-spinner>
+      <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center spinner"></app-loading-spinner>
       <div class="col-md-4">
         <button class="btn custome-btn mt-3">Enregistrer et envoyer le cerfa</button>
       </div>

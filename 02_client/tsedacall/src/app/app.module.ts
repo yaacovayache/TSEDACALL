@@ -34,6 +34,7 @@ import { WINDOW_PROVIDERS, WINDOW } from 'src/app/shared/helpers/window.helper';
 import { SharedDirectivesModule } from './shared/directive/shared-directives.module';
 import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
 import { ToastrModule } from 'ngx-toastr';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 // Pipes 
@@ -80,7 +81,8 @@ import { DonatorsTableComponent } from './components/administration-page/donator
 import { MsgBoxComponent } from './components/campaign-page/msg-box/msg-box.component';
 import { NumberToWordsPipe } from './shared/pipes/number-to-word.pipe';
 import { AddDonationComponent } from './components/administration-page/add-donation/add-donation.component';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { SearchCerfaComponent } from './components/administration-page/search-cerfa/search-cerfa.component';
 
 @NgModule({
   declarations: [
@@ -119,7 +121,8 @@ import { AddDonationComponent } from './components/administration-page/add-donat
     DonatorsTableComponent,
     MsgBoxComponent,
     NumberToWordsPipe,
-    AddDonationComponent
+    AddDonationComponent,
+    SearchCerfaComponent
   ],
   imports: [
     CommonModule,
@@ -147,6 +150,8 @@ import { AddDonationComponent } from './components/administration-page/add-donat
     CarouselModule,
     ChartsModule,
     NgxHideOnScrollModule,
+    NgbModule,
+    ModalModule.forRoot(),
     ShareButtonsModule.withConfig({
       debug: true
     }),

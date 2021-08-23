@@ -23,6 +23,7 @@ export class AddDonationComponent implements OnInit {
   public paymentTypes;
   public currencies;
   public isLoading: boolean = false;
+  public default = {label : 'Veuillez sélectionner une campagne', value: ''}
 
 
 
@@ -48,7 +49,6 @@ export class AddDonationComponent implements OnInit {
     })
     this.extraService.getCurrencies().subscribe((res)=>{
       this.currencies = res
-      console.log(this.currencies)
     })
     this.donationForm = new FormGroup({
       type_donator: new FormControl('', Validators.required),
@@ -70,9 +70,7 @@ export class AddDonationComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('==================')
     this.isLoading = true
-    console.log(this.donationForm)
     this.formsData = {
       type_donator: this.donationForm.get('type_donator').value,
       email: this.donationForm.get('email').value,
@@ -102,7 +100,6 @@ export class AddDonationComponent implements OnInit {
                     date: (new Date()).toString(),
                     campaign: {_id:this.formsData.campaignId}}
         this.donationsService.sendCerfaByMail({cerfa: data, email:this.formsData.email}).subscribe((res)=>{
-          console.log(res)
           this.isLoading = false
         })
       } else {this.isLoading = false}
@@ -111,8 +108,6 @@ export class AddDonationComponent implements OnInit {
       this.isLoading = false
       this.showError()
     }
-    console.log('==================')
-
   }
 
 }

@@ -5,6 +5,9 @@ const Campaign = require('../../00_db/models/campaign');
 const Payment = require('../../00_db/models/donation');
 const moment = require("moment");
 const {ObjectId} = require('mongodb'); // or ObjectID 
+const path = require('path')
+const fs = require('fs');
+
 
 
 // Create new donation
@@ -139,7 +142,6 @@ router.get('/donators/campaign/:id', async(req, res) => {
 router.get('/dons/campaign/:id', async(req, res) => {
   try {
       let count = await Payment.find({campaignId:req.params.id}).countDocuments();
-      console.log(count)
       var random = randomNumber((count> 10) ? count-10: 0, count)
       let donations = await Payment.find({campaignId:req.params.id}, {sum:true, fname:true, lname:true, email:true, message:true, createdAt:true}).limit(1).skip(random);
       res.send(donations)
@@ -161,6 +163,57 @@ router.get('/all/donations/campaign/:id', async(req, res) => {
   }
 })
 
+
+// Get search by filter
+router.post('/donations/filter', async(req, res) => {
+  try {
+      // let result = await Payment.find(req.body.query)
+      let result = await Payment.aggregate([
+        {
+          $match:req.body.query
+        },
+        {
+            $lookup:{
+                from: "campaigns",
+                localField: "campaignId",
+                foreignField: "_id",
+                as: "campaignColl"
+            }
+        },
+        {   $unwind:"$campaignColl" },
+        {   
+            $project:{
+                _id : 1,
+                fname : "$fname",
+                lname : "$lname",
+                email : "$email",
+                address : "$address",
+                zip : "$zip",
+                city : "$city",
+                amount : "$sum",
+                campaign_name : "$campaignColl.name",
+                campaign_id : "$campaignColl._id",
+                date : "$createdAt"
+            } 
+        }
+    ]);
+      res.send(result)
+  } catch (err) {
+      console.log(err)
+      res.status(500).send()
+  }
+})
+
+// Export query to csv
+router.post('/donations/export', async(req, res) => {
+  try {
+      let result = await Payment.find(req.body.query, req.body.filter)
+      res.send(result)
+  } catch (err) {
+      console.log(err)
+      res.status(500).send()
+  }
+})
 
 function randomNumber(min, max) {
   return Math.random() * (max - min) + min;

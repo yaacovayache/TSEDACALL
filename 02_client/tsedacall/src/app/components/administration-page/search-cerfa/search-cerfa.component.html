@@ -1,0 +1,133 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center mt-5">
+        <h1 class="heading" [translate]="'administration.advanced-search.title'"></h1>
+        <h3>{{current_count}} {{'administration.advanced-search.counter' | translate}}</h3>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8">
+        <label for="simple" [translate]="'administration.advanced-search.simple'"></label>
+        <input class="form-control input-sm" id="simple" #simple type="text" placeholder="{{'administration.advanced-search.placeholderSimple' | translate}}" (change)="onSearchByFilter({ $text : { $search: simple.value } }, simple.value, '$text')"/>
+      </div>
+      <div class="col-md-4 btn-group">
+        <button class="btn btn-outline-info mt-3 btn-block" (click)="onSearchByKeyword()">
+          <i class="fa fa-search"></i> {{'administration.advanced-search.buttonSearch' | translate}}
+        </button>
+      </div>
+    </div>
+  
+    <div class="row mt-5 mb-5">
+      <div class="col-md-12 btn-group">
+        <button class="btn btn-outline-info mt-3 btn-block" onclick="showHide()">
+          <i class="fa fa-angle-down fa-lg"  id="clickbtn"></i> {{'administration.advanced-search.buttonFilter' | translate}}
+        </button>
+      </div>
+    </div>
+  
+    <div id="showHideDiv" style="display: none;">
+      <div class="row mt-5 d-flex justify-content-center">
+        <div class="col-md-2">
+          <label for="min" [translate]="'administration.advanced-search.min'"></label>
+          <input class="form-control input-sm" id="min" #min type="number" (change)="onSearchByFilter({sum: {$gte : min.value }}, min.value, 'sum')"/>
+        </div>
+        <div class="col-md-2">
+          <label for="max" [translate]="'administration.advanced-search.max'"></label>
+          <input class="form-control input-sm" id="max" #max type="number" (change)="onSearchByFilter({sum: {$lte : max.value }}, max.value, 'sum')"/>
+        </div>
+        <div class="col-md-2">
+          <label for="since" [translate]="'administration.advanced-search.since'"></label>
+          <input class="form-control input-sm" id="since" #since type="date" (change)="onSearchByFilter({createdAt: {$gte : since.value }}, since.value, 'created_at')" />
+        </div>
+        <div class="col-md-2">
+          <label for="until" [translate]="'administration.advanced-search.until'"></label>
+          <input class="form-control input-sm" id="until" #until type="date" (change)="onSearchByFilter({createdAt: {$lte : until.value }}, until.value, 'created_at')"/>
+        </div>
+        <!-- <div class="col-md-2"></div> -->
+      </div>
+      <div class="row mt-5 d-flex justify-content-center">
+        <div class="col-md-2">
+          <label for="Equipe" [translate]="'administration.advanced-search.team'"></label>
+          <input class="form-control input-sm" id="Equipe" type="text" />
+        </div>
+        <div class="col-md-2">
+          <label for="payment" [translate]="'administration.advanced-search.method'"></label>
+          <select class="form-control input-sm" id="payment" #payment (change)="onSearchByFilter({type_payment: payment.value}, payment.value, 'type_payment')">
+            <option value=""></option>
+            <option [value]="type.value" *ngFor="let type of paymentTypes">{{type.name}}</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label for="currency" [translate]="'administration.advanced-search.currency'"></label>
+          <select class="form-control input-sm" id="currency" #currency (change)="onSearchByFilter({currency: currency.value}, currency.value, 'currency')">
+            <option value=""></option>
+            <option [value]="currency.value" *ngFor="let currency of currencies">{{currency.name}}</option>
+          </select>
+        </div>
+        <!-- <div class="col-md-4 btn-group">
+          <button class="btn btn-outline-info mt-3 btn-block">
+            <i class="fa fa-search"></i> Advance Search
+          </button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped" *ngIf="donations">
+    <thead class="text-center">
+        <tr class="t-head">
+            <th scope="col" [translate]="'administration.last-table.col1'"></th>
+            <th scope="col" [translate]="'administration.last-table.col2'"></th>
+            <th scope="col" [translate]="'administration.last-table.col3'"></th>
+            <th scope="col" [translate]="'administration.last-table.col4'"></th>
+            <!-- <th scope="col" [translate]="'administration.last-table.col5'"></th> -->
+            <th scope="col" [translate]="'administration.last-table.col6'"></th>
+            <th scope="col" [translate]="'administration.last-table.col7'"></th>
+            <th scope="col" [translate]="'administration.last-table.col8'"></th>
+        </tr>
+    </thead>
+    <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center spinner"></app-loading-spinner>
+    <tbody class="text-center">
+        <tr class="b-even" *ngFor="let don of donations | async">
+            <td scope="row">{{don.fname}}</td>
+            <td scope="row">{{don.lname}}</td>
+            <td scope="row">{{don.email}}</td>
+            <td scope="row">{{don.amount}}</td>
+            <!-- <td scope="row">{{don.campaign_name}}</td> -->
+            <td scope="row">{{don.date | date}}</td>
+            <td scope="row">
+                <button class="success" (click)="CerfaDownload(don)"><i class="fa fa-download"></i></button>
+            </td>
+            <td scope="row"><button class="view"><i class="fa fa-eye"></i> </button></td>
+        </tr>
+    </tbody>
+</table>
+  
+  <div class="container mt-5">
+    <div class="row">
+      <hr />
+      <div class="col-md-6 btn-group">
+        <button class="btn btn-danger btn-block" (click)="csvAllDonations()">
+          <i class="fa fa-download m"></i> {{'administration.advanced-search.exportDonations' | translate}}
+        </button>
+      </div>
+      <div class="col-md-6 btn-group">
+        <button class="btn btn-danger btn-block" (click)="csvCurrentResult()">
+          <i class="fa fa-download m"></i> {{'administration.advanced-search.exportResult' | translate}}
+        </button>
+      </div>
+      <hr />
+    </div>
+  </div>
+  
+  <div class="container mt" *ngIf="current_association">
+    <div class="row">
+      <div class="col-md-12 text-center mt-5">
+          <app-donators-table [association]="current_association"></app-donators-table>
+      </div>
+    </div>
+  </div>
+  

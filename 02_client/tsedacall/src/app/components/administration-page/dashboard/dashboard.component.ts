@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/shared/models/user.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  @Input() association:User;
+  public pattern_url = environment.apiUrl + 'profile/'
 
   constructor(private router:Router) { }
   
@@ -16,7 +20,10 @@ export class DashboardComponent implements OnInit {
 
   navAddDonation(){
     this.router.navigate([`add`]);
+  }
 
+  navSearchCerfa(){
+    this.router.navigate([`search`]);
   }
 
 }

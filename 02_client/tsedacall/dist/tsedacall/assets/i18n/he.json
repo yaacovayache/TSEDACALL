@@ -76,6 +76,23 @@
             "col6": "תאריך",
             "col7": "הורד את Cerfa",
             "col8": "לראות"
+        },
+        "advanced-search":{
+            "title": "תרומות שלי",
+            "counter": "תרומות",
+            "simple": "חיפוש כללי",
+            "placeholderSimple": "מילת מפתח (שם, שם פרטי, סכום, ....)",
+            "buttonSearch": "מצא תרומה",
+            "buttonFilter": "לחץ כאן להצגת מסננים",
+            "exportDonations": "ייצא את כל התרומות",
+            "exportResult": "ייצא את תוצאת החיפוש",
+            "min": "מחיר מינימלית",
+            "max": "מחיר מקסימלי",
+            "since": "מאז",
+            "until": "עד",
+            "team": "קבוצה",
+            "method": "אמצעי תשלום",
+            "currency": "מטבע"
         }
     },
     "form":{

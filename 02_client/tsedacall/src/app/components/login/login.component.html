@@ -14,7 +14,7 @@
       <div class="container">
         <h1 [translate]="'form.TitleLogin'"></h1>
         
-        <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center"></app-loading-spinner>
+        <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center spinner"></app-loading-spinner>
 
         <div class="login-form">
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">

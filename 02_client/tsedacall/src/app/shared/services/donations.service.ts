@@ -23,6 +23,10 @@ export class DonationsService {
   allDonationsChanged = new BehaviorSubject<Donation[]>([]);
   readonly  allDonations = this.allDonationsChanged.asObservable();
 
+  searchByFilterStore:Donation[] = [];
+  searchByFilterChanged = new BehaviorSubject<Donation[]>([]);
+  readonly  searchByFilter = this. searchByFilterChanged.asObservable();
+
 
   public addDonation(item){
     return this.http.post<Donation>(environment.apiUrl + `payment`, item)
@@ -68,6 +72,18 @@ export class DonationsService {
   public sendCerfaByMail(item){
     item.cerfa.donator.sumWords = this.toWords.convert(item.cerfa.donator.sum)
     return this.http.post(environment.apiUrl + `cerfa/mail`, item);
+  }
+
+  public searchFilter(item){
+    return this.http.post<Donation[]>(environment.apiUrl + `donations/filter`, {query: item}).subscribe(
+      donations => {
+        this. searchByFilterStore = donations;
+        this.searchByFilterChanged.next(this.searchByFilterStore);
+      });
+  }
+
+  public getCsvFromQuery(item, filter){
+    return this.http.post(environment.apiUrl + `donations/export`, {query: item, filter:filter})
   }
   
 }

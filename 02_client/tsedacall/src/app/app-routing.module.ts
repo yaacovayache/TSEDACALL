@@ -8,6 +8,7 @@ import { AssociationsListComponent } from './components/associations-list/associ
 import { CampaignPageComponent } from './components/campaign-page/campaign-page.component';
 import { AdministrationPageComponent } from './components/administration-page/administration-page.component';
 import { AddDonationComponent } from './components/administration-page/add-donation/add-donation.component';
+import { SearchCerfaComponent } from './components/administration-page/search-cerfa/search-cerfa.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddDonationComponent,
+  },
+  {
+    path: 'search',
+    component: SearchCerfaComponent,
   }
 ];
 

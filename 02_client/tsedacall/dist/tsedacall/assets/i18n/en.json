@@ -76,6 +76,23 @@
             "col6": "Date",
             "col7": "Download Cerfa",
             "col8": "To see"
+        },
+        "advanced-search":{
+            "title": "My Donations",
+            "counter": "donations",
+            "simple": "Simple Search",
+            "placeholderSimple": "Keyword (Name, first name, email, amount, ....)",
+            "buttonSearch": "Find a donation",
+            "buttonFilter": "Click here to display filters",
+            "exportDonations": "Export all donations",
+            "exportResult": "Export the resultof the search",
+            "min": "Minimum Amount",
+            "max": "Maximum Amount",
+            "since": "Since",
+            "until": "Until",
+            "team": "Team",
+            "method": "Payment Method",
+            "currency": "Currency"
         }
     },
     "form":{

@@ -46,7 +46,11 @@ export class UserService {
     return this.http.get<Chat[]>(environment.apiUrl + `message/${id}`)
   }
 
-  public getDonationsByAssociationId(id){
-    return this.http.get<any[]>(environment.apiUrl + `donations/association/${id}`)
+  public getDonationsByAssociationId(id, limit){
+    return this.http.get<any[]>(environment.apiUrl + `donations/association/${id}/${limit}`)
+  }
+
+  public getCountDonationsByAssociationId(id){
+    return this.http.get<any[]>(environment.apiUrl + `count/donations/association/${id}`)
   }
 }

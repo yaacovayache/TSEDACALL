@@ -119,8 +119,9 @@ router.get('/profile/:id', async(req, res) => {
 })
 
 // Get donation by association Id (limit = 5)
-router.get('/donations/association/:id', async(req, res) => {
+router.get('/donations/association/:id/:limit', async(req, res) => {
     try {
+        let limit = (Number(req.params.limit))? Number(req.params.limit): 10000000000
         let associationId = ObjectId(req.params.id)
         let donations = await User.aggregate([
             {
@@ -144,7 +145,7 @@ router.get('/donations/association/:id', async(req, res) => {
             {
                 $match:{"_id" : associationId}
             },
-            { $limit : 5 },
+            { $limit : limit },
             {   
                 $project:{
                     _id : 1,
@@ -154,7 +155,7 @@ router.get('/donations/association/:id', async(req, res) => {
                     address : "$donationsColl.address",
                     zip : "$donationsColl.zip",
                     city : "$donationsColl.city",
-                    sum : "$donationsColl.sum",
+                    amount : "$donationsColl.sum",
                     campaign_name : "$campaignColl.name",
                     campaign_id : "$campaignColl._id",
                     date : "$donationsColl.createdAt"
@@ -162,6 +163,46 @@ router.get('/donations/association/:id', async(req, res) => {
             }
         ]);
         res.send(donations)
+    } catch (err) {
+        console.log(err)
+        res.status(500).send()
+    }
+  })
+
+// Get count donation by association Id
+router.get('/count/donations/association/:id', async(req, res) => {
+    try {
+        let associationId = ObjectId(req.params.id)
+        let count = await User.aggregate([
+            {
+                $lookup:{
+                    from: "campaigns",
+                    localField: "_id",
+                    foreignField: "founder_id",
+                    as: "campaignColl"
+                }
+            },
+            {   $unwind:"$campaignColl" },
+            {
+                $lookup:{
+                    from: "donations", 
+                    localField: "campaignColl._id", 
+                    foreignField: "campaignId",
+                    as: "donationsColl"
+                }
+            },
+            {   $unwind:"$donationsColl" },        
+            {
+                $match:{"_id" : associationId}
+            },
+            {   
+                $group:{
+                    _id:false,
+                    count:{$sum:1},
+                } 
+            }
+        ]);
+        res.send(count[0])
     } catch (err) {
         console.log(err)
         res.status(500).send()

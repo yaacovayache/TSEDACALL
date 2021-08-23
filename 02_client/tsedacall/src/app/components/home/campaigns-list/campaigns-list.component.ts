@@ -17,7 +17,7 @@ import { environment } from 'src/environments/environment';
 export class CampaignsListComponent implements OnInit {
   campaigns: Observable<Campaign[]>;
   searchText;
-  fund = 2570;
+  public animationStarter = 0;
   public pattern_url = environment.apiUrl + 'cover/'
 
   constructor(private campaignService:CampaignService, private donationsService:DonationsService, private userService:UserService, private router:Router) { }
@@ -79,6 +79,13 @@ export class CampaignsListComponent implements OnInit {
         items: 1
       }
     },
+  }
+
+
+  animationProgressBar(goal){
+    console.log(goal)
+    console.log(this.animationStarter)
+    return goal
   }
 
 

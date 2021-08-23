@@ -5,13 +5,13 @@
         <div class="row">
             <div class="col-md-12">
                <div class="table-responsive">
-                <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center"></app-loading-spinner>
+                <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center spinner"></app-loading-spinner>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <td colspan="4" class="table-active last" [translate]="'administration.last-table.last'"></td>
                             <td colspan="4" class="table-active seeAll">
-                                <button class="btn btn-danger" [translate]="'administration.last-table.seeAll'"></button>
+                                <button class="btn btn-danger" (click)="openModalWithClass(template)" [translate]="'administration.last-table.seeAll'"></button>
                             </td>
                         </tr>
                     </thead>
@@ -32,7 +32,7 @@
                             <td scope="row">{{don.fname}}</td>
                             <td scope="row">{{don.lname}}</td>
                             <td scope="row">{{don.email}}</td>
-                            <td scope="row">{{don.sum}}</td>
+                            <td scope="row">{{don.amount}}</td>
                             <td scope="row">{{don.campaign_name}}</td>
                             <td scope="row">{{don.date | date}}</td>
                             <td scope="row">
@@ -48,3 +48,48 @@
     </div>
 </section>
 <!-- table data end -->
+
+
+
+<ng-template #template>  
+      <div class="modal-header">  
+            <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.hide()"></button> 
+      </div>  
+      <div class="modal-body">
+        <table class="table table-striped">
+            <thead class="text-center">
+                <tr class="t-head">
+                    <th scope="col" [translate]="'administration.last-table.col1'"></th>
+                    <th scope="col" [translate]="'administration.last-table.col2'"></th>
+                    <th scope="col" [translate]="'administration.last-table.col3'"></th>
+                    <th scope="col" [translate]="'administration.last-table.col4'"></th>
+                    <th scope="col" [translate]="'administration.last-table.col5'"></th>
+                    <th scope="col" [translate]="'administration.last-table.col6'"></th>
+                    <th scope="col" [translate]="'administration.last-table.col7'"></th>
+                    <th scope="col" [translate]="'administration.last-table.col8'"></th>
+                </tr>
+            </thead>
+            <app-loading-spinner *ngIf="isLoading" class="d-flex justify-content-center spinner"></app-loading-spinner>
+            <tbody class="text-center">
+                <tr class="b-even" *ngFor="let don of allDonations | searchFilter: searchText">
+                    <td scope="row">{{don.fname}}</td>
+                    <td scope="row">{{don.lname}}</td>
+                    <td scope="row">{{don.email}}</td>
+                    <td scope="row">{{don.amount}}</td>
+                    <td scope="row">{{don.campaign_name}}</td>
+                    <td scope="row">{{don.date | date}}</td>
+                    <td scope="row">
+                        <button class="success" (click)="CerfaDownload(don)"><i class="fa fa-download"></i></button>
+                    </td>
+                    <td scope="row"><button class="view"><i class="fa fa-eye"></i> </button></td>
+                </tr>
+            </tbody>
+        </table>
+      </div>  
+      <div class="modal-footer">  
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fa fa-search"></i></span>
+            <input [(ngModel)]="searchText" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          </div>
+      </div>  
+    </ng-template> 

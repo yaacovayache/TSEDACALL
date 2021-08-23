@@ -76,6 +76,23 @@
             "col6": "Date",
             "col7": "Télécharger le Cerfa",
             "col8": "Voir"
+        },
+        "advanced-search":{
+            "title": "Mes dons",
+            "counter": "donations",
+            "simple": "Recherche simple",
+            "placeholderSimple": "Mot clé (Nom, prénom, email, montant, ....)",
+            "buttonSearch": "Trouver un don",
+            "buttonFilter": "Cliquez ici pour afficher les filtres",
+            "exportDonations": "Exporter tous les dons",
+            "exportResult": "Exporter le résultat de la recherche",
+            "min": "Montant minimal",
+            "max": "Montant maximal",
+            "since": "Depuis",
+            "until": "Jusqu'à",
+            "team": "Équipe",
+            "method": "Mode de paiement",
+            "currency": "Monnaie"
         }
     },
     "form":{
