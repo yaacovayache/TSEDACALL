@@ -26,25 +26,26 @@ export class TopCampaignComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.campaignService.getCampaignVedette().subscribe((res)=>{
+      console.log(res)
       this.vedette = res
       this.donations = this.donationsService.donations; // subscribe to entire collection
       this.donationsService.getDonationsByCampaignId(this.vedette._id);
       // RECURSION OF SET INTERVALL FOR DONATION AND NOTIFICATIONS
-      var refreshClassAndDonations = () =>{
-        clearInterval(this.interval);
-        this.class = !this.class;
-        if (this.class){
-          this.time = 5000
-        } else {
-          this.hours = this.getRandomInt(1, 5)
-          this.time = this.getRandomInt(10000, 30000)
-          this.donations = this.donationsService.donations; // subscribe to entire collection
-          this.donationsService.getDonationsByCampaignId(this.vedette._id);
-        }
-        this.ref.detectChanges();
-        this.interval = setInterval(refreshClassAndDonations, this.time);
-      }
-      this.interval = setInterval(refreshClassAndDonations, this.time);
+    //   var refreshClassAndDonations = () =>{
+    //     clearInterval(this.interval);
+    //     this.class = !this.class;
+    //     if (this.class){
+    //       this.time = 5000
+    //     } else {
+    //       this.hours = this.getRandomInt(1, 5)
+    //       this.time = this.getRandomInt(10000, 30000)
+    //       this.donations = this.donationsService.donations; // subscribe to entire collection
+    //       this.donationsService.getDonationsByCampaignId(this.vedette._id);
+    //     }
+    //     this.ref.detectChanges();
+    //     this.interval = setInterval(refreshClassAndDonations, this.time);
+    //   }
+    //   this.interval = setInterval(refreshClassAndDonations, this.time);
       
     })
   }

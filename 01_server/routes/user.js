@@ -209,5 +209,75 @@ router.get('/count/donations/association/:id', async(req, res) => {
     }
   })
 
+// Get donator by association Id
+router.get('/donations/association/:id', async(req, res) => {
+    try {
+        let associationId = ObjectId(req.params.id)
+        let donations = await User.aggregate([
+            {
+                $lookup:{
+                    from: "campaigns",
+                    localField: "_id",
+                    foreignField: "founder_id",
+                    as: "campaignColl"
+                }
+            },
+            {   $unwind:"$campaignColl" },
+            {
+                $lookup:{
+                    from: "donations", 
+                    localField: "campaignColl._id", 
+                    foreignField: "campaignId",
+                    as: "donationsColl"
+                }
+            },
+            {   $unwind:"$donationsColl" },        
+            {
+                $match:{"_id" : associationId}
+            },
+            {   
+                $group:{
+                    _id : 1,
+                    fname: { $first : "$donationsColl.fname" }
+                } 
+            }
+        ]);
+        res.send(donations)
+    } catch (err) {
+        console.log(err)
+        res.status(500).send()
+    }
+  })
+
+
+//   db.getCollection('users').aggregate([
+//     {
+//         $lookup:{
+//             from: "campaigns",
+//             localField: "_id",
+//             foreignField: "founder_id",
+//             as: "campaignColl"
+//         }
+//     },
+//     {   $unwind:"$campaignColl" },
+//     {
+//         $lookup:{
+//             from: "donations", 
+//             localField: "campaignColl._id", 
+//             foreignField: "campaignId",
+//             as: "donationsColl"
+//         }
+//     },
+//     {   $unwind:"$donationsColl" },        
+//     {
+//         $match:{"_id" : ObjectId("60da300a2967351bf4a88f9a")}
+//     },
+//     {
+//         $group: {
+//             _id: {"email": "$donationsColl.email", sum: {"$sum" : $donationsColl.sum}
+//     },
+// }
+// },
+// ])
 
 module.exports = router

@@ -24,26 +24,14 @@
                     </h4>
 
                     <h4 class="collectedPrice">{{campaign.totalSum}}€</h4>
-                    <!-- <progress-bar *ngIf="(campaign.totalSum/campaign.goal)*100 <= 100" [progress]="(campaign.totalSum/campaign.goal)*100 | number" color="#107598">
-                    </progress-bar>
                     
-                  <progress-bar *ngIf="(campaign.totalSum/campaign.goal)*100 > 100" progress="100" color="#107598">
-                  </progress-bar> -->
-
-                    <div style="position: relative" *ngIf="(campaign.totalSum/campaign.goal)*100 <= 100">
-                      <mat-progress-bar mode="determinate" [value]="(campaign.totalSum/campaign.goal)*100">
-                      </mat-progress-bar>
-                      <span style="position: absolute; top: 0.3em; font-weight: bold;"
-                        [ngStyle]="{'left': (campaign.totalSum/campaign.goal)*100 + 2 + '%'}">{{(campaign.totalSum/campaign.goal)*100
-                        | number}}%</span>
+                  <div class="progressWidth">
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" [aria-valuenow]="(campaign.totalSum/campaign.goal)*100 | number" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'max-width': (campaign.totalSum/campaign.goal)*100 + '%'}" style="border-radius: 25px">
+                        <span class="title">{{(campaign.totalSum/campaign.goal)*100 | number}}%</span>
+                      </div>
                     </div>
-
-                    <div style="position: relative" *ngIf="(campaign.totalSum/campaign.goal)*100 > 100">
-                      <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
-                      <span
-                        style="position: absolute; top: 0.3em; font-weight: bold; left:50%;">{{(campaign.totalSum/campaign.goal)*100
-                        | number}}%</span>
-                    </div>
+                  </div>
 
 
                     <div class="row">
@@ -77,24 +65,12 @@
                 </h4>
 
                 <h4 class="collectedPrice">{{campaign.totalSum}}€</h4>
-                <!-- <progress-bar *ngIf="(campaign.totalSum/campaign.goal)*100 <= 100"  [progress]="animationProgressBar((campaign.totalSum/campaign.goal)*100)" color="#107598">
-                  </progress-bar>
-
-                  <progress-bar *ngIf="(campaign.totalSum/campaign.goal)*100 > 100" progress="100" color="#107598">
-                  </progress-bar> -->
-                <div style="position: relative" *ngIf="(campaign.totalSum/campaign.goal)*100 <= 100">
-                  <mat-progress-bar mode="determinate" [value]="(campaign.totalSum/campaign.goal)*100">
-                  </mat-progress-bar>
-                  <span style="position: absolute; top: 0.3em; font-weight: bold;"
-                    [ngStyle]="{'left': (campaign.totalSum/campaign.goal)*100 + 2 + '%'}">{{(campaign.totalSum/campaign.goal)*100
-                    | number}}%</span>
-                </div>
-
-                <div style="position: relative" *ngIf="(campaign.totalSum/campaign.goal)*100 > 100">
-                  <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
-                  <span
-                    style="position: absolute; top: 0.3em; font-weight: bold; left:50%;">{{(campaign.totalSum/campaign.goal)*100
-                    | number}}%</span>
+                <div class="progressWidth">
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" [aria-valuenow]="(campaign.totalSum/campaign.goal)*100 | number" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'max-width': (campaign.totalSum/campaign.goal)*100 + '%'}" style="border-radius: 25px">
+                      <span class="title">{{(campaign.totalSum/campaign.goal)*100 | number}}%</span>
+                    </div>
+                  </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">

@@ -49,7 +49,10 @@ export class SearchCerfaComponent implements OnInit {
   onSearchByFilter(item, value, key){
     if (key == 'createdAt'){
       if ('$gte' in item[key]) item[key]['$gte'] = new Date(value); else item[key]['$lte'] = new Date(value);
+    } else if (key == 'sum'){
+      if ('$gte' in item[key]) item[key]['$gte'] = parseInt(value); else item[key]['$lte'] = parseInt(value);
     }
+
     if (value != ''){ 
       Object.assign(this.mongoRequest, item)
     } else {

@@ -653,8 +653,65 @@ body {
 	}
 }
 
+/* progress Bar */ 
 
-mat-progress-bar {
-  height: 2em;
-  border-radius: 20px;
+.progressWidth {
+  width: 100%;
+  position: relative;
 }
+.progress {
+  height: 2.5em;
+  border-radius: 25px;
+  border: 1px solid rgb(216, 214, 214);
+}
+.progress i {
+  line-height: 3.5em;
+}
+
+.progress-bar {
+  width: 0;
+  -webkit-animation: progress 2.5s ease-in-out forwards;
+  animation: progress 2.5s ease-in-out forwards;
+  background-color: rgb(16, 117, 152) !important;
+}
+.progress-bar .title {
+  opacity: 0;
+  -webkit-animation: show 0.35s forwards ease-in-out 0.5s;
+  animation: show 0.35s forwards ease-in-out 0.5s;
+}
+
+@-webkit-keyframes progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@-webkit-keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* progress Bar */

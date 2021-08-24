@@ -5,7 +5,7 @@
             <div class="col-md-12 rnd">
                 <img [src]="pattern_url + vedette._id" class="rounded-start" alt="card" height="100%" width="100%">
             </div>
-            <div *ngFor="let dons of donations | async" [ngClass]="class == true ? 'alert-toast' : 'not-alert'" class="toast align-items-center text-white bg-primary border-0" role="alert"
+            <!-- <div *ngFor="let dons of donations | async" [ngClass]="class == true ? 'alert-toast' : 'not-alert'" class="toast align-items-center text-white bg-primary border-0" role="alert"
                 aria-live="assertive" aria-atomic="true">
                 <div class="d-flex">
                     <div class="toast-body">
@@ -32,7 +32,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
+    <div class="progressWidth">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" [aria-valuenow]="(vedette.totalSum/vedette.goal)*100 | number" aria-valuemin="0" aria-valuemax="100"  [ngStyle]="{'max-width': (vedette.totalSum/vedette.goal)*100 + '%'}" style="border-radius: 25px">
+            <span class="title">{{(vedette.totalSum/vedette.goal)*100 | number}}%</span>
+          </div>
+        </div>
+      </div>
 </div>
