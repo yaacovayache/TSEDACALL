@@ -1,4 +1,20 @@
-<div *ngIf="currentAssociation">
+<!-- <div *ngIf="currentAssociation">
     <app-dashboard [association]="currentAssociation"></app-dashboard>
     <app-donators-table [association]="currentAssociation"></app-donators-table>
+</div> -->
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <app-sidebar></app-sidebar>
+
+        <div class="col-md-12">
+            <div *ngIf="currentAssociation" style="margin-left:5%">
+                <app-dashboard [association]="currentAssociation"></app-dashboard>
+                <app-donators-table [association]="currentAssociation"></app-donators-table>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+<!-- <router-outlet name="admin_panel"></router-outlet> -->

@@ -84,10 +84,10 @@ router.get('/user/uid/:id', async(req, res) => {
 })
 
 // Add message by chat
-router.post('/send/message/:id', auth, async(req, res) => {
+router.post('/send/message/:id/:type', auth, async(req, res) => {
 
     try {
-        const user = await User.findByIdAndUpdate({_id: req.params.id}, {$push : {chat: {client : req.body.message} } })
+        const user = await User.findByIdAndUpdate({_id: req.params.id}, {$push : {chat: {message : req.body.message, sender : req.params.type} } })
         res.send({ message: 'sent', error : 0})
     } catch (err) {
         console.log(err)
@@ -101,6 +101,18 @@ router.get('/message/:id', auth, async(req, res) => {
     try {
         const discution = await User.findById({_id: req.params.id}, {_id: false, chat:true})
         res.send(discution.chat)
+    } catch (err) {
+        console.log(err)
+        res.status(400).send({message: err.message, error : 1})
+    }
+})
+
+// get all users with messages
+router.get('/users/messages', auth, async(req, res) => {
+
+    try {
+        const users = await User.find({chat: { $not: {$size: 0} }}).sort({"chat.seen": 1})
+        res.send(users)
     } catch (err) {
         console.log(err)
         res.status(400).send({message: err.message, error : 1})
@@ -249,35 +261,16 @@ router.get('/donations/association/:id', async(req, res) => {
     }
   })
 
+// Change user chat to seen
+router.post('/seen/message/:id/:type', auth, async(req, res) => {
 
-//   db.getCollection('users').aggregate([
-//     {
-//         $lookup:{
-//             from: "campaigns",
-//             localField: "_id",
-//             foreignField: "founder_id",
-//             as: "campaignColl"
-//         }
-//     },
-//     {   $unwind:"$campaignColl" },
-//     {
-//         $lookup:{
-//             from: "donations", 
-//             localField: "campaignColl._id", 
-//             foreignField: "campaignId",
-//             as: "donationsColl"
-//         }
-//     },
-//     {   $unwind:"$donationsColl" },        
-//     {
-//         $match:{"_id" : ObjectId("60da300a2967351bf4a88f9a")}
-//     },
-//     {
-//         $group: {
-//             _id: {"email": "$donationsColl.email", sum: {"$sum" : $donationsColl.sum}
-//     },
-// }
-// },
-// ])
+    try {
+        const user = await User.updateMany({"_id": req.params.id, "chat.sender": req.params.type}, {$set : {"chat.$[chat].seen": true } }, {"arrayFilters": [{"chat.sender": req.params.type}]})
+        res.send({ message: 'updated', error : 0})
+    } catch (err) {
+        console.log(err)
+        res.status(400).send({message: err.message, error : 1})
+    }
+})
 
 module.exports = router

@@ -24,6 +24,10 @@ export class UserService {
   messagesChanged = new BehaviorSubject<Chat[]>([]);
   readonly messages = this.messagesChanged.asObservable();
 
+  usersWithMessagesStore:User[] = [];
+  usersWithMessagesChanged = new BehaviorSubject<User[]>([]);
+  readonly usersWithMessages = this.usersWithMessagesChanged.asObservable();
+
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
   public getAssociations(){
@@ -38,12 +42,27 @@ export class UserService {
     return this.http.get<User>(environment.apiUrl + `user/uid/${id}`);
   }
 
-  public sendMessageByChat(message, id){
-    return this.http.post<ReqMessage>(environment.apiUrl + `send/message/${id}`, {message:message});
+  public sendMessageByChat(message, id, type){
+    return this.http.post<ReqMessage>(environment.apiUrl + `send/message/${id}/${type}`, {message:message});
   }
 
   public getMessages(id){
     return this.http.get<Chat[]>(environment.apiUrl + `message/${id}`)
+  }
+
+  public setMessageToSeen(id, type){
+    return this.http.post<ReqMessage>(environment.apiUrl + `seen/message/${id}/${type}`, {})
+  }
+
+
+  
+  public getUsersWithMessages(){
+    return this.http.get<User[]>(environment.apiUrl + `users/messages`).subscribe(
+      users => {
+        console.log(users)
+        this.usersWithMessagesStore = users;
+        this.usersWithMessagesChanged.next(this.usersWithMessagesStore);
+      });
   }
 
   public getDonationsByAssociationId(id, limit){

@@ -72,7 +72,9 @@ onWindowScroll() {
   }
 
   onNavigationProfile() {
-    if (JSON.parse(localStorage.getItem(this.authService.getLocalStorageToken())).role == 2)
+    if (this.authService.getLocalStorageUser().role == 2)
       this.router.navigate([`/administration`]);
+    else if (this.authService.getLocalStorageUser().role == 3)
+      this.router.navigate([`/admin-chat`]);
   }
 }

@@ -29,6 +29,8 @@ export interface AuthResponseData {
 
 export interface Chat {
   createdAt:string;
+  sender?:string;
+  message?:string;
   support?: string;
   client?:string
 }

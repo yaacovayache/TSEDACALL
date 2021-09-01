@@ -9,6 +9,8 @@ import { CampaignPageComponent } from './components/campaign-page/campaign-page.
 import { AdministrationPageComponent } from './components/administration-page/administration-page.component';
 import { AddDonationComponent } from './components/administration-page/add-donation/add-donation.component';
 import { SearchCerfaComponent } from './components/administration-page/search-cerfa/search-cerfa.component';
+import { AdminChatComponent } from './components/admin-chat/admin-chat.component';
+import { AuthentificationGuard } from './shared/auth-guards/authentification.guard';
 
 
 const routes: Routes = [
@@ -35,16 +37,20 @@ const routes: Routes = [
   },
   {
     path: 'administration',
-    component: AdministrationPageComponent,
+    component: AdministrationPageComponent, canActivate:[AuthentificationGuard],
   },
   {
     path: 'add',
-    component: AddDonationComponent,
+    component: AddDonationComponent, canActivate:[AuthentificationGuard],
   },
   {
     path: 'search',
-    component: SearchCerfaComponent,
-  }
+    component: SearchCerfaComponent, canActivate:[AuthentificationGuard],
+  },
+  {
+    path: 'admin-chat',
+    component: AdminChatComponent, canActivate:[AuthentificationGuard],
+  },
 ];
 
 @NgModule({

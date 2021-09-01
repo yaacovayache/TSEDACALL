@@ -1,0 +1,76 @@
+<div class="container bootstrap snippets bootdey mt-5">
+    <div class="row">
+		<div class="col-md-4 bg-white ">
+            <div class=" row border-bottom padding-sm" style="height: 40px;">
+            	Member
+            </div>
+            
+            <!-- =============================================================== -->
+            <!-- member list -->
+            <ul class="friend-list">
+                <li class="bounceInDown cursor-pointer" *ngFor="let user of users | async" (click)="setToCurrentChat(user)" [ngClass]="getIfNewMessages(user.chat)? 'active': ''">
+                	<a class="clearfix">
+                		<img [src]="pattern_url + user._id" alt="" class="img-circle">
+                		<div class="friend-name">	
+                			<strong>{{user.fname}} {{user.lname}}</strong>
+                		</div>
+                		<div class="last-message text-muted">{{user.chat[user.chat.length - 1].message}}</div>
+                		<small class="time text-muted">{{user.chat[user.chat.length - 1].createdAt | dateAgo}}</small>
+                		<small class="chat-alert label label-danger">{{getNumberNotSeenMessage(user.chat)}}</small>
+                	</a>
+                </li>                 
+            </ul>
+		</div>
+        
+        <!--=========================================================-->
+        <!-- selected chat -->
+    	<div class="col-md-8 bg-white ">
+            <div class="chat-message">
+                <ul class="chat" *ngIf="current_user">
+                    <li class="left clearfix" *ngFor="let message of current_user.chat">
+                        <div *ngIf="message['sender'] == 'client'">
+                            <span class="chat-img pull-left">
+                                <img [src]="pattern_url + current_user._id" alt="User Avatar">
+                            </span>
+                            <div class="chat-body clearfix" >
+                                <div class="header">
+                                    <strong class="primary-font">{{current_user.fname}} {{current_user.lname}}</strong>
+                                    <small class="pull-right text-muted"><i class="fa fa-clock-o"></i>{{message.createdAt | dateAgo}}</small>
+                                </div>
+                                <p>
+                                    {{message.message}}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div *ngIf="message['sender'] == 'support'" >
+
+                            <li class="right clearfix">
+                                <span class="chat-img pull-right">
+                                    <img src="assets/images/chat-bot.jpg" alt="User Avatar">
+                                </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">Support</strong>
+                                        <small class="pull-right text-muted"><i class="fa fa-clock-o"></i>{{message.createdAt | dateAgo}}</small>
+                                    </div>
+                                    <p>
+                                        {{message.message}}
+                                    </p>
+                                </div>
+                            </li>
+                        </div>
+                    </li>           
+                </ul>
+            </div>
+            <div class="chat-box bg-white">
+            	<div class="input-group">
+            		<input class="form-control border no-shadow no-rounded" placeholder="Type your message here" name="input-sender" [(ngModel)]="inputEl">
+            		<span class="input-group-btn">
+            			<button class="btn btn-success no-rounded" type="button" (click)="sendMessage(current_user._id)">Send</button>
+            		</span>
+            	</div><!-- /input-group -->	
+            </div>            
+		</div>        
+	</div>
+</div>

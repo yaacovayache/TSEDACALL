@@ -43,7 +43,7 @@ import { SearchFilterPipe } from './shared/pipes/search-filter.pipe';
 // Modules for translate
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-
+import { AuthGuardService } from './shared/services/auth-guard.service';
 // Components
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -83,6 +83,9 @@ import { NumberToWordsPipe } from './shared/pipes/number-to-word.pipe';
 import { AddDonationComponent } from './components/administration-page/add-donation/add-donation.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { SearchCerfaComponent } from './components/administration-page/search-cerfa/search-cerfa.component';
+import { AdminChatComponent } from './components/admin-chat/admin-chat.component';
+import { DateAgoPipe } from './shared/pipes/date-ago.pipe';
+import { SidebarComponent } from './components/administration-page/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -122,7 +125,10 @@ import { SearchCerfaComponent } from './components/administration-page/search-ce
     MsgBoxComponent,
     NumberToWordsPipe,
     AddDonationComponent,
-    SearchCerfaComponent
+    SearchCerfaComponent,
+    AdminChatComponent,
+    DateAgoPipe,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -167,7 +173,7 @@ import { SearchCerfaComponent } from './components/administration-page/search-ce
                 }
             }),
   ],
-  providers: [DatePipe, NumberToWordsPipe, { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true }, WINDOW_PROVIDERS],
+  providers: [DatePipe, DateAgoPipe, AuthGuardService, NumberToWordsPipe, { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true }, WINDOW_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

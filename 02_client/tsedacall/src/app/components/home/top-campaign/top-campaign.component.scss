@@ -8,8 +8,31 @@ h1 {
 }
 .card:hover{
     cursor: pointer;
-    -webkit-animation: action 0.5s infinite  alternate;
-    animation: action 0.5s infinite  alternate;
+    // -webkit-animation: action 0.5s infinite  alternate;
+    // animation: action 0.5s infinite  alternate;
+    // animation: pulse-blue 2s infinite;
+}
+
+.card{
+  animation: pulse-blue 2s infinite;
+}
+
+
+@keyframes pulse-blue {
+  0% {
+    transform: scale(0.99);
+    box-shadow: 0 0 0 0 rgba(52, 172, 224, 0.274);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(52, 172, 224, 0);
+  }
+  
+  100% {
+    transform: scale(0.99);
+    box-shadow: 0 0 0 0 rgba(52, 172, 224, 0);
+  }
 }
 
 @-webkit-keyframes action {
@@ -143,14 +166,14 @@ h1 {
   
   .progress-bar {
     width: 0;
-    -webkit-animation: progress 2.5s ease-in-out forwards;
-    animation: progress 2.5s ease-in-out forwards;
-    background-color: rgb(16, 117, 152) !important;
+   
+    -webkit-animation: progress 6s infinite forwards;
+            animation: progress 6s infinite forwards;
   }
   .progress-bar .title {
     opacity: 0;
     -webkit-animation: show 0.35s forwards ease-in-out 0.5s;
-    animation: show 0.35s forwards ease-in-out 0.5s;
+            animation: show 0.35s forwards ease-in-out 0.5s;
   }
   
   @-webkit-keyframes progress {
