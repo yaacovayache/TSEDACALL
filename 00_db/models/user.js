@@ -7,12 +7,10 @@ const validator = require("validator");
 // Item Sub-Schema for chats
 const chatSubSchema = new mongoose.Schema({
   sender: {
-    type: String,
-    required:true
+    type: String
   },
   message: {
     type: String,
-    required:true
   },
   seen: {
     type: Boolean,
