@@ -86,6 +86,11 @@ import { SearchCerfaComponent } from './components/administration-page/search-ce
 import { AdminChatComponent } from './components/admin-chat/admin-chat.component';
 import { DateAgoPipe } from './shared/pipes/date-ago.pipe';
 import { SidebarComponent } from './components/administration-page/sidebar/sidebar.component';
+import { AssociationConfigComponent } from './components/administration-page/association-config/association-config.component';
+import { MainComponent } from './components/administration-page/main/main.component';
+import { DonateBannerComponent } from './components/campaign-page/donate-banner/donate-banner.component';
+import { DonationFormComponent } from './components/donation-form/donation-form.component';
+import { ConfettiComponent } from './components/campaign-page/confetti/confetti.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +133,12 @@ import { SidebarComponent } from './components/administration-page/sidebar/sideb
     SearchCerfaComponent,
     AdminChatComponent,
     DateAgoPipe,
-    SidebarComponent
+    SidebarComponent,
+    AssociationConfigComponent,
+    MainComponent,
+    DonateBannerComponent,
+    DonationFormComponent,
+    ConfettiComponent
   ],
   imports: [
     CommonModule,

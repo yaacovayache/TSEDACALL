@@ -10,6 +10,8 @@ import { Subscription, interval } from 'rxjs';
 })
 export class TimerComponent implements OnInit, OnDestroy {
   @Input() campaign:Campaign;
+  @Input() maxOver:boolean;
+
   private subscription: Subscription;
   public dateNow = new Date();
   milliSecondsInASecond = 1000;
@@ -39,10 +41,18 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   private allocateTimeUnits (timeDifference) {
-    this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
-    this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
-    this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
-    this.daysToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
+    if (!this.maxOver) {
+      this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
+      this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
+      this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
+      this.daysToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
+    } else {
+      this.secondsToDday = 0;
+      this.minutesToDday = 0;
+      this.hoursToDday = 0;
+      this.daysToDday = 0;
+    }
+
   }
 
   ngOnDestroy() {

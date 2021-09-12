@@ -3,7 +3,7 @@ export class Campaign {
       public _id:string,
       public name: string,
       public description: string,
-      public founder: string,
+      public founder_id: string,
       public goal: number,
       public endAt: string,
       public createdAt: string,

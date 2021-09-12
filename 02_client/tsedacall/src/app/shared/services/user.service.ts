@@ -72,4 +72,16 @@ export class UserService {
   public getCountDonationsByAssociationId(id){
     return this.http.get<any[]>(environment.apiUrl + `count/donations/association/${id}`)
   }
+
+  public updateUserById(id, item){
+    return this.http.put<User>(environment.apiUrl + `user/uid/${id}`, item);
+  }
+
+  public updateProfilePicture(image:any, id:string){
+    return this.http.post(environment.apiUrl + `profile/${id}`, image);
+  }
+
+  public getAssociationByCampaignId(campaign_id:string){
+    return this.http.get(environment.apiUrl + `association/${campaign_id}`);
+  }
 }

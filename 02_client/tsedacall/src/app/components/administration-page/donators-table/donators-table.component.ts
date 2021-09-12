@@ -41,7 +41,7 @@ export class DonatorsTableComponent implements OnInit {
     this.isLoading=true
     // let association = this.authService.getLocalStorageUser()
     let data = {association: {id:this.association._id, name: this.association.associationName, address:this.association.address + ' ' + this.association.city + ', ' + this.association.zip, object: 'Campagne Object'},
-                donator: {sum: don.sum, fname:don.fname, lname:don.lname , address: don.address + ', ' + don.city},
+                donator: {sum: don.amount, fname:don.fname, lname:don.lname , address: don.address + ', ' + don.city},
                 date: don.date,
                 campaign: {_id:don.campaign_id}
               }

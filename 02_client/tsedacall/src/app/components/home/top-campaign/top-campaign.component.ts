@@ -30,22 +30,6 @@ export class TopCampaignComponent implements OnInit, OnDestroy {
       this.vedette = res
       this.donations = this.donationsService.donations; // subscribe to entire collection
       this.donationsService.getDonationsByCampaignId(this.vedette._id);
-      // RECURSION OF SET INTERVALL FOR DONATION AND NOTIFICATIONS
-    //   var refreshClassAndDonations = () =>{
-    //     clearInterval(this.interval);
-    //     this.class = !this.class;
-    //     if (this.class){
-    //       this.time = 5000
-    //     } else {
-    //       this.hours = this.getRandomInt(1, 5)
-    //       this.time = this.getRandomInt(10000, 30000)
-    //       this.donations = this.donationsService.donations; // subscribe to entire collection
-    //       this.donationsService.getDonationsByCampaignId(this.vedette._id);
-    //     }
-    //     this.ref.detectChanges();
-    //     this.interval = setInterval(refreshClassAndDonations, this.time);
-    //   }
-    //   this.interval = setInterval(refreshClassAndDonations, this.time);
       
     })
   }
@@ -64,6 +48,10 @@ export class TopCampaignComponent implements OnInit, OnDestroy {
   onClick(id, name){
     name = name.replace(' ', '-').toLowerCase()
     this.router.navigate([`/campaign/home/${id}/${name}`]);
+  }
+
+  onClickDonationForm(id){
+    this.router.navigate([`/donation-form/${id}`]);
   }
 
 

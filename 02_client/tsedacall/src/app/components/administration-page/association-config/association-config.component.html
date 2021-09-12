@@ -1,0 +1,181 @@
+<section class="config-section" *ngIf="currentUser">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-5">
+                <h1 class="heading">Contact Details - {{currentUser.associationName}}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5" id="modify">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="float-end modify" onclick="modify()">
+                    <span><i class="fa fa-edit"></i><label class="float-end mt-2">To Modify</label></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5" id="saveDiv">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="float-end modify" onclick="save()" (click)="onSave()">
+                    <span><i class="fa fa-save"></i><label class="float-end mt-2">Save</label></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="bodybox-1 box-h">Logo Association:</div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="bodybox-1 text-center">
+                    <!-- <img src="assets/image/photos.png" class="logo" alt="" /> -->
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <label for="fileToUpload">
+                            <div class="profile-pic"
+                                [ngStyle]="{'background-image': 'url(' + pattern_url + currentUser._id + ')'}">
+                                <span><i class="fa fa-camera"></i> Edit</span>
+                            </div>
+                        </label>
+                        <input type="File" name="fileToUpload" id="fileToUpload" (change)="onChangeProfile($event)" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="bodybox">
+                    Association Name: <br />
+                    <!-- <br />
+          Know name of the Association: -->
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="bodybox">
+                    <input class="input" type="text" [value]="currentUser.associationName"
+                        [(ngModel)]="currentUser.associationName" />
+                    <span class="normal-text"> {{currentUser.associationName}} </span> <br />
+                    <!-- <br />
+          <input class="input" type="text" value="LEV" />
+          <span class="normal-text"> LEV</span> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="bodybox">Link to your association page:</div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="bodybox">
+                    <input class="input" type="text" value="tsedacall.fr/LEV" />
+                    <span class="normal-text">tsedacall.fr/LEV</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="bodybox">Address:</div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="bodybox">
+                    <input class="input" type="text" [value]="currentUser.address" [(ngModel)]="currentUser.address" />
+                    <span class="normal-text">{{currentUser.address}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="bodybox">City:</div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="bodybox">
+                    <input class="input" type="text" [value]="currentUser.city" [(ngModel)]="currentUser.city" />
+                    <span class="normal-text">{{currentUser.city}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="bodybox">Code Postal:</div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="bodybox">
+                    <input class="input" type="text" [value]="currentUser.zip" [(ngModel)]="currentUser.zip" />
+                    <span class="normal-text">{{currentUser.zip}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="bodybox">Country:</div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="bodybox">
+                    <input class="input" type="text" [value]="currentUser.country" [(ngModel)]="currentUser.country" />
+                    <span class="normal-text">{{currentUser.country}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="container mt-3">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="bodybox">Topic:</div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="bodybox">
+                <input class="input" type="text" value="Help to the Bahurim" />
+                <span class="normal-text">Help to the Bahurim</span>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+    <!-- <div class="container mt-3">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="bodybox">Quality:</div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="bodybox">
+                <input class="input" type="text" value="General Interest Organization" />
+                <span class="normal-text">General Interest Organization</span>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+</section>

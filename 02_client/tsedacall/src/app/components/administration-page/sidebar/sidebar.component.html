@@ -1,25 +1,25 @@
 <div class="area"></div>
-<nav class="main-menu" style="padding-top: 10%">
+<nav class="main-menu">
   <ul>
     <li class="text-center">
-      <img src="assets/image/photos.png" width="40px" height="40px" alt="" />
-      <h3 class="mt-3" style="color: aliceblue">LEV Associatio</h3>
+      <img [src]="pattern_url + association._id" width="40px" height="40px" alt="" />
+      <h3 class="mt-3" style="color: aliceblue">{{association.associationName}}</h3>
     </li>
     <li>
-      <a href="http://justinfarrow.com">
+      <a routerLink="/administration">
         <i class="fa fa-home fa-2x"></i>
         <span class="nav-text"> Dashboard </span>
       </a>
     </li>
     <li class="has-subnav">
-      <a href="#">
+      <a routerLink="/administration/add">
         <i class="fa fa-plus fa-2x"></i>
         <span class="nav-text"> Add a Donation </span>
       </a>
     </li>
     <hr />
     <li class="has-subnav">
-      <a href="#">
+      <a routerLink="/administration/search">
         <i class="fa fa-eye fa-2x"></i>
         <span class="nav-text"> My Donation </span>
       </a>
@@ -46,7 +46,7 @@
     </li>
     <hr />
     <li>
-      <a href="#">
+      <a routerLink="/administration/config">
         <i class="fa fa-cog fa-2x"></i>
         <span class="nav-text"> My Association </span>
       </a>

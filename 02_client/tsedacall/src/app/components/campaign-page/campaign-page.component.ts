@@ -15,6 +15,7 @@ import { DonationsService } from 'src/app/shared/services/donations.service';
 export class CampaignPageComponent implements OnInit {
   campaign:Campaign;
   id:string;
+  maxOver:boolean = false;
 
 
   constructor(private route:ActivatedRoute, private campaignService:CampaignService) { }
@@ -23,6 +24,8 @@ export class CampaignPageComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id')
     this.campaignService.getCampaignById(this.id).subscribe((campaign)=>{
       this.campaign = campaign
+      if ((this.campaign.totalSum/this.campaign.goal)*100 >= 100)
+        this.maxOver=true;
     })
   }
 

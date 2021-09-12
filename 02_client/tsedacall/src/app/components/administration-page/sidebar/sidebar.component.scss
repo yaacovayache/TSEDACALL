@@ -16,7 +16,21 @@ hr {
   color: rgb(116, 104, 104);
   height: 4px;
 }
-
+.main-menu {
+  background: #212121;
+  position: absolute;
+  /* top: 0;
+  bottom: 0; */
+  /* height: 100%; */
+  height: calc(100vh - 80px);
+  left: 0;
+  width: 60px;
+  overflow: hidden;
+  -webkit-transition: width 0.05s linear;
+  transition: width 0.05s linear;
+  -webkit-transform: translateZ(0) scale(1, 1);
+  z-index: 10;
+}
 .sidebar {
   margin-top: 10%;
   padding: 5%;
@@ -59,7 +73,7 @@ hr {
   position: relative;
   display: table-cell;
   width: 60px;
-  height: 36px;
+  height: 24px;
   text-align: center;
   vertical-align: middle;
   font-size: 20px;
@@ -71,21 +85,7 @@ nav.main-menu.expanded {
   overflow: visible;
 }
 
-.main-menu {
-  background: #212121;
-  border-right: 1px solid #e5e5e5;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  width: 60px;
-  overflow: hidden;
-  -webkit-transition: width 0.05s linear;
-  transition: width 0.05s linear;
-  -webkit-transform: translateZ(0) scale(1, 1);
-  z-index: 10;
-}
+
 
 .main-menu > ul {
   margin: 7px 0;
@@ -120,9 +120,8 @@ nav.main-menu.expanded {
   vertical-align: middle;
   font-size: 18px;
 }
-.main-menu {
-  height: 1203px;
-}
+
+
 
 .main-menu .nav-text {
   position: relative;
@@ -177,6 +176,7 @@ nav.main-menu li.active > a,
 .dashboard-page nav.dashboard-menu ul li.active a {
   color: #fff;
   background-color: #5fa2db;
+  width: 95%;
 }
 .area {
   float: left;

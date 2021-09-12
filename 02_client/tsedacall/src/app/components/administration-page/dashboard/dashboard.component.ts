@@ -21,11 +21,11 @@ export class DashboardComponent implements OnInit {
   }
 
   navAddDonation(){
-    this.router.navigate([`add`]);
+    this.router.navigate([`administration/add`]);
   }
 
   navSearchCerfa(){
-    this.router.navigate([`search`]);
+    this.router.navigate([`administration/search`]);
   }
 
   csvAllDonations(){

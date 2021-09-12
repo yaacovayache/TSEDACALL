@@ -10,6 +10,10 @@ import { AdministrationPageComponent } from './components/administration-page/ad
 import { AddDonationComponent } from './components/administration-page/add-donation/add-donation.component';
 import { SearchCerfaComponent } from './components/administration-page/search-cerfa/search-cerfa.component';
 import { AdminChatComponent } from './components/admin-chat/admin-chat.component';
+import { AssociationConfigComponent } from './components/administration-page/association-config/association-config.component';
+import { MainComponent } from './components/administration-page/main/main.component';
+import { DonationFormComponent } from './components/donation-form/donation-form.component';
+
 import { AuthentificationGuard } from './shared/auth-guards/authentification.guard';
 
 
@@ -36,16 +40,18 @@ const routes: Routes = [
     component: CampaignPageComponent,
   },
   {
+    path: 'donation-form/:campaign_id',
+    component: DonationFormComponent,
+  },
+  {
     path: 'administration',
     component: AdministrationPageComponent, canActivate:[AuthentificationGuard],
-  },
-  {
-    path: 'add',
-    component: AddDonationComponent, canActivate:[AuthentificationGuard],
-  },
-  {
-    path: 'search',
-    component: SearchCerfaComponent, canActivate:[AuthentificationGuard],
+    children: [
+      { path: '', component: MainComponent, canActivate:[AuthentificationGuard] },
+      { path: 'add', component: AddDonationComponent, canActivate:[AuthentificationGuard] },
+      { path: 'search', component: SearchCerfaComponent, canActivate:[AuthentificationGuard] },
+      { path: 'config', component: AssociationConfigComponent, canActivate:[AuthentificationGuard] },
+    ],
   },
   {
     path: 'admin-chat',

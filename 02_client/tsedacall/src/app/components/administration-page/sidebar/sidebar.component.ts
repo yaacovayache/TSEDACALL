@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/shared/models/user.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
+  @Input() association:User;
+  public pattern_url = environment.apiUrl + 'profile/'
+  
   constructor() { }
 
   ngOnInit(): void {

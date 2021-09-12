@@ -1,0 +1,225 @@
+<div class="container mb-5">
+    <form [formGroup]="donationForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="container custome">
+                <div class="row form-box">
+                    <div class="col-md-12 text-center heading">
+                        <h1>1. Mon Soutien</h1>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-6 text-center mt-2">
+                        <div class="checkbox" id="checkbox_1" onclick="active('checkbox_1', 'checkbox_2')">
+                            <input (click)="onChangeMultiple(false)" type="radio" name="a" id="input_checkbox_1" checked style="display: none" />
+                            <label for="input_checkbox_1" id="checkbox_1lable">Je donne en une fois</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-6 text-center mt-2">
+                        <div class="checkbox" id="checkbox_2" onclick="active('checkbox_2', 'checkbox_1')">
+                            <input (click)="onChangeMultiple(true)" type="radio" id="input_checkbox_2" name="a" style="display: none" />
+                            <label for="input_checkbox_2" id="checkbox_2lable">Je répète mon don</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mt-3">
+                        <!-- <div class="input-group">
+                            <input type="number" class="form-control" aria-label="Price" />
+                            <div class="input-group-append">
+                                <span class="input-group-text">$</span>
+                            </div>
+                        </div> -->
+
+                        <div class="form-group">
+                            <div class="input-icon input-icon-right">
+                              <input (change)="onChangeDeductionFiscale()" type="text" class="form-control" placeholder="0.00" formControlName="sum">
+                              <i>€</i>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="col-md-12 mt-3 text-center">
+                        <h1 class="center-text">
+                            Après déduction fiscale, <br />
+                            votre don ne vous coute que {{(donationForm.controls['sum'].value * 0.70) | number}}€
+                        </h1>
+
+                        <hr class="m-3" />
+                    </div>
+
+                    <div class="col-md-12">
+                        <!-- <p class="lable">
+                            Pour les bougies, choisissez la bougie du TSADIK sur cette
+                            liste.(facultatif)
+                        </p>
+                        <select class="drp">
+                            <option>Choisir</option>
+                            <option>Choisir 1</option>
+                            <option>Choisir 2</option>
+                        </select> -->
+
+                        <p class="lable mt-3">
+                            Souhaitez-vous ajouter un message ou une bénédiction ?
+                        </p>
+                        <textarea style="width: 100%" rows="5" placeholder="Commentaire" formControlName="message"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="">
+                <div class="container custome">
+                    <div class="row form-box">
+                        <div class="col-md-12 text-center heading">
+                            <h1>2. Mes coordonnées</h1>
+                        </div>
+
+                        <div class="col-md-12 mt-2 text-center">
+                            <h1 class="center-text">
+                                Ces informations sont nécessaires pour générer le reçu cerfa de votre don
+                            </h1>
+
+                            <hr class="m-3" />
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-6 col-6 text-center mt-2 mb-2">
+                            <div class="checkbox" id="checkbox_3" onclick="active('checkbox_3', 'checkbox_4')">
+                                <input type="radio" style="display: none" name="b" id="input_checkbox_3" checked (click)="onChangeDonatorType('Particular')" />
+                                <label for="input_checkbox_3" id="checkbox_3lable">Particulier</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 col-6 text-center mt-2 mb-2">
+                            <div class="checkbox" id="checkbox_4" onclick="active('checkbox_4', 'checkbox_3')">
+                                <input type="checkbox" type="radio" name="b" style="display: none"
+                                    id="input_checkbox_4" (click)="onChangeDonatorType('Company')"/>
+                                <label for="input_checkbox_4" id="checkbox_4lable">Entreprise</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 mt-2 mb-2">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Email*" formControlName="email" />
+                            </div>
+                            <label *ngIf="!donationForm.get('email').valid && donationForm.get('email').touched" class="text-danger">
+                                Veuillez renseigner une adresse e-mail valide
+                            </label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-4 col-4 mt-2 mb-2">
+                            <select class="drp">
+                                <option>M.</option>
+                                <option>Mme</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-4 col-4 mt-2 mb-2">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Nom*" formControlName="lname" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-4 col-4 mt-2 mb-2">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Prenom*" formControlName="fname" />
+                            </div>
+                        </div>
+                        <label *ngIf="!donationForm.get('lname').valid && donationForm.get('lname').touched || !donationForm.get('fname').valid && donationForm.get('fname').touched " class="text-danger">
+                            La valeur d'entrée est plus courte que 2 caractères
+                        </label>
+                        <div class="col-md-12 col-sm-12 mt-2 mb-2">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Address*" formControlName="address" />
+                            </div>
+                            <label *ngIf="!donationForm.get('address').valid && donationForm.get('address').touched" class="text-danger">
+                                Cette valeur est obligatoire
+                            </label>
+                        </div>
+
+                        <div class="col-md-6 col-sm-4 col-xs-4 col-4 mt-2 mb-2">
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="Code Postal*" formControlName="zip" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-4 col-xs-4 col-4 mt-2 mb-2">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Ville*" formControlName="city"/>
+                            </div>
+                        </div>
+                        <label *ngIf="!donationForm.get('zip').valid && donationForm.get('zip').touched || !donationForm.get('city').valid && donationForm.get('city').touched" class="text-danger">
+                            Ces valeurs sont obligatoire
+                        </label>
+                        <div class="col-md-12 col-sm-4 col-xs-4 col-4 mt-2 mb-2">
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="Tel" formControlName="telephone"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 mt-2 mb-2 pl-2">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input size" type="checkbox" (change)="onChangeAnonymous($event.target.checked)" id="flexSwitchCheckDefault" />
+                                <label class="form-check-label size1" for="flexSwitchCheckDefault">Faire un don anonyme</label>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-md-12 mt-2 mb-1">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Nom qui apparaitra" />
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 offset-md-3">
+            <div class="container custome">
+                <div class="row form-box">
+                    <div class="col-md-12 text-center heading">
+                        <h1>3. Mon reglement</h1>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-6 text-center mt-2 mb-2">
+                        <div class="checkbox" id="checkbox_5" onclick="active('checkbox_5', 'checkbox_6')">
+                            <input type="radio" name="c" id="input_checkbox_5" style="display: none" checked (click)="onChangePaymentType('creditCard')"/>
+                            <label for="input_checkbox_5" id="checkbox_5lable">Carte Bancaire</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-6 text-center mt-2 mb-2">
+                        <div class="checkbox" id="checkbox_6" onclick="active('checkbox_6', 'checkbox_5')">
+                            <input type="radio" name="c" id="input_checkbox_6" style="display: none" (click)="onChangePaymentType('transfer')"/>
+                            <label for="input_checkbox_6" id="checkbox_6lable">Virement</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mt-2 text-center">
+                        <h1 class="center-text">Payment 100% securise par Stripe</h1>
+
+                        <hr class="m-2" />
+                    </div>
+
+                    <div class="col-md-12 mt-2 mb-2">
+                        <div class="bg">
+                            <p id="details" *ngIf="association">
+                                Nom officiel de I'association: {{association.associationName}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mt-2 mb-2">
+                        <label class="lbl">Carte de credit ou de debit</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="Numero de carte" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mt-3">
+                        <button type="submit" class="btn btnShow btn-lg btn-block">
+                            Valider (5500$)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>

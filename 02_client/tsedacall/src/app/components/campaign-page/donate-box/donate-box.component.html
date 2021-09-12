@@ -5,8 +5,16 @@
                 <h1 class="text-center price">{{campaign.totalSum}}€</h1>
                 <h2 class="text-center rsdAmt">Raised Amount</h2>
                
-                <progress-bar [progress]="(campaign.totalSum/campaign.goal)*100 | number" color="#107598">
-                </progress-bar>
+                <div class="progressWidth">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [aria-valuenow]="(campaign.totalSum/campaign.goal)*100 | number"
+                            aria-valuemin="0" aria-valuemax="100"
+                            [ngStyle]="{'max-width': (campaign.totalSum/campaign.goal)*100 + '%'}" style="border-radius: 25px">
+                            <span class="title">{{(campaign.totalSum/campaign.goal)*100 | number}}%</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-md-12">
                     <h3 class="text-center float-end mt-4">Goal: {{campaign.goal}}€</h3>
                 </div>

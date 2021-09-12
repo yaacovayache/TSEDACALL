@@ -2,6 +2,7 @@ const express = require('express');
 const router = new express.Router();
 const auth = require('../middleware/auth.js');
 const User = require('../../00_db/models/user');
+const Campaign = require('../../00_db/models/campaign');
 const moment = require("moment");
 var multer  = require('multer')
 const uploadImage = require('../middleware/upload')
@@ -11,7 +12,8 @@ const {ObjectId} = require('mongodb'); // or ObjectID
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, path.join(__dirname, "../profile"))
+        dirIfExist(path.join(__dirname, `../profile/${req.params.id}`))
+        cb(null, path.join(__dirname, `../profile/${req.params.id}`))
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname.toLowerCase())
@@ -121,13 +123,25 @@ router.get('/users/messages', auth, async(req, res) => {
 
 // Get profile picture
 router.get('/profile/:id', async(req, res) => {
-    const user = await User.findById({_id: req.params.id}, {_id:false, img:true})
+    const user = await User.findById({_id: req.params.id}, {img:true})
     const imageName = user.img.toString()
-    const imagePath = path.join(__dirname, "../profile", imageName);
+    const imagePath = (user.img != 'default.png') ? path.join(__dirname, `../profile/${(user._id).toString()}`, imageName) : path.join(__dirname, `../profile`, imageName);
     fs.exists(imagePath, exists => {
         if (exists) res.sendFile(imagePath);
         else res.status(400).send('Error: Image does not exists');
     });
+})
+
+// Upload profile picture
+router.post('/profile/:id', auth, upload.single('newPhotoProfile'), async(req, res, next) => {
+    var filename = req.file.filename;
+    var user = await User.findById({_id: req.params.id}, {img:true})
+    if (user.img != 'default.png'){
+        var lastFilePath = path.join(__dirname, `../profile/${(user._id).toString()}`, (user.img).toString())
+        try { fs.unlinkSync(lastFilePath); }catch (err) { console.log(err) }
+    }
+    user = await User.findByIdAndUpdate({_id: req.params.id},  { $set: {img:filename} })
+    res.send(user)
 })
 
 // Get donation by association Id (limit = 5)
@@ -175,6 +189,45 @@ router.get('/donations/association/:id/:limit', async(req, res) => {
             }
         ]);
         res.send(donations)
+    } catch (err) {
+        console.log(err)
+        res.status(500).send()
+    }
+  })
+
+
+// Get association by campaign_id
+router.get('/association/:campaign_id', async(req, res) => {
+    try {
+        let campaignId = ObjectId(req.params.campaign_id)
+        let association = await Campaign.aggregate([
+            {
+                $lookup:{
+                    from: "users", 
+                    localField: "founder_id", 
+                    foreignField: "_id",
+                    as: "usersColl"
+                }
+            },
+            {   $unwind:"$usersColl" },        
+            {
+                $match:{"_id" : campaignId}
+            },
+            {   
+                $project:{
+                    _id : 1,
+                    fname : "$usersColl.fname",
+                    lname : "$usersColl.lname",
+                    email : "$usersColl.email",
+                    address : "$usersColl.address",
+                    zip : "$usersColl.zip",
+                    city : "$usersColl.city",
+                    associationName : "$usersColl.associationName",
+                    campaign_name : "$name",
+                } 
+            }
+        ]);
+        res.send(association[0])
     } catch (err) {
         console.log(err)
         res.status(500).send()
@@ -272,5 +325,24 @@ router.post('/seen/message/:id/:type', auth, async(req, res) => {
         res.status(400).send({message: err.message, error : 1})
     }
 })
+
+// Update user by id
+router.put('/user/uid/:id', auth, async(req, res) => {
+    try {
+        const user = await User.updateMany({"_id": req.params.id}, {$set : req.body.item})
+        res.send({ message: 'updated', error : 0})
+    } catch (err) {
+        console.log(err)
+        res.status(400).send({message: err.message, error : 1})
+    }
+})
+
+// path.join(__dirname, `../profile/${req.params.id}`)
+function dirIfExist(name){
+    if (!fs.existsSync(name)){
+        fs.mkdirSync(name);
+    }
+}
+
 
 module.exports = router
