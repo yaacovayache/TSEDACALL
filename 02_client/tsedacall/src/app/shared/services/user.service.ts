@@ -59,7 +59,6 @@ export class UserService {
   public getUsersWithMessages(){
     return this.http.get<User[]>(environment.apiUrl + `users/messages`).subscribe(
       users => {
-        console.log(users)
         this.usersWithMessagesStore = users;
         this.usersWithMessagesChanged.next(this.usersWithMessagesStore);
       });

@@ -83,8 +83,6 @@ export class CampaignsListComponent implements OnInit {
 
 
   animationProgressBar(goal){
-    console.log(goal)
-    console.log(this.animationStarter)
     return goal
   }
 

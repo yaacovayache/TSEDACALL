@@ -68,6 +68,5 @@ export class DonationFormComponent implements OnInit {
   }
 
   public onSubmit() {
-    console.log(this.donationForm.controls)
   }
 }

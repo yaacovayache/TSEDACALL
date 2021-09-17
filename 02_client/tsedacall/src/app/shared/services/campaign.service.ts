@@ -19,7 +19,6 @@ export class CampaignService {
   public getCampaigns(){
     return this.http.get<Campaign[]>(environment.apiUrl+ 'campaign').subscribe(
       campaigns => {
-        console.log(campaigns)
         this.campaignsStore = campaigns;
         this.campaignsChanged.next(this.campaignsStore);
       });
@@ -43,5 +42,25 @@ export class CampaignService {
 
   public getCampaignVedette(){
     return this.http.get<any>(environment.apiUrl + `campaign/find/top`)
+  }
+
+  public addMedia(image:any, id:string){
+    return this.http.post(environment.apiUrl + `add/media/${id}`, image);
+  }
+
+  public deleteMedia(name:string, id:string){
+    return this.http.post(environment.apiUrl + `delete/media/${id}/${name}`, {});
+  }
+  
+  public updateCampaign(item:any, id:string){
+    return this.http.put(environment.apiUrl + `campaign/${id}`, item);
+  }
+
+  public createCampaign(item){
+    return this.http.post(environment.apiUrl + `campaign`, item);
+  }
+
+  public updateCover(image:any, id:string){
+    return this.http.post(environment.apiUrl + `add/cover/${id}`, image);
   }
 }

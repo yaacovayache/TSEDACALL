@@ -1,0 +1,476 @@
+@import url("https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap");
+body {
+  background-color: whitesmoke;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-family: "Baloo Chettan 2", cursive;
+}
+
+.heading {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.box {
+  padding: 15px;
+  border: 1px solid rgb(108, 122, 204);
+}
+
+hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #222;
+  height: 2px;
+}
+
+.modify {
+  font-size: 24px;
+  font-weight: 700;
+  padding: 10px;
+  background-color: rgb(194, 219, 170);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.bodybox {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 15px;
+  padding: 30px;
+  background-color: #f7e8e8;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.text-center{
+  color: white!important;
+}
+.bodybox input {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px;
+  width: 100%;
+}
+
+.bodybox .normal-text {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.bodybox-1 {
+  font-weight: 700;
+  padding: 10px;
+  background-color: #f7e8e8;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid #222;
+  outline: none;
+  display: none;
+}
+
+.box-h {
+  font-size: 20px;
+  padding-top: 60px;
+  padding-left: 30px;
+  height: 150px;
+}
+
+.logo {
+  height: 80px;
+}
+
+#saveDiv {
+  display: none;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
+  vertical-align: middle;
+  text-align: center;
+  color: transparent;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+  border: 3px solid white;
+}
+
+.profile-pic:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.profile-pic span {
+  display: inline-block;
+  padding-top: 4.5em;
+  padding-bottom: 4.5em;
+}
+
+form input[type="file"] {
+  display: none;
+  cursor: pointer;
+}
+
+.form-box {
+  border: 1px solid rgb(160, 155, 155);
+  margin-top: 5%;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  padding-bottom: 50px;
+}
+
+.form-box h1 {
+  font-size: 26px;
+  padding: 10px;
+  color: whitesmoke;
+}
+
+.heading {
+  background-color: #303a52;
+}
+
+.checkbox {
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #430d27;
+}
+
+.checkbox input {
+  cursor: pointer;
+}
+
+.checkbox label {
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  color: whitesmoke;
+}
+
+.input-group-append span {
+  background-color: #430d27;
+  color: whitesmoke;
+  font-size: 22px;
+}
+
+.input-group input:focus {
+  outline: none;
+}
+
+.center-text {
+  font-size: 24px !important;
+  color: #222 !important;
+  font-weight: 800;
+}
+
+.drp {
+  width: 100%;
+  height: 38px;
+  border: 1px solid #b3aeb0;
+  border-radius: 5px;
+}
+
+.lable {
+  font-size: 18px;
+}
+
+.size {
+  height: 20px;
+  width: 60px;
+  margin-left: 5px;
+  margin-right: 50px;
+  cursor: pointer;
+}
+
+.size1 {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.lbl {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.bg {
+  background-color: rgb(212, 203, 203);
+  padding: 7px;
+  border-radius: 5px;
+}
+
+.btnShow {
+  background-color: #430d27;
+  color: whitesmoke;
+  width: 100%;
+}
+
+.btn-color {
+  background-color: white;
+  color: #020b88;
+}
+
+.lable-text {
+  font-size: 18px;
+  padding: 10px;
+  color: white;
+}
+
+#exampleCheck1,
+#exampleCheck2 {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.form-check-label {
+  font-size: 14px;
+  margin-top: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-right: 5px;
+}
+
+#thanks {
+  margin-bottom: 20%;
+}
+
+/* Css */ /**
+ * Extracted from: SweetAlert
+ * Modified by: Istiak Tridip
+ */
+.success-checkmark {
+  width: 80px;
+  height: 115px;
+  margin: 0 auto;
+}
+.success-checkmark .check-icon {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  border-radius: 50%;
+  box-sizing: content-box;
+  border: 4px solid #4caf50;
+}
+.success-checkmark .check-icon::before {
+  top: 3px;
+  left: -2px;
+  width: 30px;
+  transform-origin: 100% 50%;
+  border-radius: 100px 0 0 100px;
+}
+.success-checkmark .check-icon::after {
+  top: 0;
+  left: 30px;
+  width: 60px;
+  transform-origin: 0 50%;
+  border-radius: 0 100px 100px 0;
+  animation: rotate-circle 4.25s ease-in;
+}
+.success-checkmark .check-icon::before,
+.success-checkmark .check-icon::after {
+  content: "";
+  height: 100px;
+  position: absolute;
+  background: #ffffff;
+  transform: rotate(-45deg);
+}
+.success-checkmark .check-icon .icon-line {
+  height: 5px;
+  background-color: #4caf50;
+  display: block;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+}
+.success-checkmark .check-icon .icon-line.line-tip {
+  top: 46px;
+  left: 14px;
+  width: 25px;
+  transform: rotate(45deg);
+  animation: icon-line-tip 0.75s;
+}
+.success-checkmark .check-icon .icon-line.line-long {
+  top: 38px;
+  right: 8px;
+  width: 47px;
+  transform: rotate(-45deg);
+  animation: icon-line-long 0.75s;
+}
+.success-checkmark .check-icon .icon-circle {
+  top: -4px;
+  left: -4px;
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: absolute;
+  box-sizing: content-box;
+  border: 4px solid rgba(76, 175, 80, 0.5);
+}
+.success-checkmark .check-icon .icon-fix {
+  top: 8px;
+  width: 5px;
+  left: 26px;
+  z-index: 1;
+  height: 85px;
+  position: absolute;
+  transform: rotate(-45deg);
+  background-color: #ffffff;
+}
+
+@keyframes rotate-circle {
+  0% {
+    transform: rotate(-45deg);
+  }
+  5% {
+    transform: rotate(-45deg);
+  }
+  12% {
+    transform: rotate(-405deg);
+  }
+  100% {
+    transform: rotate(-405deg);
+  }
+}
+@keyframes icon-line-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+  70% {
+    width: 50px;
+    left: -8px;
+    top: 37px;
+  }
+  84% {
+    width: 17px;
+    left: 21px;
+    top: 48px;
+  }
+  100% {
+    width: 25px;
+    left: 14px;
+    top: 45px;
+  }
+}
+@keyframes icon-line-long {
+  0% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+  65% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+  84% {
+    width: 55px;
+    right: 0px;
+    top: 35px;
+  }
+  100% {
+    width: 47px;
+    right: 8px;
+    top: 38px;
+  }
+}
+/* background color */
+#payDiv{
+  border-radius: 10px;
+  padding: 10px;
+  background: #2193b0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #003cff, #020b88);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #003cff, #020b88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+.headingTop h1{
+  font-size: 16px;
+font-weight: 600;
+  line-height: normal;
+}
+.btnText .form-group button{
+  font-size: 15px;
+  padding: 3px;
+}
+.numberInput{
+  position: relative;
+}
+
+.inputSpan{
+  position: absolute;
+  right: 0px;
+  font-size: 20px;
+  padding-right: 4px;
+  bottom: 0px;
+  z-index: 3;
+  color: #30A0BC;
+}
+
+
+// ================================== INPUT =============
+
+.form-select:focus{
+  border-color: #ced4da;
+  box-shadow: none;
+}
+
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -34px;
+  position: relative;
+  z-index: 2;
+  color: black;
+  width: 18%;
+  border: none;
+  cursor: pointer;
+}
+
+.currency-symbol{
+  font-weight: 1000;
+  color: #003cff;
+
+}
+
+.login-wrapper{
+  padding: 0.8375em 0;
+}
+
+.pass-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items : center;
+  overflow: hidden;
+}
+
+.input-icon{
+  cursor: pointer;
+}

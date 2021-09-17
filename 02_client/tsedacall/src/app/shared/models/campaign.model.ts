@@ -8,6 +8,8 @@ export class Campaign {
       public endAt: string,
       public createdAt: string,
       public media?: string[],
+      public video?: string,
+      public cover?: string,
       public totalSum?:number
     ) {}
 }

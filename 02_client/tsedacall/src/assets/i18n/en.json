@@ -20,7 +20,8 @@
     },
     "home":{
         "home-top":{
-            "title": "Featured Campaign"
+            "title": "Featured Campaign",
+            "doing-donation": "Make a donation"
         },
         "home-intro":{
             "title-first": "Powerfully simple",
@@ -46,9 +47,14 @@
             }
         },
         "banner-home": {
-            "title": "I choose my campaign, I create my team",
-            "teamCreation":"Create a team",
-            "associationCreation":"Looking for an association"
+            "title": "I CHOOSE MY CAMPAIGN<br>I CREATE MY TEAM",
+            "teamCreation":"Create my Team",
+            "buttonTeam":"TEAM",
+            "associationCreation":"Looking for an association",
+            "buttonAssociation":"ASSOCIATION"
+        },
+        "campaign-list": {
+            "goal": "Goal"
         }
     },
     "administration":{

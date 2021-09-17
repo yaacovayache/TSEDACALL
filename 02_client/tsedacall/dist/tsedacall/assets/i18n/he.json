@@ -20,7 +20,8 @@
     },
     "home":{
         "home-top":{
-            "title": "קמפיין ראשי"
+            "title": "קמפיין ראשי",
+            "doing-donation": "לתרום"
         },
         "home-intro":{
             "title-first": "גיוס תרומות מקוון",
@@ -46,9 +47,14 @@
             }
         },
         "banner-home": {
-            "title": "אני בוחר בקמפיין שלי, אני יוצר את הצוות שלי",
-            "teamCreation":"צור צוות",
-            "associationCreation":"מחפש עמותה"
+            "title": "אני בוחר בקמפיין שלי <br> אני יוצר את הצוות שלי",
+            "teamCreation":"צור הצוות שלי",
+            "buttonTeam":"צוות",
+            "associationCreation":"מחפש עמותה",
+            "buttonAssociation":"עמותה"
+        },
+        "campaign-list": {
+            "goal": "מטרה"
         }
     },
     "administration":{

@@ -5,6 +5,7 @@ import { CampaignService } from 'src/app/shared/services/campaign.service';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { DonationsService } from 'src/app/shared/services/donations.service';
+import { ExtraService } from 'src/app/shared/services/extra.service';
 
 
 @Component({
@@ -16,9 +17,10 @@ export class CampaignPageComponent implements OnInit {
   campaign:Campaign;
   id:string;
   maxOver:boolean = false;
+  public currencies;
 
 
-  constructor(private route:ActivatedRoute, private campaignService:CampaignService) { }
+  constructor(private route:ActivatedRoute, private campaignService:CampaignService, private extraService:ExtraService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')
@@ -26,6 +28,9 @@ export class CampaignPageComponent implements OnInit {
       this.campaign = campaign
       if ((this.campaign.totalSum/this.campaign.goal)*100 >= 100)
         this.maxOver=true;
+    })
+    this.extraService.getCurrencies().subscribe((res)=>{
+      this.currencies = res
     })
   }
 

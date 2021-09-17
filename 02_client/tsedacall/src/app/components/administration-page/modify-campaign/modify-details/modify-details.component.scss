@@ -1,0 +1,141 @@
+.card-header{
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border: none;
+    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}
+
+.prod-pic {
+    width: auto;
+    max-width: 200px;
+    height: 100px;
+}
+
+.cover-pic {
+  height: 200px;
+  width: 700px;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
+  vertical-align: middle;
+  text-align: center;
+  color: transparent;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+  border: 3px solid white;
+}
+
+@media (max-width:767px) {
+  .cover-pic {
+    width: 200px;
+  }
+}
+
+.cover-pic:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.img-center{
+  margin: auto;
+  align-items: center;
+}
+
+.profile-pic{
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
+  vertical-align: middle;
+  text-align: center;
+  color: transparent;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+  border: 3px solid white;
+}
+
+form input[type="file"] {
+  display: none;
+  cursor: pointer;
+}
+
+
+.prod-bg {
+    width: auto;
+    height: 110px;
+    // background-color: #E0E0E0;
+    margin-bottom: 10px
+}
+
+.more {
+    width: 19.5%;
+    height: 110px;
+    color: #fff;
+    background-color: #000;
+    cursor: pointer
+}
+
+.circle {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(44,108,128);
+    position: relative;
+    margin-top: 2%;
+  }
+
+  .prod-bg {
+    position: relative;
+    display: inline-block;
+  }
+  .close:before {
+    content: '✕';
+  }
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+  
+  .bar {
+    margin: 0 auto;
+    position: absolute;
+    background-color: #fff;
+  }
+  
+  .horizontal {
+    width: 70%;
+    height: 20%;
+    left: 15%;
+    top: 40%;
+  
+  }
+  
+  .vertical {
+    width: 20%;
+    height: 70%;
+    left: 40%;
+    top: 15%;
+  }
+
+@media screen and (max-width: 800px) {
+
+    .prod-bg {
+
+        width: auto;
+        height: 110px;
+        // background-color: #E0E0E0;
+        // margin-bottom: 10px
+    }
+
+    .more {
+        width: 66%
+    }
+}

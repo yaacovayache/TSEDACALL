@@ -24,7 +24,6 @@ export class DonatorsTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getDonationsByAssociationId(this.association._id, 5).subscribe((res)=>{
-      console.log(res)
       this.displayedDonations = res
     })
 

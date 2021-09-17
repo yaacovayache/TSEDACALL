@@ -24,19 +24,19 @@
                 <h1 class="text-center" [translate]="'administration.dashboard.IWant'"></h1>
             </div>
             <div class="col-md-4 banner">
-                <button class="btn success" (click)="navAddDonation()" [translate]="'administration.dashboard.Button1'"></button>
+                <button class="btn success" (click)="nav('administration/add')" [translate]="'administration.dashboard.Button1'"></button>
             </div>
             <div class="col-md-4 banner">
-                <button class="btn view" (click)="navSearchCerfa()" [translate]="'administration.dashboard.Button2'"></button>
+                <button class="btn view" (click)="nav('administration/search')" [translate]="'administration.dashboard.Button2'"></button>
             </div>
             <div class="col-md-4 banner">
                 <button class="btn danger" [translate]="'administration.dashboard.Button3'"></button>
             </div>
             <div class="col-md-6 banner">
-                <button class="btn stdd" [translate]="'administration.dashboard.Button4'"></button>
+                <button class="btn stdd" (click)="nav('administration/modif')" [translate]="'administration.dashboard.Button4'"></button>
             </div>
             <div class="col-md-6 banner">
-                <button class="btn yellow" [translate]="'administration.dashboard.Button5'"></button>
+                <button class="btn yellow" [translate]="'administration.dashboard.Button5'" (click)="newCampaign()"></button>
             </div>
         </div>
     </div>

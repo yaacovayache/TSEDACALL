@@ -1,0 +1,37 @@
+<section class="modify-campaign-section mt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xl-3 cursor-pointer" (click)="onSelectCampaign(campaign)"
+                *ngFor="let campaign of campaigns | async; let i = index;">
+                <div class="card bg-c-{{colors[i%4]}} order-card">
+                    <div class="card-block">
+                        <h4 class="m-b-20">{{campaign.name}}</h4>
+                        <h2 class="text-right">Actuel : <span>{{campaign.totalSum | number}} €</span></h2>
+                        <p class="m-b-0">Objectif : {{campaign.goal | number}} €</p>
+                        <div class="col-md-12 mt-2 mb-2 pl-2">
+                            <div class="form-check form-switch">
+                                <input *ngIf="campaign.actif" checked
+                                    (change)="onChangeActif(campaign._id, $event.target.checked)"
+                                    class="form-check-input size" type="checkbox" id="flexSwitchCheckDefault" />
+                                <input *ngIf="!campaign.actif"
+                                    (change)="onChangeActif(campaign._id, $event.target.checked)"
+                                    class="form-check-input size" type="checkbox" id="flexSwitchCheckDefault" />
+                                <label class="form-check-label size1" for="flexSwitchCheckDefault">actif</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xl-3 cursor-pointer" (click)="newCampaign()">
+                <div class="card bg-c-black order-card">
+                    <div class="card-block">
+                        <h2 class="text-center">+ NEW</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-modify-details *ngIf="selected_campaign" [campaign]="selected_campaign" [medias]="medias" [more]="more">
+        </app-modify-details>
+    </div>
+
+</section>

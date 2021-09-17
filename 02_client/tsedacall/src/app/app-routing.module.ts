@@ -13,6 +13,7 @@ import { AdminChatComponent } from './components/admin-chat/admin-chat.component
 import { AssociationConfigComponent } from './components/administration-page/association-config/association-config.component';
 import { MainComponent } from './components/administration-page/main/main.component';
 import { DonationFormComponent } from './components/donation-form/donation-form.component';
+import { ModifyCampaignComponent } from './components/administration-page/modify-campaign/modify-campaign.component';
 
 import { AuthentificationGuard } from './shared/auth-guards/authentification.guard';
 
@@ -51,6 +52,7 @@ const routes: Routes = [
       { path: 'add', component: AddDonationComponent, canActivate:[AuthentificationGuard] },
       { path: 'search', component: SearchCerfaComponent, canActivate:[AuthentificationGuard] },
       { path: 'config', component: AssociationConfigComponent, canActivate:[AuthentificationGuard] },
+      { path: 'modif', component: ModifyCampaignComponent, canActivate:[AuthentificationGuard] },
     ],
   },
   {

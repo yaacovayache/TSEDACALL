@@ -4,8 +4,36 @@
     <!-- =============================================================================== -->
     <app-presentation [campaign]="campaign"></app-presentation>
     <app-msg-box [campaign]="campaign"></app-msg-box>
-    <app-association [campaign]="campaign"></app-association>
+    <div *ngIf="campaign.video">
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <app-donate-banner [currencies]="currencies" [campaign]="campaign"></app-donate-banner>
+            </div>
+            <div class="col-md-8 mb-5">
+                <app-video-media [video_url]="campaign.video"></app-video-media>
+            </div>
+        </div>
+        <app-association [campaign]="campaign"></app-association>
+    </div>
+    <div *ngIf="!campaign.video">
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <app-donate-banner [currencies]="currencies" [campaign]="campaign"></app-donate-banner>
+            </div>
+            <div class="col-md-8 mb-5">
+                <app-association [campaign]="campaign"></app-association>
+            </div>
+        </div>
+    </div>
     <app-donate-box [campaign]="campaign"></app-donate-box>
+    <!-- <div class="row">
+        <div class="col">
+            <app-timer [campaign]="campaign" [maxOver]="maxOver"></app-timer>
+        </div>
+        <div class="col">
+            <app-donate-banner [currencies]="currencies"></app-donate-banner>
+        </div>
+    </div> -->
     <app-timer [campaign]="campaign" [maxOver]="maxOver"></app-timer>
     <app-donator-list [campaign]="campaign"></app-donator-list>
     <app-share-banner [campaign]="campaign"></app-share-banner>

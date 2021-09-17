@@ -15,7 +15,6 @@ export class ShareBannerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.campaign)
   }
 
 }

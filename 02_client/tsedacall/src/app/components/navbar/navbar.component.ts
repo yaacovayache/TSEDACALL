@@ -46,7 +46,6 @@ navFixed: boolean = false;
 private scrollOffset: number = 70;
 
 useLanguage(language: string): void {
-  console.log(language)
   this.translate.use(language);
 }
 

@@ -16,7 +16,6 @@ export class AssociationComponent implements OnInit {
   constructor(private campaignService:CampaignService, private userService:UserService) { }
 
   ngOnInit(): void {
-    console.log(this.campaign)
   }
 
 }

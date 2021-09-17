@@ -7,14 +7,16 @@ const campaignSchema = new mongoose.Schema({
     },
     description: {
       type: String,
-      required: true,
+      default: '',
     },
     cover: { 
-      type: String,
-      required:true
+      type: String
     },
     media: { 
       type: [String]
+    },
+    video: { 
+      type: String
     },
     founder_id: {
       type: mongoose.Schema.Types.ObjectId,
@@ -58,7 +60,7 @@ const campaignSchema = new mongoose.Schema({
     },
     actif: {
       type:Boolean,
-      default:true
+      default:false
     },
     createdAt: {
       type: String,

@@ -1,159 +1,103 @@
-<div class="container mt-5" id="payDiv">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h1>Je fais un don pour World Youth Leaders</h1>
-        <img src="assets/image/donation.png" alt="" />
-      </div>
-  
-      <div class="col-md-12 text-center">
-        <h1>Choisissex le montant de votre participation:</h1>
-      </div>
-  
-      <div class="col-md-4 text-center">
-        <div class="form-group">
-          <button
-            type="button"
-            class="btn btn-color btn-lg btn-block form-control"
-          >
-            20 $
-          </button>
+<div class="container mb-5">
+  <div class="row">
+    <!-- <div class="col-md-2"></div> -->
+    <div class="col-md-12">
+      <div class="container" id="payDiv">
+        <div class="row">
+          <div class="col-md-12 text-center headingTop">
+            <h1>Je fais un don pour {{campaign.name}}</h1>
+            <img src="./assets/image/donation.png" alt="" width="60px" height="60px" />
+          </div>
+
+          <div class="col-md-12 text-center headingTop">
+            <h1>Choisissez le montant de votre participation:</h1>
+          </div>
+
+          <div class="col-md-12 text-center d-inline-flex justify-content-center btnText">
+            <div class="form-group ml-2" *ngFor="let sum of sum_data[value_sum]">
+              <button type="button" class="btn btn-color btn-sm btn-block" (click)="onClickSum(sum.num)">
+                {{sum.num}} {{sum.symbol}}
+              </button>
+            </div>
+          </div>
+
+          <div class="col-md-12 text-center mt-3">
+            <!-- <div class="input-group with-icon">
+              <input class="form-control rounded" name=suche type=search placeholder='Autre Montant:' autocomplete=off>
+              <p class="inputSpan">&euro;</p>
+            </div> -->
+            <div class="form-group">
+              <div class="col-md-12">
+                <input class="form-control rounded" name=sum type=text placeholder='Autre Montant:' autocomplete=off [(ngModel)]="sum" *ngIf="!sum">
+                <input class="form-control rounded" style="text-align:center;" name=sum type=text [value]="sum" autocomplete=off [(ngModel)]="sum" *ngIf="sum">
+                <!-- <i class="fa fa-eye field-icon"></i> -->
+                <select class="form-select form-select-sm field-icon currency-symbol" aria-label="Default select example" *ngIf="currencies" (change)="onChangeCurrency($event.target.value)">
+                  <option [value]="currency.value" *ngFor="let currency of currencies" class="currency-symbol">{{currency.symbol}}</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-12 mt-3">
+            <div class="form-group text-center">
+              <input type="radio" class="form-check-input" checked name="flexRadioDefault" id="exampleCheck1" />
+              <label class="form-check-label text-center" for="exampleCheck1">Je donne en une fois</label>
+            </div>
+          </div>
+
+          <div class="col-md-12 mt-1">
+            <div class="form-group text-center">
+              <input type="radio" class="form-check-input" (click)="onClickMultipleMonth()" name="flexRadioDefault" id="exampleCheck2" />
+              <label class="form-check-label text-center" for="exampleCheck2">Je donne en plusieurs fois</label>
+            </div>
+          </div>
+
+          <div class="col-md-12 text-center mt-2" *ngIf="multiple_month">
+            <div class="form-group">
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option *ngFor="let number of [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]">sur {{number}} mois</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="text-center">
+              <button (click)="sendDonation()" type="button" class="btn btn-color btn-md mt-2 btn-block w-100 pt-3 pb-3">
+                Envoyer Le Don
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-md-4 text-center">
-        <div class="form-group">
-          <button
-            type="button"
-            class="btn btn-color btn-lg btn-block form-control"
-          >
-            200 $
-          </button>
-        </div>
-      </div>
-      <div class="col-md-4 text-center">
-        <div class="form-group">
-          <button
-            type="button"
-            class="btn btn-color btn-lg btn-block form-control"
-          >
-            300 $
-          </button>
-        </div>
-      </div>
-      <div class="col-md-4 mt-5 text-center">
-        <div class="form-group">
-          <button
-            type="button"
-            class="btn btn-color btn-lg btn-block form-control"
-          >
-            400 $
-          </button>
-        </div>
-      </div>
-      <div class="col-md-4 mt-5 text-center">
-        <div class="form-group">
-          <button
-            type="button"
-            class="btn btn-color btn-lg btn-block form-control"
-          >
-            500 $
-          </button>
-        </div>
-      </div>
-      <div class="col-md-4 mt-5 text-center">
-        <div class="form-group">
-          <button
-            type="button"
-            class="btn btn-color btn-lg btn-block form-control"
-          >
-            600 $
-          </button>
-        </div>
-      </div>
-  
-      <div class="offset-3 col-md-6 text-center mt-5">
-        <div class="form-group">
-          <label for="" class="lable-text">Autre Montant:</label>
-          <input
-            type="number"
-            class="form-control"
-            placeholder="Autre Montant:"
-          />
-        </div>
-      </div>
-  
-      <div class="col-md-6 text-end mt-5">
-        <div class="form-group">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1"
-            >Je Donne en wne fols</label
-          >
-        </div>
-      </div>
-  
-      <div class="col-md-6 text-start mt-5">
-        <div class="form-group">
-          <input type="checkbox" class="form-check-input" id="exampleCheck2" />
-          <label class="form-check-label" for="exampleCheck2"
-            >Je Donne en plusesurs wne fols</label
-          >
-        </div>
-      </div>
-  
-      <div class="offset-3 col-md-6 text-center mt-5">
-        <div class="form-group">
-          <label for="" class="lable-text">Selection de mois:</label>
-  
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>January</option>
-            <option>February</option>
-            <option>March</option>
-            <option>April</option>
-            <option>May</option>
-            <option>June</option>
-            <option>July</option>
-            <option>August</option>
-            <option>September</option>
-            <option>October</option>
-            <option>November</option>
-            <option>December</option>
-          </select>
-        </div>
-      </div>
-  
-      <div class="offset-3 col-md-6 text-center mt-5">
-        <div class="form-group">
-          <button
-            onclick="hide()"
-            type="button"
-            class="btn btn-color btn-lg btn-block form-control"
-          >
-            Envoyer Le Don
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="mt-5" id="done" style="display: none">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center mt-5">
-          <h1>Je fais un don pour World Youth Leaders</h1>
-          <img src="assets/image/checked.png" alt="" />
-        </div>
-  
-        <div class="offset-3 col-md-6 text-center mt-5 mb-5">
-          <div class="form-group">
-            <button
-              onclick="hide()"
-              type="button"
-              class="btn btn-color btn-lg btn-block form-control"
-            >
-              Thanks for your Support !
-            </button>
+
+      <div class="mt-5" id="done" style="display: none">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center mt-5">
+              <h1>Je fais un don pour World Youth Leaders</h1>
+              <!-- <img src="assets/image/checked.png" alt="" /> -->
+              <div class="success-checkmark">
+                <div class="check-icon">
+                  <span class="icon-line line-tip"></span>
+                  <span class="icon-line line-long"></span>
+                  <div class="icon-circle"></div>
+                  <div class="icon-fix"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="offset-3 col-md-6 text-center mt-5 mb-5">
+              <div class="form-group">
+                <button id="thanks" onclick="hide()" type="button" class="btn btn-color btn-md btn-block form-control">
+                  Thanks for your Support !
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- <div class="col-md-2"></div> -->
   </div>
-  
+</div>

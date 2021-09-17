@@ -13,14 +13,15 @@
         "Terms":"Termes",
         "PrivacyPolicy":"Politique De Confidentialité",
         "Contact":"Contactez Nous",
-        "Find-us": "Trouve nous",
+        "Find-us": "Trouvez nous",
         "Summary":"Tsedacall vous permet de donner facilement et en toute sécurité à des projets locaux partout dans le monde, tout en fournissant aux organisations à but non lucratif les outils, la formation et le soutien dont elles ont besoin pour prospérer.",
         "Quick-links" : "Liens rapides",
         "Follow-us" : "Suivez nous"
     },
     "home":{
         "home-top":{
-            "title": "Campagne Vedette"
+            "title": "Campagne Vedette",
+            "doing-donation": "Faire un don"
         },
         "home-intro":{
             "title-first": "Collecte de fonds",
@@ -46,9 +47,14 @@
             }
         },
         "banner-home": {
-            "title": "Je choisis ma campagne, je crée mon équipe",
-            "teamCreation":"Créer une équipe",
-            "associationCreation":"A la recherche d'une association"
+            "title": "JE CHOISIS MA CAMPAGNE<br>JE CREE MON EQUIPE",
+            "teamCreation":"Créer mon équipe",
+            "buttonTeam":"EQUIPE",
+            "associationCreation":"A la recherche d'une association",
+            "buttonAssociation":"ASSOCIATION"
+        },
+        "campaign-list": {
+            "goal": "Objectif"
         }
     },
     "administration":{

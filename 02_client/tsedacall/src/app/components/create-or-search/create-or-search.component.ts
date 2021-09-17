@@ -40,7 +40,6 @@ export class CreateOrSearchComponent implements OnInit {
   }
 
   previousAssociation(){
-    console.log('previous')
     this.currentCampaign = new Observable<Campaign[]>();
     this.campaignFlag = false;
   }

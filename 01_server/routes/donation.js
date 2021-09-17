@@ -167,7 +167,6 @@ router.get('/all/donations/campaign/:id', async(req, res) => {
 // Get search by filter
 router.post('/donations/filter', async(req, res) => {
   try {
-      console.log(req.body.query)
       // let result = await Payment.find(req.body.query)
       let result = await Payment.aggregate([
         {

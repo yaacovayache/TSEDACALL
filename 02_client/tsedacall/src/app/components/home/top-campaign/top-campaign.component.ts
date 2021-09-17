@@ -26,7 +26,6 @@ export class TopCampaignComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.campaignService.getCampaignVedette().subscribe((res)=>{
-      console.log(res)
       this.vedette = res
       this.donations = this.donationsService.donations; // subscribe to entire collection
       this.donationsService.getDonationsByCampaignId(this.vedette._id);

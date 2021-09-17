@@ -27,20 +27,14 @@ export class AssociationConfigComponent implements OnInit {
 
   onSave(){
     this.userService.updateUserById(this.currentUser._id, {item:this.currentUser}).subscribe((user)=>{
-      console.log(user)
     })
   }
 
   onChangeProfile(event) {
     if (event.target.value){
-      console.log(event.target.files)
       this.newPhoto = <File>event.target.files[0];
-      console.log(this.newPhoto)
-      console.log(this.newPhoto.name)
       let fd = new FormData();
       fd.append('newPhotoProfile', this.newPhoto, this.newPhoto.name);
-      console.log(fd)
-      console.log(this.currentUser._id)
       this.userService.updateProfilePicture(fd, this.currentUser._id).subscribe((res) => {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
           this.router.navigate(['/administration/config']);

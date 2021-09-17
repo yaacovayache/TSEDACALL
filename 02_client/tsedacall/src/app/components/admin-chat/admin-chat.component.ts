@@ -25,7 +25,6 @@ export class AdminChatComponent implements OnInit, OnDestroy {
       clearInterval(this.interval);
       this.users = this.userService.usersWithMessages; // subscribe to entire collection
       this.userService.getUsersWithMessages();
-      console.log('REFRESH MESSAGES')
       this.cd.detectChanges();
       this.interval = setInterval(refreshMessages, 10000);
     }
@@ -37,10 +36,8 @@ export class AdminChatComponent implements OnInit, OnDestroy {
   }
 
   setToCurrentChat(user){
-    console.log(user)
     this.current_user = user
     this.userService.setMessageToSeen(user._id, 'client').subscribe((res)=>{
-      console.log(res)
       this.users = this.userService.usersWithMessages; // subscribe to entire collection
       this.userService.getUsersWithMessages();
     })
@@ -61,7 +58,6 @@ export class AdminChatComponent implements OnInit, OnDestroy {
 
   sendMessage(id){
     this.userService.sendMessageByChat(this.inputEl,id, 'support').subscribe((res => {
-      console.log(res)
       this.users = this.userService.usersWithMessages; // subscribe to entire collection
       this.userService.getUsersWithMessages();
       this.userService.getMessages(this.current_user._id).subscribe((res)=>{

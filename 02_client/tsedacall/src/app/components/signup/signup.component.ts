@@ -48,10 +48,8 @@ export class SignupComponent implements OnInit {
       associationName: this.signUpForm.get('associationName').value,
     };
     
-    console.log(userCredentials)
     this.AuthService.SignUp(userCredentials).subscribe(
       (res) => {
-        console.log(res)
         this.isLoading = true;
         setTimeout(() => {
           this.router.navigateByUrl('/home');

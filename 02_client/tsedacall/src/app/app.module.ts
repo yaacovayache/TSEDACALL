@@ -91,6 +91,11 @@ import { MainComponent } from './components/administration-page/main/main.compon
 import { DonateBannerComponent } from './components/campaign-page/donate-banner/donate-banner.component';
 import { DonationFormComponent } from './components/donation-form/donation-form.component';
 import { ConfettiComponent } from './components/campaign-page/confetti/confetti.component';
+import { ModifyCampaignComponent } from './components/administration-page/modify-campaign/modify-campaign.component';
+import { ModifyDetailsComponent } from './components/administration-page/modify-campaign/modify-details/modify-details.component';
+import { VideoMediaComponent } from './components/campaign-page/video-media/video-media.component';
+import { SafePipe } from './shared/pipes/safe.pipe';
+import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 
 @NgModule({
   declarations: [
@@ -138,7 +143,11 @@ import { ConfettiComponent } from './components/campaign-page/confetti/confetti.
     MainComponent,
     DonateBannerComponent,
     DonationFormComponent,
-    ConfettiComponent
+    ConfettiComponent,
+    ModifyCampaignComponent,
+    ModifyDetailsComponent,
+    VideoMediaComponent,
+    SafePipe
   ],
   imports: [
     CommonModule,
@@ -167,6 +176,7 @@ import { ConfettiComponent } from './components/campaign-page/confetti/confetti.
     ChartsModule,
     NgxHideOnScrollModule,
     NgbModule,
+    Ng2FlatpickrModule,
     ModalModule.forRoot(),
     ShareButtonsModule.withConfig({
       debug: true
@@ -183,7 +193,7 @@ import { ConfettiComponent } from './components/campaign-page/confetti/confetti.
                 }
             }),
   ],
-  providers: [DatePipe, DateAgoPipe, AuthGuardService, NumberToWordsPipe, { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true }, WINDOW_PROVIDERS],
+  providers: [DatePipe, DateAgoPipe, SafePipe, AuthGuardService, NumberToWordsPipe, { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true }, WINDOW_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

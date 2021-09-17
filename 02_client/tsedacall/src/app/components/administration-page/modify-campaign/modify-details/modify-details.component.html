@@ -1,0 +1,85 @@
+<div class="card">
+    <div class="card-header">
+        Link to the Campaign page :
+    </div>
+    <div class="card-body">
+        {{domain + 'campaign/home/' + campaign._id + '/' + (campaign.name).replace(' ', '-').toLowerCase()}}
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-header">
+        Video (embed url) :
+    </div>
+    <div class="card-body">
+        <input type="text" value="{{campaign.video}}" class="form-control" aria-describedby="video-url"
+            placeholder="Video Url" (change)="onChange($event.target.value, 'video', campaign._id)">
+        <label *ngIf="bad_video" class="text-danger">Le lien doit être un lien d'intégration</label>
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-header">
+        Expiry Date :
+    </div>
+    <div class="card-body">
+        <input type="date" value="{{campaign.endAt | date : 'yyyy-MM-dd'}}" class="form-control"
+            aria-describedby="video-url" placeholder="Expiry Date"
+            (change)="onChange($event.target.value, 'endAt', campaign._id)">
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-header">
+        Campaign description :
+    </div>
+    <div class="card-body">
+        <textarea class="form-control" rows="4" placeholder="Description"
+            (change)="onChange($event.target.value, 'description', campaign._id)">{{campaign.description}}</textarea>
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-header">
+        Image Cover :
+    </div>
+    <!-- <div class="card-body img-center">
+        <img class="cover-pic" [src]="pattern_cover + campaign._id">
+    </div> -->
+    <div class="card-body img-center">
+        <form action="" method="post" enctype="multipart/form-data">
+            <label for="fileToUpload">
+                <div class="cover-pic" *ngIf="campaign.cover" [ngStyle]="{'background-image': 'url(' + pattern_cover + campaign._id + ')'}">
+                    <span><i class="fa fa-camera"></i> Edit</span>
+                </div>
+                <div class="circle text-center cursor-pointer" *ngIf="!campaign.cover">
+                    <div class="bar horizontal"></div>
+                    <div class="bar vertical"></div>
+                </div>
+            </label>
+            <input type="File" name="fileToUpload" id="fileToUpload" (change)="onChangeCover($event, campaign._id)"/>
+        </form>
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-header">
+        Add pictures :
+    </div>
+    <div class="card-body">
+        <div class="row" *ngIf="medias">
+            <div class="prod-bg text-center py-1" *ngFor="let media of medias | slice:0:3">
+                <img class="prod-pic" [src]="pattern_url + campaign._id + '/' + media">
+                <span class="close" (click)="onDelete(campaign._id, media)"></span>
+            </div>
+            <div class="more text-center pt-3" *ngIf="more">
+                <h1 class="mb-0 dk-none dk-sm-block"><strong>+{{medias.length - 3}}</strong></h1>
+                <h5>MEDIA</h5>
+            </div>
+            <div class="circle text-center cursor-pointer" (click)="onClickAddPicture()">
+                <div class="bar horizontal"></div>
+                <div class="bar vertical"></div>
+            </div>
+        </div>
+    </div>
+</div>
