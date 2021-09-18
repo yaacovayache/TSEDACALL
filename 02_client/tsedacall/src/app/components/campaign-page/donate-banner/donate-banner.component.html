@@ -41,22 +41,22 @@
 
           <div class="col-md-12 mt-3">
             <div class="form-group text-center">
-              <input type="radio" class="form-check-input" checked name="flexRadioDefault" id="exampleCheck1" />
+              <input type="radio" class="form-check-input" checked name="flexRadioDefault" (click)="onClickMultipleMonth(false)" id="exampleCheck1" />
               <label class="form-check-label text-center" for="exampleCheck1">Je donne en une fois</label>
             </div>
           </div>
 
           <div class="col-md-12 mt-1">
             <div class="form-group text-center">
-              <input type="radio" class="form-check-input" (click)="onClickMultipleMonth()" name="flexRadioDefault" id="exampleCheck2" />
+              <input type="radio" class="form-check-input" (click)="onClickMultipleMonth(true)" name="flexRadioDefault" id="exampleCheck2" />
               <label class="form-check-label text-center" for="exampleCheck2">Je donne en plusieurs fois</label>
             </div>
           </div>
 
           <div class="col-md-12 text-center mt-2" *ngIf="multiple_month">
             <div class="form-group">
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option *ngFor="let number of [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]">sur {{number}} mois</option>
+              <select class="form-control" id="exampleFormControlSelect1" (change)="onChangeNumberMonth($event.target.value)">
+                <option *ngFor="let number of [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]" [value]="number">sur {{number}} mois</option>
               </select>
             </div>
           </div>

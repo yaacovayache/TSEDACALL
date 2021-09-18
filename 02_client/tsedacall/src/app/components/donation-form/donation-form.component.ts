@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Campaign } from 'src/app/shared/models/campaign.model';
 import { CampaignService } from 'src/app/shared/services/campaign.service';
+import { DonationsService } from 'src/app/shared/services/donations.service';
+import { ExtraService } from 'src/app/shared/services/extra.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -15,9 +17,15 @@ export class DonationFormComponent implements OnInit {
   public association;
   public campaign_id:string;
   public deductionFiscale = 0;
-  constructor(private route:ActivatedRoute, private campaignService:CampaignService, private userService:UserService) { }
+  public multiple:boolean=false;
+  public currencies;
+  public selectedMonthNumber=2;
+  constructor(private route:ActivatedRoute, private extraService:ExtraService, private donationsService:DonationsService, private userService:UserService) { }
 
   ngOnInit(): void {
+    this.extraService.getCurrencies().subscribe((res)=>{
+      this.currencies = res
+    })
     this.campaign_id = this.route.snapshot.paramMap.get('campaign_id')
     this.userService.getAssociationByCampaignId(this.campaign_id).subscribe((association)=>{
       this.association = association
@@ -45,10 +53,20 @@ export class DonationFormComponent implements OnInit {
       emailAccountName: new FormControl(''),
       iban: new FormControl(''),
     });
+
+    this.donationForm.controls['sum'].setValue(this.donationsService.sumShared);
+    this.donationForm.controls['multiple'].setValue(this.donationsService.isMultipleShared);
+    this.multiple = this.donationsService.isMultipleShared
+    if (this.multiple) this.selectedMonthNumber = this.donationsService.monthNumberShared
   }
 
   public onChangeMultiple(value){
+    this.multiple = value;
     this.donationForm.controls['multiple'].setValue(value);
+  }
+
+  public onChangeNumberMonth(value){
+    this.selectedMonthNumber=value
   }
 
   public onChangePaymentType(value){

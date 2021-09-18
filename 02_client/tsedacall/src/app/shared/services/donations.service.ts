@@ -14,6 +14,9 @@ export class DonationsService {
   constructor(private http: HttpClient, private pipeNumberToWords: NumberToWordsPipe) { }
   public toWords = new ToWords({localeCode: 'fr-FR', converterOptions: {currency: true, ignoreDecimal: false,ignoreZeroCurrency: false,}});
 
+  public sumShared;
+  public isMultipleShared:boolean;
+  public monthNumberShared;
 
   donationsStore:Donation[] = [];
   donationsChanged = new BehaviorSubject<Donation[]>([]);
