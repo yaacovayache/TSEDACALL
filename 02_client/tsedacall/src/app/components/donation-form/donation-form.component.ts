@@ -18,6 +18,7 @@ export class DonationFormComponent implements OnInit {
   public campaign_id:string;
   public deductionFiscale = 0;
   public multiple:boolean=false;
+  public transfer:boolean=false;
   public currencies;
   public selectedMonthNumber=2;
   constructor(private route:ActivatedRoute, private extraService:ExtraService, private donationsService:DonationsService, private userService:UserService) { }
@@ -50,7 +51,7 @@ export class DonationFormComponent implements OnInit {
       cardExpiration: new FormControl(''),
       bank: new FormControl(false),
       bankAccountName: new FormControl(''),
-      emailAccountName: new FormControl(''),
+      emailAccountName: new FormControl('', Validators.email),
       iban: new FormControl(''),
     });
 
@@ -69,7 +70,8 @@ export class DonationFormComponent implements OnInit {
     this.selectedMonthNumber=value
   }
 
-  public onChangePaymentType(value){
+  public onChangePaymentType(value, bool){
+    this.transfer = bool
     this.donationForm.controls['type_payment'].setValue(value);
   }
 
@@ -86,5 +88,6 @@ export class DonationFormComponent implements OnInit {
   }
 
   public onSubmit() {
+    console.log(this.donationForm)
   }
 }

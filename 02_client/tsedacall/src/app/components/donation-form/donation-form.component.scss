@@ -251,3 +251,82 @@ text-align: center;
   .input-icon{
     cursor: pointer;
   }
+
+  // ============================== INPUT CREDIT CARD ==================================
+
+  .cardPayment {
+    display: inline;
+  }
+  .cardBorder {
+    border: none;
+    border-radius: 5px;
+  }
+  .cardPayment input {
+    float: left;
+    width: 30%;
+    border: none;
+    border-radius: none;
+    -webkit-border-radius: none;
+    -moz-border-radius: none;
+    -ms-border-radius: none;
+    -o-border-radius: none;
+  }
+  .cardPayment .form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: none;
+  }
+  .cardPayment .form-control {
+    border-radius: 0px;
+  }
+  .cardPayment .cardNumber {
+    width: 60%;
+  }
+  .cardPayment .cardDate {
+    width: 23%;
+  }
+  .cardPayment .cardCVC {
+    width: 17%;
+  }
+  
+  .oddT-icon-input,
+  .oddT-button-input {
+    position: relative;
+  }
+  .oddT-icon-input i {
+    position: absolute;
+    left: 0px;
+    top: 17px;
+    font-size: 24px;
+    line-height: 20px;
+    color: #222;
+    margin-top: -10px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .oddT-icon-input .oddT-text {
+    padding-left: 38px;
+  }
+  .oddT-icon-input textarea + i {
+    top: 11px;
+    margin: 0;
+  }
+  .oddT-icon-input .oddT-text:focus + i {
+    color: #ea6153;
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    transform: scale(1.25);
+  }
+  
+  .oddT-button-input .input-btn:hover {
+    opacity: 1;
+    filter: Alpha(opacity=100);
+    -webkit-filter: Alpha(opacity=100);
+  }
+  
+  
