@@ -149,7 +149,7 @@ function compare( a, b ) {
 // Get vedette campaign
 router.get('/campaign/find/top', async(req, res) => {
     try {
-        let campaigns = await Campaign.find({actif:true});
+        let campaigns = await Campaign.find({actif:true, collect:false});
         for (let campaign of campaigns){
             let totalSum = await Payment.aggregate([{$match:{"campaignId": campaign._id}},{ $group: { _id: false, sum: {$sum: "$sum"}}}])
             campaign.totalSum = totalSum[0].sum

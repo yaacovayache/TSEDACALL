@@ -25,7 +25,8 @@ export class CampaignsListComponent implements OnInit {
   
   onClick(id, name){
     name = name.replace(' ', '-').toLowerCase()
-    this.router.navigate([`/campaign/home/${id}/${name}`]);
+    this.campaignService.campaignToGet = id;
+    this.router.navigate([`/campaign/home/${name}`]);
   }
 
 

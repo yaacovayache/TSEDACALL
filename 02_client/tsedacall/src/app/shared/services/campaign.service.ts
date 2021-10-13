@@ -11,10 +11,19 @@ import { environment } from 'src/environments/environment';
 })
 export class CampaignService {
   campaignsStore:Campaign[] = [];
+  private campaignId;
   campaignsChanged = new BehaviorSubject<Campaign[]>([]);
   readonly campaigns = this.campaignsChanged.asObservable();
 
   constructor(private http: HttpClient) { }
+
+  set campaignToGet(campaignId) {
+    this.campaignId = campaignId;
+  }
+
+  get campaignToGet() {
+    return this.campaignId;
+  }
 
   public getCampaigns(){
     return this.http.get<Campaign[]>(environment.apiUrl+ 'campaign').subscribe(

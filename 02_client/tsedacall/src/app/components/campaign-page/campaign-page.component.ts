@@ -23,7 +23,7 @@ export class CampaignPageComponent implements OnInit {
   constructor(private route:ActivatedRoute, private campaignService:CampaignService, private extraService:ExtraService) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id')
+    this.id = this.campaignService.campaignToGet;
     this.campaignService.getCampaignById(this.id).subscribe((campaign)=>{
       this.campaign = campaign
       if ((this.campaign.totalSum/this.campaign.goal)*100 >= 100)

@@ -7,7 +7,7 @@
                     <div class="card-block">
                         <h4 class="m-b-20">{{campaign.name}}</h4>
                         <h2 class="text-right">Actuel : <span>{{campaign.totalSum | number}} €</span></h2>
-                        <p class="m-b-0">Objectif : {{campaign.goal | number}} €</p>
+                        <p class="m-b-0" *ngIf="campaign.goal" >Objectif : {{campaign.goal | number}} €</p>
                         <div class="col-md-12 mt-2 mb-2 pl-2">
                             <div class="form-check form-switch">
                                 <input *ngIf="campaign.actif" checked

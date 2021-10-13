@@ -34,7 +34,7 @@
             <app-donate-banner [currencies]="currencies"></app-donate-banner>
         </div>
     </div> -->
-    <app-timer [campaign]="campaign" [maxOver]="maxOver"></app-timer>
+    <app-timer *ngIf="campaign.endAt" [campaign]="campaign" [maxOver]="maxOver"></app-timer>
     <app-donator-list [campaign]="campaign"></app-donator-list>
     <app-share-banner [campaign]="campaign"></app-share-banner>
     <app-about [campaign]="campaign"></app-about>
