@@ -110,12 +110,14 @@ router.put('/campaign/:id', auth, async(req, res) => {
 // Get cover picture campaign
 router.get('/cover/:id', async(req, res) => {
     const campaign = await Campaign.findById({_id: req.params.id}, {_id:false, cover:true})
-    const imageName = campaign.cover.toString()
-    const imagePath = path.join(__dirname, `../campaign/${req.params.id}/cover`, imageName);
-    fs.exists(imagePath, exists => {
-        if (exists) res.sendFile(imagePath);
-        else res.status(400).send('Error: Image does not exists');
-    });
+    if (campaign.cover){
+        const imageName = campaign.cover.toString()
+        const imagePath = path.join(__dirname, `../campaign/${req.params.id}/cover`, imageName);
+        fs.exists(imagePath, exists => {
+            if (exists) res.sendFile(imagePath);
+            else res.status(400).send('Error: Image does not exists');
+        });
+    }
 })
 
 // Get media names

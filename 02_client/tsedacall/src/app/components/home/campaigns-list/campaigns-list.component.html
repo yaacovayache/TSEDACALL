@@ -67,11 +67,11 @@
                 <div class="progressWidth">
                   <div class="progress">
                     <div class="progress-bar" role="progressbar" [aria-valuenow]="(campaign.totalSum/campaign.goal)*100 | number" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'max-width': (campaign.totalSum/campaign.goal)*100 + '%'}" style="border-radius: 25px">
-                      <span class="title">{{(campaign.totalSum/campaign.goal)*100 | number}}%</span>
+                      <span class="title" *ngIf="campaign.goal">{{(campaign.totalSum/campaign.goal)*100 | number}}%</span>
                     </div>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row" *ngIf="campaign.goal">
                   <div class="col-md-6">
                     <span class="goal" [translate]="'home.campaign-list.goal'"></span>
                   </div>
