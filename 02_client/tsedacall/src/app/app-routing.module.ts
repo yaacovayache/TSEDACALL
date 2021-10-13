@@ -37,7 +37,7 @@ const routes: Routes = [
     component: AssociationsListComponent,
   },
   {
-    path: 'campaign/home/:name',
+    path: 'campaign/home/:id/:name',
     component: CampaignPageComponent,
   },
   {

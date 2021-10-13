@@ -27,7 +27,6 @@ export class TopCampaignComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.campaignService.getCampaignVedette().subscribe((res)=>{
       this.vedette = res
-      console.log(this.vedette)
       this.donations = this.donationsService.donations; // subscribe to entire collection
       this.donationsService.getDonationsByCampaignId(this.vedette._id);
       
@@ -47,8 +46,7 @@ export class TopCampaignComponent implements OnInit, OnDestroy {
 
   onClick(id, name){
     name = name.replace(' ', '-').toLowerCase()
-    this.campaignService.campaignToGet = id;
-    this.router.navigate([`/campaign/home/${name}`]);
+    this.router.navigate([`/campaign/home/${id}/${name}`]);
   }
 
   onClickDonationForm(id){
