@@ -95,7 +95,6 @@ import { ModifyCampaignComponent } from './components/administration-page/modify
 import { ModifyDetailsComponent } from './components/administration-page/modify-campaign/modify-details/modify-details.component';
 import { VideoMediaComponent } from './components/campaign-page/video-media/video-media.component';
 import { SafePipe } from './shared/pipes/safe.pipe';
-import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 
 @NgModule({
   declarations: [
@@ -176,7 +175,6 @@ import { Ng2FlatpickrModule } from 'ng2-flatpickr';
     ChartsModule,
     NgxHideOnScrollModule,
     NgbModule,
-    Ng2FlatpickrModule,
     ModalModule.forRoot(),
     ShareButtonsModule.withConfig({
       debug: true
