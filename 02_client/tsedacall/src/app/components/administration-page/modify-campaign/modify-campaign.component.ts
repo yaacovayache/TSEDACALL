@@ -4,7 +4,6 @@ import { Campaign } from 'src/app/shared/models/campaign.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CampaignService } from 'src/app/shared/services/campaign.service';
 import Swal from 'sweetalert2'
-import { FlatpickrOptions } from 'ng2-flatpickr'
 
 @Component({
   selector: 'app-modify-campaign',
