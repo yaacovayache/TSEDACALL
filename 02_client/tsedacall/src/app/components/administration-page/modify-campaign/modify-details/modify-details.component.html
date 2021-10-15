@@ -18,7 +18,7 @@
     </div>
 </div>
 <br>
-<div class="card">
+<div class="card"  *ngIf="campaign.endAt">
     <div class="card-header">
         Expiry Date :
     </div>
@@ -43,9 +43,6 @@
     <div class="card-header">
         Image Cover :
     </div>
-    <!-- <div class="card-body img-center">
-        <img class="cover-pic" [src]="pattern_cover + campaign._id">
-    </div> -->
     <div class="card-body img-center">
         <form action="" method="post" enctype="multipart/form-data">
             <label for="fileToUpload">

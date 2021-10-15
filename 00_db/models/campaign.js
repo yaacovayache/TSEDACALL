@@ -65,6 +65,9 @@ const campaignSchema = new mongoose.Schema({
       type:Boolean,
       default:false
     },
+    url: {
+      type:String
+    },
     createdAt: {
       type: String,
       default: new Date()
@@ -72,7 +75,8 @@ const campaignSchema = new mongoose.Schema({
   });
 
 campaignSchema.pre("save", async function(next) {
-    const campaign = this;
+    // const campaign = this;
+    this.url = this.get('associationName').replace(' ', '-').toLowerCase() + '/' + this.get('name').replace(' ', '-').toLowerCase()
     next();
 });
 

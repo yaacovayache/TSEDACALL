@@ -45,6 +45,10 @@ export class CampaignService {
     return this.http.get<Campaign>(environment.apiUrl + `campaign/${id}`)
   }
 
+  public getCampaignByUrl(url){
+    return this.http.post<Campaign>(environment.apiUrl + `campaign/byurl`, {url:url})
+  }
+
   public getCampaignMediaName(id){
     return this.http.get<any>(environment.apiUrl + `media/name/${id}`)
   }

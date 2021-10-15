@@ -47,6 +47,7 @@ router.post('/campaign', auth, async(req, res) => {
         fs.mkdirSync(path.join(__dirname, `../campaign/${campaign._id}/media`));
         res.status(201).send({ campaign })
     } catch (err) {
+        console.log(err)
         res.status(400).send(err)
     }
 })
@@ -57,6 +58,20 @@ router.get('/campaign/:id', async(req, res) => {
         campaignId = req.params.id;
         let campaign = await Campaign.findById(campaignId)
         let totalSum = await Payment.aggregate([{$match:{"campaignId": ObjectId(campaignId)}},{ $group: { _id: false, sum: {$sum: "$sum"}}}])
+        campaign.totalSum = (totalSum.length)? totalSum[0].sum : 0
+        res.send(campaign)
+    } catch (err) {
+        console.log(err)
+        res.status(500).send()
+    }
+})
+
+// Get exist campaign by url
+router.post('/campaign/byurl', async(req, res) => {
+    try {
+        const url = req.body.url
+        let campaign = await Campaign.findOne({url:url})
+        let totalSum = await Payment.aggregate([{$match:{"campaignId": ObjectId(campaign._id)}},{ $group: { _id: false, sum: {$sum: "$sum"}}}])
         campaign.totalSum = (totalSum.length)? totalSum[0].sum : 0
         res.send(campaign)
     } catch (err) {
@@ -154,7 +169,7 @@ router.get('/campaign/find/top', async(req, res) => {
         let campaigns = await Campaign.find({actif:true, collect:false});
         for (let campaign of campaigns){
             let totalSum = await Payment.aggregate([{$match:{"campaignId": campaign._id}},{ $group: { _id: false, sum: {$sum: "$sum"}}}])
-            campaign.totalSum = totalSum[0].sum
+            campaign.totalSum = (totalSum.length)? totalSum[0].sum : 0
         }
         campaigns = campaigns.sort(compare);
         res.send(campaigns[0])

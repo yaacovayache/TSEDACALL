@@ -15,7 +15,6 @@ import { ExtraService } from 'src/app/shared/services/extra.service';
 })
 export class CampaignPageComponent implements OnInit {
   campaign:Campaign;
-  id:string;
   maxOver:boolean = false;
   public currencies;
 
@@ -23,8 +22,9 @@ export class CampaignPageComponent implements OnInit {
   constructor(private route:ActivatedRoute, private campaignService:CampaignService, private extraService:ExtraService) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id')
-    this.campaignService.getCampaignById(this.id).subscribe((campaign)=>{
+    const url = this.route.snapshot.paramMap.get('assocation') + '/' + this.route.snapshot.paramMap.get('name')
+    
+    this.campaignService.getCampaignByUrl(url).subscribe((campaign)=>{
       this.campaign = campaign
       if ((this.campaign.totalSum/this.campaign.goal)*100 >= 100)
         this.maxOver=true;

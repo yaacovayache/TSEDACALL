@@ -23,9 +23,10 @@ export class CampaignsListComponent implements OnInit {
   constructor(private campaignService:CampaignService, private donationsService:DonationsService, private userService:UserService, private router:Router) { }
 
   
-  onClick(id, name){
+  onClick(assocation, name){
     name = name.replace(' ', '-').toLowerCase()
-    this.router.navigate([`/campaign/home/${id}/${name}`]);
+    assocation = assocation.replace(' ', '-').toLowerCase()
+    this.router.navigate([`/campaign/home/${assocation}/${name}`]);
   }
 
 

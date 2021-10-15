@@ -44,9 +44,10 @@ export class TopCampaignComponent implements OnInit, OnDestroy {
     return `Il y a ${time} heures`
   }
 
-  onClick(id, name){
+  onClick(assocation, name){
     name = name.replace(' ', '-').toLowerCase()
-    this.router.navigate([`/campaign/home/${id}/${name}`]);
+    assocation = assocation.replace(' ', '-').toLowerCase()
+    this.router.navigate([`/campaign/home/${assocation}/${name}`]);
   }
 
   onClickDonationForm(id){

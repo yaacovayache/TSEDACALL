@@ -12,7 +12,7 @@
       <div class="col-md-12">
         <owl-carousel-o [options]="customOptionsMobile">
           <ng-template carouselSlide *ngFor="let campaign of campaigns | async | searchFilter: searchText">
-            <div class="card mb-3" (click)="onClick(campaign._id, campaign.name)">
+            <div class="card mb-3" (click)="onClick(campaign.associationName, campaign.name)">
               <div class="row g-0">
                 <div class="col-md-6">
                   <img [src]="pattern_url + campaign._id" class="rounded-start" alt="card" height="100%" width="100%">
@@ -28,7 +28,7 @@
                   <div class="progressWidth">
                     <div class="progress">
                       <div class="progress-bar" role="progressbar" [aria-valuenow]="(campaign.totalSum/campaign.goal)*100 | number" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'max-width': (campaign.totalSum/campaign.goal)*100 + '%'}" style="border-radius: 25px">
-                        <span class="title">{{(campaign.totalSum/campaign.goal)*100 | number}}%</span>
+                        <span class="title" *ngIf="campaign.goal">{{(campaign.totalSum/campaign.goal)*100 | number}}%</span>
                       </div>
                     </div>
                   </div>
@@ -39,7 +39,7 @@
                         <span class="goal" [translate]="'home.campaign-list.goal'"></span>
                       </div>
                       <div class="col-md-6 ">
-                        <span class="float-end goal_price">{{campaign.goal}}€</span>
+                        <span class="float-end goal_price" *ngIf="campaign.goal">{{campaign.goal}}€</span>
                       </div>
                     </div>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="row PcCard">
       <div class="col-md-6" *ngFor="let campaign of campaigns | async | searchFilter: searchText">
-        <div class="card mb-1 cursor-pointer" (click)="onClick(campaign._id, campaign.name)">
+        <div class="card mb-1 cursor-pointer" (click)="onClick(campaign.associationName, campaign.name)">
           <div class="g-0">
             <div class="col-md-12 rnd ">
               <img [src]="pattern_url + campaign._id" class="rounded-start" alt="card" height="100%" width="100%">

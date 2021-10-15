@@ -1,6 +1,6 @@
 <div class="container mt-3" *ngIf="vedette">
     <h1 class="text-center"><strong>{{vedette.name}}</strong></h1>
-    <div class="card mb-3" (click)="onClick(vedette._id, vedette.name)">
+    <div class="card mb-3" (click)="onClick(vedette.associationName, vedette.name)">
         <div class="row g-0">
             <div class="col-md-12 rnd">
                 <img [src]="pattern_url + vedette._id" class="rounded-start" alt="card" height="100%" width="100%">
