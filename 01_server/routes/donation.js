@@ -7,9 +7,9 @@ const moment = require("moment");
 const {ObjectId} = require('mongodb'); // or ObjectID 
 const path = require('path')
 const fs = require('fs');
-const stripe = require('stripe')('sk_test_51J2N0iLkAa6v5r0HiSY93io4c5kDp9BVLLTDEr7YC75Q34vlvFIxsYDLMhDF8R64NNRmgD2R2qKXQ4KTZ8fmcEJL00f6hbBnNS')
+// const stripe = require('stripe')('sk_test_51J2N0iLkAa6v5r0HiSY93io4c5kDp9BVLLTDEr7YC75Q34vlvFIxsYDLMhDF8R64NNRmgD2R2qKXQ4KTZ8fmcEJL00f6hbBnNS')
 
-const YOUR_DOMAIN = 'http://localhost:4200'
+// const YOUR_DOMAIN = 'http://localhost:4200'
 
 // Create new donation
 // router.post('/payment', async(req, res) => {
