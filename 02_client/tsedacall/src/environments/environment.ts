@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   appVersion: 'v1tsedcall',
   USERDATA_KEY: 'authf649fc9a5f55',
+  STRIPE_KEY: 'pk_test_51J2N0iLkAa6v5r0HY9LHJkBIA8PgSajN4WrGhkNo5lnVdqIxyST8t1P7wvC2mqmaIbeiEK1nHfIV7oleTetCpWdL00RHXrBLPs',
   isMockEnabled: true,
   apiUrl: 'http://localhost:3000/'
 };

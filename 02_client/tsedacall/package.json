@@ -32,6 +32,7 @@
     "@ngu/carousel": "^3.0.2",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "@stripe/stripe-js": "^1.20.2",
     "angular-csv-ext": "^1.0.4",
     "angular-progress-bar": "^1.0.11",
     "angular2-csv": "^0.2.9",

@@ -67,7 +67,7 @@ app.get('/', (req,res) => {
 
 // rewrite virtual urls to angular app to enable refreshing of internal pages
 app.get('*', function (req, res, next) {
-    res.sendFile(path.resolve(__dirname,"../html/index.html"));
+    // res.sendFile(path.resolve(__dirname,"../html/index.html"));
     // res.sendFile(path.resolve(__dirname,"../02_client/tsedacall/dist/tsedacall/index.html"));
 });
 

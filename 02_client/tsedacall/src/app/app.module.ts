@@ -95,6 +95,8 @@ import { ModifyCampaignComponent } from './components/administration-page/modify
 import { ModifyDetailsComponent } from './components/administration-page/modify-campaign/modify-details/modify-details.component';
 import { VideoMediaComponent } from './components/campaign-page/video-media/video-media.component';
 import { SafePipe } from './shared/pipes/safe.pipe';
+import { SuccessPaymentComponent } from './components/success-payment/success-payment.component';
+import { FailurePaymentComponent } from './components/failure-payment/failure-payment.component';
 
 @NgModule({
   declarations: [
@@ -146,7 +148,9 @@ import { SafePipe } from './shared/pipes/safe.pipe';
     ModifyCampaignComponent,
     ModifyDetailsComponent,
     VideoMediaComponent,
-    SafePipe
+    SafePipe,
+    SuccessPaymentComponent,
+    FailurePaymentComponent
   ],
   imports: [
     CommonModule,

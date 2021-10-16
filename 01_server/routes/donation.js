@@ -7,19 +7,55 @@ const moment = require("moment");
 const {ObjectId} = require('mongodb'); // or ObjectID 
 const path = require('path')
 const fs = require('fs');
+const stripe = require('stripe')('sk_test_51J2N0iLkAa6v5r0HiSY93io4c5kDp9BVLLTDEr7YC75Q34vlvFIxsYDLMhDF8R64NNRmgD2R2qKXQ4KTZ8fmcEJL00f6hbBnNS')
 
-
+const YOUR_DOMAIN = 'http://localhost:4200'
 
 // Create new donation
-router.post('/payment', async(req, res) => {
-    const payment = new Payment(req.body)
-    try {
-        await payment.save()
+// router.post('/payment', async(req, res) => {
+//     // const payment = new Payment(req.body)
+//     console.log('/payment')
+//     try {
+//         // await payment.save()
 
-        res.status(201).send(payment)
-    } catch (err) {
-        res.status(400).send(err)
-    }
+
+//       const payment = req.body
+//       const session = await stripe.checkout.sessions.create({
+//         payment_method_types: ["card"],
+//           line_items: [
+//               {
+//                   price_data: {
+//                     currency: "eur",
+//                       product_data: {
+//                         name: 'test',
+//                       },
+//                       unit_amount: payment.sum,
+//                   },
+//                   quantity: 1,
+
+//               },
+//           ],
+//           mode: "payment",
+//           success_url: `${YOUR_DOMAIN}/success.html`,
+//           cancel_url: `${YOUR_DOMAIN}/cancel.html`
+//         })
+
+//         res.status(201).send(session)
+//     } catch (err) {
+//         res.status(400).send(err)
+//     }
+// })
+
+router.post('/payment', async(req, res) => {
+  const payment = new Payment(req.body)
+  try {
+      await payment.save()
+
+
+      res.status(201).send(session)
+  } catch (err) {
+      res.status(400).send(err)
+  }
 })
 
 // Stats per month
