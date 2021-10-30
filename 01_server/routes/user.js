@@ -155,36 +155,38 @@ router.get('/donations/association/:id/:limit', async(req, res) => {
                     from: "campaigns",
                     localField: "_id",
                     foreignField: "founder_id",
-                    as: "campaignColl"
+                    as: "campaign_collection"
                 }
             },
-            {   $unwind:"$campaignColl" },
+            {   $unwind:"$campaign_collection" },
             {
                 $lookup:{
                     from: "donations", 
-                    localField: "campaignColl._id", 
+                    localField: "campaign_collection._id", 
                     foreignField: "campaignId",
-                    as: "donationsColl"
+                    as: "donations_collection"
                 }
             },
-            {   $unwind:"$donationsColl" },        
+            {   $unwind:"$donations_collection" },    
+            { $sort : { "donations_collection.createdAt" : -1 } },
+    
             {
                 $match:{"_id" : associationId}
             },
             { $limit : limit },
             {   
                 $project:{
-                    _id : 1,
-                    fname : "$donationsColl.fname",
-                    lname : "$donationsColl.lname",
-                    email : "$donationsColl.email",
-                    address : "$donationsColl.address",
-                    zip : "$donationsColl.zip",
-                    city : "$donationsColl.city",
-                    amount : "$donationsColl.sum",
-                    campaign_name : "$campaignColl.name",
-                    campaign_id : "$campaignColl._id",
-                    date : "$donationsColl.createdAt"
+                    _id : "$donations_collection._id",
+                    fname : "$donations_collection.fname",
+                    lname : "$donations_collection.lname",
+                    email : "$donations_collection.email",
+                    address : "$donations_collection.address",
+                    zip : "$donations_collection.zip",
+                    city : "$donations_collection.city",
+                    amount : "$donations_collection.sum",
+                    campaign_name : "$campaign_collection.name",
+                    campaign_id : "$campaign_collection._id",
+                    date : "$donations_collection.createdAt"
                 } 
             }
         ]);

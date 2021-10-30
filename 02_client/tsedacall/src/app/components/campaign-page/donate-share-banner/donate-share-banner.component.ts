@@ -16,7 +16,7 @@ export class DonateShareBannerComponent implements OnInit {
   }
 
   onClickDonationForm(id){
-    this.router.navigate([`/donation-form/${id}`]);
+    this.router.navigate([`/donation/form/${id}`]);
   }
 
 

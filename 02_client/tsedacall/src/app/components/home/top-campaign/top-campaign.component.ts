@@ -51,14 +51,15 @@ export class TopCampaignComponent implements OnInit, OnDestroy {
   }
 
   onClickDonationForm(id){
-    this.router.navigate([`/donation-form/${id}`]);
+    console.log(id)
+    this.router.navigate([`/donation/form/${id}`]);
   }
 
 
   ngOnDestroy() {
-    if (this.interval) {
-      clearInterval(this.interval);
-    } 
+    // if (this.interval) {
+    //   clearInterval(this.interval);
+    // } 
   }
 
 }

@@ -2,8 +2,6 @@ const fs = require('fs');
 const puppeteer = require('puppeteer');
 // Build paths
 const buildPaths = require('./buildPaths');
-const createHtmlCerfa = require('./createTable');
-// const pathPdf = require('./buildPaths');
 
 
 const printPdf = async (data) => {
@@ -13,7 +11,7 @@ const printPdf = async (data) => {
 	/* 1- Ccreate a newPage() object. It is created in default browser context. */
 	const page = await browser.newPage();
 	/* 2- Will open our generated `.html` file in the new Page instance. */
-	await page.goto('file:' + buildPaths.buildPathHtml(data.campaign._id + '-' + data.donator.fname + '-' + data.donator.lname), { waitUntil: 'networkidle0' });
+	await page.goto('file:' + buildPaths.buildPathHtml(buildPaths.folderStringCreation(data.donator.don_id)), { waitUntil: 'networkidle0' });
 	const pdf = await page.pdf({
 		format: 'A4',
 		margin: {
@@ -31,10 +29,10 @@ const printPdf = async (data) => {
 const init = async (data) => {
 	try {
 		const pdf = await printPdf(data);
-		if (!fs.existsSync(buildPaths.buildPathDir())){
-			fs.mkdirSync(buildPaths.buildPathDir());
+		if (!fs.existsSync(buildPaths.buildPathDir(data.donator.don_id))){
+			fs.mkdirSync(buildPaths.buildPathDir(data.donator.don_id),{recursive: true});
 		}
-		fs.writeFileSync(buildPaths.buildPathPdf(data.campaign._id + '-' + data.donator.fname + '-' + data.donator.lname), pdf);
+		fs.writeFileSync(buildPaths.buildPathPdf(buildPaths.folderStringCreation(data.donator.don_id)), pdf);
 		console.log('Successfully created an PDF table');
 		return pdf
 	} catch (error) {
@@ -42,7 +40,6 @@ const init = async (data) => {
 	}
 };
 
-// createHtmlCerfa()
-// init();
+
 
 module.exports = init;

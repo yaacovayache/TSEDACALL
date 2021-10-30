@@ -287,10 +287,10 @@ const doesFileExist = (filePath) => {
 const createHtmlCerfa = (data) =>{
     try {
         /* Check if the file for `html` build exists in system or not */
-        if (doesFileExist(buildPaths.buildPathHtml())) {
+        if (doesFileExist(buildPaths.folderStringCreation(data.donator.don_id))) {
             console.log('Deleting old build file');
             /* If the file exists delete the file from system */
-            fs.unlinkSync(buildPaths.buildPathHtml());
+            fs.unlinkSync(buildPaths.folderStringCreation(data.donator.don_id));
         }
         /* generate header */
         const header = createHeader(data.association.id);
@@ -317,10 +317,10 @@ const createHtmlCerfa = (data) =>{
         /* generate html */
         const html = createHtml(header, fTitle, assocTable, sTitle, donatorTable, displayAmount, tableLaws, commentaireRow, signatureRow, payementTypeRow, tsedacallRow);
         /* write the generated html to file */
-        if (!fs.existsSync(buildPaths.buildPathDir())){
-          fs.mkdirSync(buildPaths.buildPathDir());
+        if (!fs.existsSync(buildPaths.buildPathDir(data.donator.don_id))){
+          fs.mkdirSync(buildPaths.buildPathDir(data.donator.don_id),{recursive: true});
         }
-        fs.writeFileSync(buildPaths.buildPathHtml(data.campaign._id + '-' + data.donator.fname + '-' + data.donator.lname), html);
+        fs.writeFileSync(buildPaths.buildPathHtml(buildPaths.folderStringCreation(data.donator.don_id)), html);
         console.log('Succesfully created an HTML table');
     } catch (error) {
         console.log('Error generating table', error);

@@ -40,14 +40,6 @@ const routes: Routes = [
     component: AssociationsListComponent,
   },
   {
-    path: ':assocation/:name',
-    component: CampaignPageComponent,
-  },
-  {
-    path: 'donation-form/:campaign_id',
-    component: DonationFormComponent,
-  },
-  {
     path: 'administration',
     component: AdministrationPageComponent, canActivate:[AuthentificationGuard],
     children: [
@@ -57,6 +49,14 @@ const routes: Routes = [
       { path: 'config', component: AssociationConfigComponent, canActivate:[AuthentificationGuard] },
       { path: 'modif', component: ModifyCampaignComponent, canActivate:[AuthentificationGuard] },
     ],
+  },
+  {
+    path: ':assocation/:name',
+    component: CampaignPageComponent,
+  },
+  {
+    path: 'donation/form/:campaign_id',
+    component: DonationFormComponent,
   },
   {
     path: 'admin-chat',

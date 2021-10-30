@@ -328,5 +328,49 @@ text-align: center;
     filter: Alpha(opacity=100);
     -webkit-filter: Alpha(opacity=100);
   }
+
+
+
+  // ======================================= INPUT =====================================================
+// ================================== INPUT =============
+
+.form-select:focus{
+  border-color: #ced4da;
+  box-shadow: none;
+}
+
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -34px;
+  position: relative;
+  z-index: 2;
+  color: black;
+  width: 18%;
+  border: none;
+  cursor: pointer;
+}
+
+.currency-symbol{
+  font-weight: 1000;
+  color: #003cff;
+
+}
+
+.login-wrapper{
+  padding: 0.8375em 0;
+}
+
+.pass-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items : center;
+  overflow: hidden;
+}
+
+.input-icon{
+  cursor: pointer;
+}
+  
   
   

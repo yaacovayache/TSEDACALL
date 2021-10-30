@@ -88,5 +88,26 @@ export class DonationsService {
   public getCsvFromQuery(item, filter){
     return this.http.post(environment.apiUrl + `donations/export`, {query: item, filter:filter})
   }
+
+  public createStripeCustomer(item){
+    return this.http.post(environment.apiUrl + `stripe/customer`, item)
+  }
+
+  public createStripeInvoicePayment(item){
+    return this.http.post(environment.apiUrl + `stripe/invoice/payment`, item)
+  }
+
+  
+  public createStripePayment(item){
+    return this.http.post(environment.apiUrl + `stripe/checkout`, item)
+  }
+
+  public createStripeSepaPayment(item){
+    return this.http.post(environment.apiUrl + `stripe/iban`, item)
+  }
+
+  public createStripeSubscription(item){
+    return this.http.post(environment.apiUrl + `stripe/subscription`, item)
+  }
   
 }

@@ -30,7 +30,6 @@
               <div class="col-md-12">
                 <input class="form-control rounded" name=sum type=text placeholder='Autre Montant:' autocomplete=off [(ngModel)]="sum" *ngIf="!sum">
                 <input class="form-control rounded" style="text-align:center;" name=sum type=text [value]="sum" autocomplete=off [(ngModel)]="sum" *ngIf="sum">
-                <!-- <i class="fa fa-eye field-icon"></i> -->
                 <select class="form-select form-select-sm field-icon currency-symbol" aria-label="Default select example" *ngIf="currencies" (change)="onChangeCurrency($event.target.value)">
                   <option [value]="currency.value" *ngFor="let currency of currencies" class="currency-symbol">{{currency.symbol}}</option>
                 </select>

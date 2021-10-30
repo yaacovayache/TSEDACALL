@@ -35,6 +35,7 @@ import { SharedDirectivesModule } from './shared/directive/shared-directives.mod
 import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
 import { ToastrModule } from 'ngx-toastr';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgxStripeModule } from 'ngx-stripe';
 
 
 // Pipes 
@@ -180,6 +181,7 @@ import { FailurePaymentComponent } from './components/failure-payment/failure-pa
     NgxHideOnScrollModule,
     NgbModule,
     ModalModule.forRoot(),
+    NgxStripeModule.forRoot('pk_test_51J2N0iLkAa6v5r0HY9LHJkBIA8PgSajN4WrGhkNo5lnVdqIxyST8t1P7wvC2mqmaIbeiEK1nHfIV7oleTetCpWdL00RHXrBLPs'),
     ShareButtonsModule.withConfig({
       debug: true
     }),

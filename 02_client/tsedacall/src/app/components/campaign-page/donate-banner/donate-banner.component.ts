@@ -59,7 +59,7 @@ export class DonateBannerComponent implements OnInit {
     this.donationsService.isMultipleShared = this.multiple_month;
     this.donationsService.sumShared = this.sum;
     this.donationsService.monthNumberShared = this.selectedMonthNumber;
-    this.router.navigate([`/donation-form/${this.campaign._id}`]);
+    this.router.navigate([`/donation/form/${this.campaign._id}`]);
   }
 
 }

@@ -23,18 +23,21 @@
                         </div>
 
                         <div class="col-md-12 mt-3">
-                            <!-- <div class="input-group">
-                            <input type="number" class="form-control" aria-label="Price" />
-                            <div class="input-group-append">
-                                <span class="input-group-text">$</span>
-                            </div>
-                        </div> -->
 
                             <div class="form-group" *ngIf="!multiple">
                                 <div class="input-icon input-icon-right">
-                                    <input (change)="onChangeDeductionFiscale()" type="text" class="form-control"
-                                        placeholder="0.00" formControlName="sum">
-                                    <i>€</i>
+                                    <div class="col-md-12">
+                                        <input (change)="onChangeDeductionFiscale()" class="form-control rounded"
+                                            name=sum type=text placeholder='0.00' autocomplete=off
+                                            formControlName="sum">
+                                        <select class="form-select form-select-sm field-icon currency-symbol"
+                                            aria-label="Default select example"
+                                            (change)="onChangeCurrency($event.target.value)">
+                                            <option [value]="currency.value" [selected]="currency.selected"
+                                                *ngFor="let currency of currencies" class="currency-symbol">
+                                                {{currency.symbol}}</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
@@ -48,9 +51,11 @@
                                             <input class="form-control rounded" type=text placeholder='0.00'
                                                 formControlName="sum" style="text-align:center;" autocomplete=off>
                                             <select class="form-select form-select-sm field-icon currency-symbol"
-                                                aria-label="Default select example" *ngIf="currencies">
-                                                <option [value]="currency.value" *ngFor="let currency of currencies"
-                                                    class="currency-symbol">{{currency.symbol}}</option>
+                                                aria-label="Default select example"
+                                                (change)="onChangeCurrency($event.target.value)">
+                                                <option [value]="currency.value" [selected]="currency.selected"
+                                                    *ngFor="let currency of currencies" class="currency-symbol">
+                                                    {{currency.symbol}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -92,15 +97,6 @@
                         </div>
 
                         <div class="col-md-12">
-                            <!-- <p class="lable">
-                            Pour les bougies, choisissez la bougie du TSADIK sur cette
-                            liste.(facultatif)
-                        </p>
-                        <select class="drp">
-                            <option>Choisir</option>
-                            <option>Choisir 1</option>
-                            <option>Choisir 2</option>
-                        </select> -->
 
                             <p class="lable mt-3">
                                 Souhaitez-vous ajouter un message ou une bénédiction ?
@@ -203,6 +199,14 @@
                                         formControlName="city" />
                                 </div>
                             </div>
+                            <div class="col-md-12 col-sm-4 col-xs-4 col-4 mt-2 mb-2">
+                                <div class="input-group">
+                                    <select class="form-select" aria-label="Default select example"
+                                        (change)="onChangeCountry($event.target.value)">
+                                        <option [value]="country.country_code" *ngFor="let country of countries"> {{country.country_name}}</option>
+                                    </select>
+                                </div>
+                            </div>
                             <label
                                 *ngIf="!donationForm.get('zip').valid && donationForm.get('zip').touched || !donationForm.get('city').valid && donationForm.get('city').touched"
                                 class="text-danger">
@@ -225,11 +229,6 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="col-md-12 mt-2 mb-1">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Nom qui apparaitra" />
-                            </div>
-                        </div> -->
                         </div>
                     </div>
                 </div>
@@ -243,20 +242,25 @@
                         </div>
 
                         <div class="col-md-6 col-sm-6 col-xs-6 col-6 text-center mt-2 mb-2">
-                            <div class="checkbox cursor-pointer" id="checkbox_5" onclick="active('checkbox_5', 'checkbox_6')" (click)="onChangePaymentType('creditCard', false)">
-                                <input type="radio" name="c" id="input_checkbox_5" style="display: none" checked/>
+                            <div class="checkbox cursor-pointer" id="checkbox_5"
+                                onclick="active('checkbox_5', 'checkbox_6')"
+                                (click)="onChangePaymentType('creditCard', false)">
+                                <input type="radio" name="c" id="input_checkbox_5" style="display: none" checked />
                                 <label for="input_checkbox_5" id="checkbox_5lable">Carte Bancaire</label>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-6 col-6 text-center mt-2 mb-2">
-                            <div class="checkbox cursor-pointer" id="checkbox_6" onclick="active('checkbox_6', 'checkbox_5')" (click)="onChangePaymentType('transfer', true)">
-                                <input type="radio" name="c" id="input_checkbox_6" style="display: none"/>
+                            <div class="checkbox cursor-pointer" id="checkbox_6"
+                                onclick="active('checkbox_6', 'checkbox_5')"
+                                (click)="onChangePaymentType('transfer', true)">
+                                <input type="radio" name="c" id="input_checkbox_6" style="display: none" />
                                 <label for="input_checkbox_6" id="checkbox_6lable">Virement</label>
                             </div>
                         </div>
 
                         <div class="col-md-12 mt-2 text-center">
-                            <h1 class="center-text"><i style="color:#00FF00" class="fa fa-lock fa-lg"></i> Paiement 100% sécurisé par <i class="fa fa-cc-stripe fa-lg"></i></h1>
+                            <h1 class="center-text"><i style="color:#00FF00" class="fa fa-lock fa-lg"></i> Paiement 100%
+                                sécurisé par <i class="fa fa-cc-stripe fa-lg"></i></h1>
 
                             <hr class="m-2" />
                         </div>
@@ -270,31 +274,24 @@
                         </div>
 
                         <div class="col-md-12 mt-2 mb-2">
-                            <!-- <div class="input-group">
-                                <input type="number" class="form-control" placeholder="Numero de carte" />
-                            </div> -->
                             <div class="col-md-12 cardBorder" *ngIf="!transfer">
                                 <label class="lbl">Carte de credit ou de debit</label>
                                 <div class="cardPayment">
-                                    <div class='oddT-icon-input'>
-                                        <input id='txt' type='text' placeholder='1234-5678-1234-5678' maxlength="19"
-                                            class='form-control cardNumber oddT-text' formControlName="cardNumber">
-                                        <i class="fa fa-credit-card"></i>
-                                    </div>
-                                    <!-- <input type="text" id='cardInput' name="cardInput" class="form-control cardNumber" placeholder="Enter the number"> -->
-                                    <input type="text" id='cardMonth' class="form-control cardDate" maxlength="5"
-                                        placeholder="MM/YY" formControlName="cardExpiration">
-                                    <input type="text" class="form-control cardCVC" maxlength="4" placeholder="CVC" formControlName="cvc">
+                                    <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions">
+                                    </ngx-stripe-card>
                                 </div>
                             </div>
                             <div class="col-md-12" *ngIf="transfer">
-                                <!-- <label class="lbl">Carte de credit ou de debit</label> -->
-                                <div class="input-group mb-3"><input type="text" class="form-control" placeholder="Nom du titulaire du compte*" formControlName="bankAccountName" /></div>
-                                <div class="input-group mb-3"><input type="email" class="form-control" placeholder="Email du titulaire du compte*" formControlName="emailAccountName"/></div>
+                                <div class="input-group mb-3"><input type="text" class="form-control" placeholder="Nom du titulaire du compte*" formControlName="name_account" /></div>
+                                <div class="input-group mb-3"><input type="email" class="form-control" placeholder="Email du titulaire du compte*" formControlName="email_account"/></div>
                                 <label class="lbl mb-3">IBAN</label>
-                                <div class="input-group mb-3"><input type="text" class="form-control" placeholder="FR00 0000 0000 0000 0000 0000 000" formControlName="iban"/></div>
+                                <!-- <div class="input-group mb-3"><input type="text" class="form-control" placeholder="FR00 0000 0000 0000 0000 0000 000" formControlName="iban"/></div> -->
+
+                                <ngx-stripe-iban [options]="ibanOptions" [elementsOptions]="elementsOptions"></ngx-stripe-iban>
                             </div>
                         </div>
+
+                        <app-loading-spinner *ngIf="isLoading" class="d-flex spinner"></app-loading-spinner>
 
                         <div class="col-md-12 mt-3">
                             <button type="submit" class="btn btnShow btn-lg btn-block">

@@ -3,6 +3,8 @@ const router = new express.Router();
 const auth = require('../middleware/auth.js');
 const Currency = require('../../00_db/models/currency');
 const PaymentType = require('../../00_db/models/paymentType');
+const Country = require('../../00_db/models/country');
+
 
 
 // Get all currencies
@@ -21,6 +23,17 @@ router.get('/payment-type', async(req, res) => {
     try {
         let paymentType = await PaymentType.find()
         res.send(paymentType)
+    } catch (err) {
+        console.log(err)
+        res.status(500).send()
+    }
+})
+
+// Get all countries
+router.get('/country', async(req, res) => {
+    try {
+        let country = await Country.find()
+        res.send(country)
     } catch (err) {
         console.log(err)
         res.status(500).send()

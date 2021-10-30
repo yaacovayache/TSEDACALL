@@ -25,6 +25,7 @@ export class DonatorsTableComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getDonationsByAssociationId(this.association._id, 5).subscribe((res)=>{
       this.displayedDonations = res
+      console.log(this.displayedDonations)
     })
 
     this.userService.getDonationsByAssociationId(this.association._id, 0).subscribe((res)=>{
@@ -36,11 +37,11 @@ export class DonatorsTableComponent implements OnInit {
     this.modalRef = this.modalService.show(template, Object.assign({}, { class: 'gray modal-lg' }));  
   } 
 
-  CerfaDownload(don){
+  cerfaDownload(don){
     this.isLoading=true
     // let association = this.authService.getLocalStorageUser()
     let data = {association: {id:this.association._id, name: this.association.associationName, address:this.association.address + ' ' + this.association.city + ', ' + this.association.zip, object: 'Campagne Object'},
-                donator: {sum: don.amount, fname:don.fname, lname:don.lname , address: don.address + ', ' + don.city},
+                donator: {don_id: don._id, sum: don.amount, fname:don.fname, lname:don.lname , address: don.address + ', ' + don.city},
                 date: don.date,
                 campaign: {_id:don.campaign_id}
               }
