@@ -18,16 +18,16 @@ import { Router } from '@angular/router';
 export class AddDonationComponent implements OnInit {
   public donationForm: FormGroup;
   campaigns: Observable<Campaign[]>;
-  public sendCerfa:boolean=false;
+  public sendCerfa: boolean = false;
   public formsData;
   public paymentTypes;
   public currencies;
   public isLoading: boolean = false;
-  public default = {label : 'Veuillez sélectionner une campagne', value: ''}
+  public default = { label: 'Veuillez sélectionner une campagne', value: '' }
 
 
 
-  constructor(private router: Router, private toastr: ToastrService, private donationsService:DonationsService, private campaignService:CampaignService, private authService:AuthService, private extraService:ExtraService) { }
+  constructor(private router: Router, private toastr: ToastrService, private donationsService: DonationsService, private campaignService: CampaignService, private authService: AuthService, private extraService: ExtraService) { }
 
   showSuccess() {
     this.toastr.success('Success');
@@ -44,10 +44,10 @@ export class AddDonationComponent implements OnInit {
   ngOnInit(): void {
     this.campaigns = this.campaignService.campaigns; // subscribe to entire collection
     this.campaignService.getCampaignsByFounder(this.authService.getLocalStorageUser()._id);
-    this.extraService.getPaymentType().subscribe((res)=>{
+    this.extraService.getPaymentType().subscribe((res) => {
       this.paymentTypes = res
     })
-    this.extraService.getCurrencies().subscribe((res)=>{
+    this.extraService.getCurrencies().subscribe((res) => {
       this.currencies = res
     })
     this.donationForm = new FormGroup({
@@ -69,7 +69,7 @@ export class AddDonationComponent implements OnInit {
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     this.isLoading = true
     this.formsData = {
       type_donator: this.donationForm.get('type_donator').value,
@@ -87,22 +87,26 @@ export class AddDonationComponent implements OnInit {
       anonymous: JSON.parse(this.donationForm.get('anonymous').value),
       campaignId: this.donationForm.get('campaignId').value,
       message: this.donationForm.get('message').value,
+      manually: true
     }
-    if(this.donationForm.valid){
-      this.donationsService.addDonation(this.formsData).subscribe((res)=>{
+    if (this.donationForm.valid) {
+      this.donationsService.addDonation(this.formsData).subscribe((res) => {
+        console.log(res)
+        if (this.sendCerfa) {
+          let association = this.authService.getLocalStorageUser()
+          let data = {
+            association: { id: association._id, name: association.associationName, address: association.address + ' ' + association.city + ', ' + association.zip, object: 'Campagne Object' },
+            donator: { don_id: res._id, sum: this.formsData.sum, fname: this.formsData.fname, lname: this.formsData.lname, address: this.formsData.address + ', ' + this.formsData.city },
+            date: (new Date()).toString(),
+            campaign: { _id: this.formsData.campaignId }
+          }
+          this.donationsService.sendCerfaByMail({ cerfa: data, email: this.formsData.email }).subscribe((res) => { })
+        }
+
         this.donationForm.reset();
         this.showSuccess()
+        this.isLoading = false
       })
-      if (this.sendCerfa){
-        let association = this.authService.getLocalStorageUser()
-        let data = {association: {id:association._id, name: association.associationName, address:association.address + ' ' + association.city + ', ' + association.zip, object: 'Campagne Object'},
-                    donator: {sum: this.formsData.sum, fname:this.formsData.fname, lname:this.formsData.lname , address: this.formsData.address + ', ' + this.formsData.city},
-                    date: (new Date()).toString(),
-                    campaign: {_id:this.formsData.campaignId}}
-        this.donationsService.sendCerfaByMail({cerfa: data, email:this.formsData.email}).subscribe((res)=>{
-          this.isLoading = false
-        })
-      } else {this.isLoading = false}
 
     } else {
       this.isLoading = false

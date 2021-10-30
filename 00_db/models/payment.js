@@ -31,6 +31,10 @@ const paymentSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    manually:{
+        type: Boolean,
+        default: false,
+    },
     currency:{
         type: String,
         required: true,

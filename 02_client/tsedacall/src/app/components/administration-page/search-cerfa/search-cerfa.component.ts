@@ -64,7 +64,7 @@ export class SearchCerfaComponent implements OnInit {
     this.isLoading=true
     let association = this.current_association
     let data = {association: {id:association._id, name: association.associationName, address:association.address + ' ' + association.city + ', ' + association.zip, object: 'Campagne Object'},
-                donator: {sum: don.amount, fname:don.fname, lname:don.lname , address: don.address + ', ' + don.city},
+                donator: {don_id: don._id, sum: don.amount, fname:don.fname, lname:don.lname , address: don.address + ', ' + don.city},
                 date: don.date,
                 campaign: {_id:don.campaign_id}
               }

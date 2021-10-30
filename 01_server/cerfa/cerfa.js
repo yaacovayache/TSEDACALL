@@ -47,8 +47,14 @@ router.post('/cerfa/mail', async(req, res) => {
     try {
         data = req.body.cerfa;
         email = req.body.email;
-        createHtmlCerfa(data);
-        const pdf = await init(data);
+
+        if (fs.existsSync(buildPaths.buildPathDir(data.donator.don_id))) {
+            var pdf = fs.readFileSync(buildPaths.buildPathPdf(buildPaths.folderStringCreation(data.donator.don_id)));
+        } else {
+            createHtmlCerfa(data);
+            var pdf = await init(data);
+        }
+
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.header('content-type', 'application/pdf');
@@ -60,7 +66,7 @@ router.post('/cerfa/mail', async(req, res) => {
             text: 'Bonjour, voici votre cerfa',
             attachments: [{
                 filename: 'cerfa.pdf',
-                path: buildPaths.buildPathPdf(data.campaign._id + '-' + data.donator.fname + '-' + data.donator.lname),
+                path: buildPaths.buildPathPdf(buildPaths.folderStringCreation(data.donator.don_id)),
                 contentType: 'application/pdf'
               }]
           };

@@ -166,13 +166,13 @@ router.post('/donations/filter', async (req, res) => {
           from: "campaigns",
           localField: "campaignId",
           foreignField: "_id",
-          as: "campaignColl"
+          as: "campaign_collection"
         }
       },
-      { $unwind: "$campaignColl" },
+      { $unwind: "$campaign_collection" },
       {
         $project: {
-          _id: 1,
+          _id: "$_id",
           fname: "$fname",
           lname: "$lname",
           email: "$email",
@@ -180,8 +180,8 @@ router.post('/donations/filter', async (req, res) => {
           zip: "$zip",
           city: "$city",
           amount: "$sum",
-          campaign_name: "$campaignColl.name",
-          campaign_id: "$campaignColl._id",
+          campaign_name: "$campaign_collection.name",
+          campaign_id: "$campaign_collection._id",
           date: "$createdAt"
         }
       }
