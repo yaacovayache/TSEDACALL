@@ -738,16 +738,14 @@
 body{
     background-color: whitesmoke;
 }
-h1,h2,h3,h4,h5,h6,p,span{
-  font-family: 'Baloo Chettan 2', cursive;
+h1,h2,h3,h4,h5,h6,p,span {
+  font-family: 'AvenirNextLTPro-Regular', cursive;
 }
-
 .navbar-section{
   height: 80px;
 }
 .navbar{
   padding: 18px 0px;
-  background-color: #fff;
   height: 80px;
   box-shadow: 5px -3px 6px 4px #776d6d;
 }
@@ -821,7 +819,11 @@ h1,h2,h3,h4,h5,h6,p,span{
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
 
+
 a{
+  text-decoration: none;
+}
+ul{
   text-decoration: none;
 }
 .header{
@@ -833,6 +835,32 @@ a{
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
+  background-color: #F4F4F4;
+  font-family: 'AvenirNext-UltraLight';
+  
+  img {
+    height: 80px;
+  }
+  .nav-logo {
+    img{
+      height: 80px;
+    }
+  }
+  .nav-burger-menu {
+
+    img {
+      height: 40px;
+    }
+  }
+  ::after {
+    display: none;
+  }
+  .nav-log-language {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
 }
 
 .hamburger {
@@ -858,13 +886,9 @@ a{
   align-items: center;
 }
 
-.nav-item {
-  margin-left: 5rem;
-}
-
 .nav-link{
-  font-size: 1.6rem;
-  font-weight: 400;
+  font-size: 1.4rem;
+  font-weight: 300;
   color: #475569;
 }
 
@@ -917,7 +941,7 @@ a{
   font-size: 13px;
   font-weight: 400;
   color: #475569;
-/* margin-right: auto; */
+  margin-right: auto;
 }
   .hamburger.active .bar:nth-child(2) {
     opacity: 0;
