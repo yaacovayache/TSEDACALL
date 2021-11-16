@@ -1,5 +1,5 @@
 <!-- dashboard logo start-->
-<section class="dashnavbar-section">
+<!-- <section class="dashnavbar-section">
     <div class="container">
         <div class="row">
             <nav class="navbar">
@@ -15,29 +15,57 @@
             </nav>
         </div>
     </div>
-</section>
+</section> -->
+
+
 <!-- dashboard logo end -->
 <section class="button-section">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+        <div class="dashboard-title-btn">
+            <div class="dashboard-title">
                 <h1 class="text-center" [translate]="'administration.dashboard.IWant'"></h1>
             </div>
-            <div class="col-md-4 banner">
-                <button class="btn success" (click)="nav('administration/add')" [translate]="'administration.dashboard.Button1'"></button>
+            <div class="dashboard-btn row">
+                <div class="col-4">
+                    <button class="btn btn-light" (click)="nav('administration/add')" [translate]="'administration.dashboard.Button1'"></button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-light" (click)="nav('administration/search')" [translate]="'administration.dashboard.Button2'"></button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-light" [translate]="'administration.dashboard.Button3'"></button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-light" (click)="nav('administration/modif')" [translate]="'administration.dashboard.Button4'"></button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-light" [translate]="'administration.dashboard.Button5'" (click)="newCampaign()"></button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-light" [translate]="'administration.dashboard.Button5'" (click)="newCampaign()"></button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-light" [translate]="'administration.dashboard.Button5'" (click)="newCampaign()"></button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-light" [translate]="'administration.dashboard.Button5'" (click)="newCampaign()"></button>
+                </div>
             </div>
-            <div class="col-md-4 banner">
-                <button class="btn view" (click)="nav('administration/search')" [translate]="'administration.dashboard.Button2'"></button>
-            </div>
-            <div class="col-md-4 banner">
-                <button class="btn danger" [translate]="'administration.dashboard.Button3'"></button>
-            </div>
-            <div class="col-md-6 banner">
-                <button class="btn stdd" (click)="nav('administration/modif')" [translate]="'administration.dashboard.Button4'"></button>
-            </div>
-            <div class="col-md-6 banner">
-                <button class="btn yellow" [translate]="'administration.dashboard.Button5'" (click)="newCampaign()"></button>
-            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Count section start -->
+
+<section class="count-section">
+    <div class="container">
+        <div class="count-info">
+            <div class="collecte"></div>
+            <div class="collecte"></div>
+            <div class="img-earth"></div>
+            <div class="collecte"></div>
+            <div class="collecte"></div>
+            <div class="collecte"></div>
         </div>
     </div>
 </section>

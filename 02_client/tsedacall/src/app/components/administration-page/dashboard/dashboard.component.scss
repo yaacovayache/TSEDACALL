@@ -11,11 +11,57 @@ h5,
 h6,
 p,
 span {
-  font-family: "Baloo Chettan 2", cursive;
+  font-family: "AvenirNext-UltraLight", cursive;
 }
 .button-section {
-  margin-top: 80px;
+  // margin-top: 80px;
+  .container {
+    background-image: url(../../../../assets/image/map-background.jpg);
+    background-repeat: no-repeat;
+    height: 500px;
+    background-position: center;
+    background-size: cover;
+  }
+  .btn {
+    background-color: whitesmoke;
+    color:black;
+    text-align: center;
+    height: 100px;
+    width: 115px;
+    border-radius: 25px;
+    box-shadow: 0px 1px 3px 2px #0000005e;
+  }
+  .dashboard-title-btn {
+    .dashboard-title {
+      color: whitesmoke;
+      padding-top: 30px;
+    }
+    .dashboard-btn {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+  .col-4 {
+    text-align: center;
+    margin: 20px 0;
+  }
 }
+
+/* count-section */
+.count-section {
+  .container {
+    background-image: url(../../../../assets/image/decor-pointille.png);
+    background-repeat: no-repeat;
+    height: 500px;
+    background-position: center;
+    background-size: cover;
+    .count-info {
+
+    }
+  }
+}
+
 .banner {
   margin-top: 20px;
   text-align: center;
@@ -47,15 +93,15 @@ span {
   border-radius: 5px;
 }
 
-.btn {
-  background-color: whitesmoke;
-  color: #f3558e;
-  text-align: center;
-  padding: 15px 40px;
-  border-radius: 25px;
-  border: 1px solid #f3558e;
-  box-shadow: 0px 1px 3px 2px #0000005e;
-}
+// .btn {
+//   background-color: whitesmoke;
+//   color: #f3558e;
+//   text-align: center;
+//   padding: 15px 40px;
+//   border-radius: 25px;
+//   border: 1px solid #f3558e;
+//   box-shadow: 0px 1px 3px 2px #0000005e;
+// }
 
 /* .btn:hover {
   color: whitesmoke;
