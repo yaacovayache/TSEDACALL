@@ -832,21 +832,39 @@ ul{
 }
 
 .navbar {
-  display: flex;
-  justify-content: unset;
+  display: contents;
   align-items: center;
-  padding: 0 1.5rem;
+  padding: 0 0 0 1.5rem;
   background-color: #F4F4F4;
   font-family: 'AvenirNext-UltraLight';
   
   img {
     height: 5rem;
   }
+  .nav-logo-order {
+    display: flex;
+    align-items: center;
+  }
   .nav-logo {
     img{
       height: 5rem;
     }
   }
+  @media only screen and (max-width: 1072px) {
+    .nav-order {
+      display: flex;
+      width: 100%;
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+  }
+  @media only screen and (min-width: 1072px) {
+    .nav-order {
+      display: flex;
+      width: 100%;
+    }
+  }
+  
   .nav-burger-menu {
     margin: 0 1.5rem;
     img {
@@ -888,9 +906,6 @@ ul{
         text-align: center;
       }
     }
-    // li:nth-last-child(-n+2) {
-    //   background-color: white;
-    // }
   }
   .nav-language {
     margin-left: auto;
@@ -898,6 +913,9 @@ ul{
       top: 3.5rem;
       right: 0;
       left: auto;
+      img {
+        height: 2.5rem;
+      }
     }
   }
 }

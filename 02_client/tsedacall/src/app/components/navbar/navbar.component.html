@@ -69,21 +69,41 @@
   <section class="navbar-section">
     <header class="header">
       <nav class="navbar fixed-top navbar-expand-md navbar-light">
-        <!-- LOGO -->
-        <div class="nav-logo">
-          <a href="#" class="nav-logo"><img src="../../../assets/images/levtov.jpg"></a>
-        </div>
-
-        <!-- MENU BURGER -->
-        <div class="nav-burger-menu">
-          <div class="nav-burger" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
-            <div class="hamburger" onclick="mobileMenu()">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
+        
+        <div class="nav-logo-order">
+          <!-- LOGO -->
+          <div class="nav-logo">
+            <a href="#" class="nav-logo"><img src="../../../assets/images/levtov.jpg"></a>
+          </div>
+  
+          <div class="nav-order">
+            <!-- MENU BURGER -->
+            <div class="nav-burger-menu">
+              <div class="nav-burger" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+                <div class="hamburger" onclick="mobileMenu()">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                </div>
+              </div>
+            </div>
+            <!-- LANGUES -->
+            <div class="nav-language">
+              <div class="nav-item dropdown" id="lang_id">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  LANGUES
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li class="cursor-pointer" (click)="useLanguage('fr')"><a class="dropdown-item" onclick="set('Français', 'assets/image/france.png')">  <img src="assets/image/france.png" alt="">Français</a></li>
+                  <li class="cursor-pointer" (click)="useLanguage('en')"><a class="dropdown-item" onclick="set('ENGLISH', 'assets/image/united-kingdom.png')"> <img src="assets/image/united-kingdom.png" alt="">English</a></li> 
+                  <li class="cursor-pointer" (click)="useLanguage('he')"><a class="dropdown-item" onclick="set('עברית', 'assets/image/israel.png')"><img src="assets/image/israel.png" alt="">עברית</a></li> 
+                </ul>
+              </div>
             </div>
           </div>
         </div>
+        
+        
             
         <div class="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
           <!-- <div class="offcanvas-header">
@@ -114,14 +134,6 @@
                 <li class="nav-item" *ngIf="!isAuthenticated" routerLinkActive="menu-item-active">
                   <a class="nav-link dashboard-title" routerLink="/auth/signup">{{'navbar.SignUp' | translate}}</a>
                 </li>
-
-                <!-- MOBILE -->
-                <!-- SI NON CONNECTE A AFFICHER DANS MENU !!!!! -->
-                <!-- <li *ngIf="!isAuthenticated"><a class="nav-item" href="#">Connexion</a></li> -->
-
-                <!-- MOBILE -->
-                <!-- SI CONNECTE A AFFICHER A AFFICHER DANS MENU !!!!! -->
-
               </ul>
 
               <!-- SI CONNECTE A AFFICHER !!!!! -->
@@ -175,20 +187,7 @@
           </div>
         </div> -->
 
-          <!-- LANGUES -->
           
-        <div class="nav-language">
-          <div class="nav-item dropdown" id="lang_id">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              LANGUES
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li class="cursor-pointer" (click)="useLanguage('fr')"><a class="dropdown-item" onclick="set('Français', 'assets/image/france.png')">  <img src="assets/image/france.png" alt="">Français</a></li>
-              <li class="cursor-pointer" (click)="useLanguage('en')"><a class="dropdown-item" onclick="set('ENGLISH', 'assets/image/united-kingdom.png')"> <img src="assets/image/united-kingdom.png" alt="">ENGLISH</a></li> 
-              <li class="cursor-pointer" (click)="useLanguage('he')"><a class="dropdown-item" onclick="set('עברית', 'assets/image/israel.png')"><img src="assets/image/israel.png" alt="">עברית</a></li> 
-            </ul>
-          </div>
-        </div>
         
 
           <!-- <ul class="navbar-nav mb-2 mb-lg-0 nav-menu"> -->
