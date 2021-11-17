@@ -41,6 +41,10 @@ export class NavbarComponent implements OnInit {
       }, 500);
     });
   }
+  
+  nav(path){
+    this.router.navigate([path]);
+  }
 
 navFixed: boolean = false;
 private scrollOffset: number = 70;

@@ -6,7 +6,7 @@ import { AngularCsv } from 'angular-csv-ext/dist/Angular-csv';
 import { UserService } from 'src/app/shared/services/user.service';
 import { CampaignService } from 'src/app/shared/services/campaign.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,11 +14,11 @@ import Swal from 'sweetalert2'
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  @Input() association:User;
-  public pattern_url = environment.apiUrl + 'profile/'
+  @Input() association: User;
+  public pattern_url = environment.apiUrl + 'profile/';
 
-  constructor(private router:Router, private userService:UserService, private campaignService: CampaignService, private authService: AuthService) { }
-  
+  constructor(private router:Router, private userService: UserService,
+    private campaignService: CampaignService, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -45,9 +45,9 @@ export class DashboardComponent implements OnInit {
   }
 
   async newCampaign() {
-    const current_user = this.authService.getLocalStorageUser()
-    const steps = ['1', '2', '3', '4']
-    const swalQueue:any = Swal.mixin({
+    const current_user = this.authService.getLocalStorageUser();
+    const steps = ['1', '2', '3', '4'];
+    const swalQueue: any = Swal.mixin({
       progressSteps: steps,
       confirmButtonText: 'Next &rarr;',
       showCancelButton: true,
