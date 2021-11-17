@@ -742,11 +742,11 @@ h1,h2,h3,h4,h5,h6,p,span {
   font-family: 'AvenirNextLTPro-Regular', cursive;
 }
 .navbar-section{
-  height: 80px;
+  height: 5rem;
 }
 .navbar{
   padding: 18px 0px;
-  height: 80px;
+  height: 5rem;
   box-shadow: 5px -3px 6px 4px #776d6d;
 }
 .centerNavbar{
@@ -822,6 +822,7 @@ h1,h2,h3,h4,h5,h6,p,span {
 
 a{
   text-decoration: none;
+  cursor: pointer;
 }
 ul{
   text-decoration: none;
@@ -832,22 +833,22 @@ ul{
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: unset;
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 0 1.5rem;
   background-color: #F4F4F4;
   font-family: 'AvenirNext-UltraLight';
   
   img {
-    height: 80px;
+    height: 5rem;
   }
   .nav-logo {
     img{
-      height: 80px;
+      height: 5rem;
     }
   }
   .nav-burger-menu {
-
+    margin: 0 1.5rem;
     img {
       height: 40px;
     }
@@ -855,11 +856,49 @@ ul{
   ::after {
     display: none;
   }
-  .nav-log-language {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
+
+  @media only screen and (max-width: 1072px) {
+    .w-25 {
+      width: 25rem!important;
+    }
+  }
+  @media only screen and (min-width: 1072px) {
+    .w-25 {
+      width: 45%!important;
+    }
+  }
+    
+  .offcanvas{
+    .offcanvas-body {
+      padding: 0;
+      background-color: whitesmoke;
+    }
+    margin-top: 5rem;
+    .nav-item {
+      left: 0;
+      height: 4rem;
+      width:100%;
+      background-color: whitesmoke;
+      padding-top: 1rem;
+      .dashboard-title {
+        text-align: center;
+        font-weight: 600;
+      }
+      .dashboard-deconnection {
+        text-align: center;
+      }
+    }
+    // li:nth-last-child(-n+2) {
+    //   background-color: white;
+    // }
+  }
+  .nav-language {
+    margin-left: auto;
+    .dropdown-menu {
+      top: 3.5rem;
+      right: 0;
+      left: auto;
+    }
   }
 }
 
@@ -926,8 +965,8 @@ ul{
 }
 
   .hamburger {
-      display: block;
-      cursor: pointer;
+    display: block;
+    cursor: pointer;
   }
   .hamburgerMobile {
     display: block;
