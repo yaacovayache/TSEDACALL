@@ -59,6 +59,7 @@
     },
     "administration":{
         "dashboard":{
+            "Dashboard": "לוח",
             "IWant": "אני רוצה",
             "Button1": "הוספה תרומה",
             "Button2": "חפש / שינוי קבלה",

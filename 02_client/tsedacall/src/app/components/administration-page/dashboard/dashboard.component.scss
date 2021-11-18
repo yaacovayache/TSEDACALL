@@ -18,7 +18,7 @@ span {
   .container {
     background-image: url(../../../../assets/image/map-background.jpg);
     background-repeat: no-repeat;
-    height: 500px;
+    height: 100%;
     background-position: center;
     background-size: cover;
   }
@@ -39,12 +39,22 @@ span {
     .dashboard-btn {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
     }
   }
   .col-4 {
     text-align: center;
-    margin: 20px 0;
+  }
+  @media (max-width: 767px) {
+    .col-4 {
+      width: 10rem;
+      margin: 10px 0;
+    }
+  }
+  @media (min-width: 767px) {
+    .col-4 {
+      width: 20rem;
+      margin: 20px 0;
+    }
   }
 }
 
@@ -53,11 +63,64 @@ span {
   .container {
     background-image: url(../../../../assets/image/decor-pointille.png);
     background-repeat: no-repeat;
-    height: 500px;
+    height: 100%;
     background-position: center;
     background-size: cover;
+    margin: auto;
+    padding: 0;
     .count-info {
-
+      margin: 4rem 0;
+      @media (min-width: 767px) {
+        .collecte-totale {
+          margin: inherit;
+        }
+      }
+      @media (max-width: 767px) {
+        .collecte-totale {
+          margin: 1rem;
+        }
+      }
+      .collecte-totale {
+        text-align: center;
+        @media (max-width: 767px) {
+          p {
+            margin: 0;
+            font-size: 1rem;
+          }
+        }
+        @media (min-width: 767px) {
+          p {
+            font-size: 2rem;
+          }
+        }
+      }
+      .dashboard-info-img {
+        display: flex;
+        text-align: center;
+        justify-content: space-evenly;
+        @media (max-width: 767px) {
+          p {
+            margin: 0;
+            font-size: 1rem;
+          }
+          img {
+            width: 6rem;
+          }
+        }
+        @media (min-width: 767px) {
+          p {
+            font-size: 2rem;
+          }
+          img {
+            width: 15rem;
+          }
+        }
+        .dashboard-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+        }
+      }  
     }
   }
 }

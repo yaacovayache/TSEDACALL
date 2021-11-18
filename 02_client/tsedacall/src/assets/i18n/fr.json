@@ -59,6 +59,7 @@
     },
     "administration":{
         "dashboard":{
+            "Dashboard": "Tableau de bord",
             "IWant": "Je veux",
             "Button1": "Ajout De Don",
             "Button2": "Chercher / Modifier un cerfa",

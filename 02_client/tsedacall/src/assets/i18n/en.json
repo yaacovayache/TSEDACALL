@@ -59,6 +59,7 @@
     },
     "administration":{
         "dashboard":{
+            "Dashboard": "Dashboard",
             "IWant": "I want",
             "Button1": "Add Donation",
             "Button2": "Looking for / modification of cerfa",
